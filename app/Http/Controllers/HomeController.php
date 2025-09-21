@@ -14,18 +14,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Fetch featured products for the home page
+
         $products = Product::where('is_active', true)
             ->where('is_featured', true)
             ->orderBy('created_at', 'desc')
-            ->take(8)
+            ->take(4)
             ->get();
 
-        // If no featured products, get the latest active products
+            
         if ($products->isEmpty()) {
             $products = Product::where('is_active', true)
                 ->orderBy('created_at', 'desc')
-                ->take(8)
+                ->take(4)
                 ->get();
         }
 
@@ -34,11 +34,11 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name'         => 'nullable|string|max:255',
-            'email'        => 'required|email|unique:newsletter_subscriptions,email',
+            'name'           => 'nullable|string|max:255',
+            'email'          => 'required|email|unique:newsletter_subscriptions,email',
             'contact_number' => 'nullable|string|max:255',
         ]);
-       
+
         NewsletterSubscription::create($validated);
 
         return back()->with('success', 'Thank you for subscribing!');

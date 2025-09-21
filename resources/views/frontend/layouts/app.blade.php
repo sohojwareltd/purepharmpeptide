@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'American Peptide Co.')</title>
+    <title>@yield('title', 'Purepharmpeptide')</title>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- Font Awesome 6 Free -->
@@ -31,10 +31,11 @@
     <style>
         /* Global Styles */
         :root {
-            --primary-color: #00687a;
-            --secondary-color: #00a3cc;
-            --dark-color: #2c3e50;
-            --light-color: #f8f9fa;
+            --primary-color: #3a4efc;
+            --secondary-color: #222;
+            --accent-color: #00c6ff;
+            --light-color: #f9f9f9;
+            --dark-color: #111;
             --border-color: #dee2e6;
             --text-color: #6D6E71;
             --transition: all 0.3s ease;
@@ -48,10 +49,10 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
         }
 
         /* Table Styles */
@@ -75,23 +76,30 @@
 
         /* Enhanced Navbar Styles */
         .navbar {
-            background: rgba(255, 255, 255, 0.98) !important;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: var(--shadow-medium);
-            border-bottom: 1px solid rgba(222, 226, 230, 0.3);
-            padding: 0.75rem 0;
-            transition: var(--transition);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1030;
+            background: rgba(255, 255, 255, 0.6);
+            /* transparent */
+            backdrop-filter: blur(12px);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1050;
+            /* always on top */
         }
 
         .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.95) !important;
-            box-shadow: var(--shadow-heavy);
+            background: rgba(255, 255, 255, 0.95);
+            /* solid when scroll */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-link.active,
+        .navbar .nav-link:hover {
+            color: var(--primary-color);
         }
 
         .navbar-brand {
@@ -937,44 +945,54 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid px-4">
-            <!-- Logo - Always visible -->
+            <!-- Logo -->
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="/logo.png" alt="American Peptide Logo" class="d-none d-lg-inline">
-                <img src="/mobil-logo.png" alt="American Peptide Mobile Logo" class="d-lg-none">
+                <img src="" alt="Purepharmpeptide Logo" class="d-none d-lg-inline">
+                <img src="" alt="Purepharmpeptide logo" class="d-lg-none">
             </a>
 
-            <!-- Desktop Search - Hidden on mobile -->
+            {{-- <!-- Desktop Search -->
             <form class="search-box d-none d-lg-block" action="{{ route('products.index') }}" method="get">
                 <i class="fas fa-search"></i>
                 <input type="text" name="q" placeholder="Search research peptides..."
                     value="{{ request('q') }}">
-            </form>
+            </form> --}}
 
-            <!-- Desktop Navigation - Hidden on mobile -->
+            <!-- Desktop Navigation -->
             <div class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('home.*') ? 'active' : '' }}"
+                            href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}"
-                            href="{{ route('products.index') }}">Research Peptides</a>
+                            href="{{ route('products.index') }}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}"
+                            href="{{ route('blog.index') }}">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
                             href="{{ route('about') }}">About Us</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
                             href="{{ route('contact') }}">Contact</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
 
-            <!-- Desktop Actions - Hidden on mobile -->
+            <!-- Desktop Actions -->
             <div class="d-none d-lg-flex align-items-center gap-3">
+                <!-- Cart -->
                 <a class="icon-btn position-relative" href="{{ route('cart.index') }}">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-count-navbar" class="cart-badge">{{ \App\Facades\Cart::getItemCount() }}</span>
                 </a>
 
+                <!-- Account -->
                 <div class="dropdown">
                     <a class="icon-btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="far fa-user"></i>
@@ -1009,17 +1027,11 @@
                 </div>
             </div>
 
-            <!-- Mobile Actions - Visible only on mobile -->
+            <!-- Mobile Actions -->
             <div class="d-lg-none d-flex align-items-center gap-2">
-                {{-- <a class="icon-btn position-relative" href="{{ route('cart.index') }}">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-count-mobile" class="cart-badge">0</span>
-                </a> --}}
-
                 <a class="icon-btn" href="{{ route('login') }}">
                     <i class="far fa-user"></i>
                 </a>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
                     aria-controls="mobileMenu">
                     <span class="navbar-toggler-icon">
@@ -1029,6 +1041,7 @@
             </div>
         </div>
     </nav>
+
 
     <!-- Mobile Menu Offcanvas -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
@@ -1131,7 +1144,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12 mb-4">
                     <div class="footer-brand">
-                        <img src="{{ asset('assets/APC Logo White.png') }}" alt="American Peptide Logo"
+                        <img src="{{ asset('assets/APC Logo White.png') }}" alt="Purepharm Peptide Logo"
                             class="w-50 img-fluid">
                     </div>
                     <div class="footer-disclaimer">
@@ -1198,6 +1211,16 @@
     </div>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener("scroll", function() {
+            const navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    </script>
     <script>
         $.ajaxSetup({
             headers: {

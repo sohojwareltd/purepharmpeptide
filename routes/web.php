@@ -1,25 +1,24 @@
 <?php
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\OrderPrintController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\OrderPrintController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\User\BulkOrderController;
 use App\Mail\NewOrderNotification;
 use App\Mail\OrderConfirmation;
-use App\Models\Order;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Log;
 use App\Mail\WelcomeEmail;
+use App\Models\Order;
 use App\Models\Product;
-use App\Http\Controllers\User\BulkOrderController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,15 +85,15 @@ Route::get('/paypal/test', function () {
 
 // Stripe Test Route (remove in production)
 Route::get('/stripe/test', function () {
-    $stripeKey = config('services.stripe.publishable_key');
+    $stripeKey    = config('services.stripe.publishable_key');
     $stripeSecret = config('services.stripe.secret_key');
 
     return response()->json([
-        'publishable_key_configured' => !empty($stripeKey),
-        'secret_key_configured' => !empty($stripeSecret),
-        'publishable_key_length' => strlen($stripeKey),
-        'secret_key_length' => strlen($stripeSecret),
-        'environment' => config('app.env')
+        'publishable_key_configured' => ! empty($stripeKey),
+        'secret_key_configured'      => ! empty($stripeSecret),
+        'publishable_key_length'     => strlen($stripeKey),
+        'secret_key_length'          => strlen($stripeSecret),
+        'environment'                => config('app.env'),
     ]);
 })->name('stripe.test');
 
@@ -125,7 +124,7 @@ Route::middleware(['auth'])->group(function () {
     // Order Management
     Route::get('/orders', [UserController::class, 'orders'])->name('user.orders.index');
     Route::get('/orders/{order}', [UserController::class, 'showOrder'])->name('user.orders.show');
-    });
+});
 
 Route::middleware(['auth', 'wholesaler'])->get('/dashboard/bulk-order', [\App\Http\Controllers\User\BulkOrderController::class, 'showForm'])->name('user.bulk-order');
 
@@ -137,12 +136,9 @@ Route::middleware(['auth', 'wholesaler'])->prefix('user/bulk-order')->group(func
     Route::post('calculate-totals', [BulkOrderController::class, 'calculateTotals'])->name('bulk-order.calculate-totals');
 });
 
-
-
-
 Route::get('/test-welcome-email', function () {
     $user = Auth::user() ?? \App\Models\User::first(); // fallback to first user
-    if (!$user) {
+    if (! $user) {
         abort(404, 'No user found to send test email.');
     }
     Mail::to($user->email)->send(new WelcomeEmail($user));
@@ -158,24 +154,24 @@ Route::get('/test-order-confirmation/{order}', function (Order $order) {
 // Test route for bulk order payment debugging
 Route::get('/test-bulk-order-payment/{order}', function (Order $order) {
     Log::info('Test bulk order payment route accessed', [
-        'order_id' => $order->id,
-        'order_total' => $order->total,
-        'payment_method' => $order->payment_method,
-        'payment_status' => $order->payment_status,
-        'status' => $order->status,
-        'user_id' => $order->user_id,
-        'billing_address' => $order->billing_address,
-        'shipping_address' => $order->shipping_address
+        'order_id'         => $order->id,
+        'order_total'      => $order->total,
+        'payment_method'   => $order->payment_method,
+        'payment_status'   => $order->payment_status,
+        'status'           => $order->status,
+        'user_id'          => $order->user_id,
+        'billing_address'  => $order->billing_address,
+        'shipping_address' => $order->shipping_address,
     ]);
 //only for test
     return response()->json([
-        'order_id' => $order->id,
-        'total' => $order->total,
+        'order_id'       => $order->id,
+        'total'          => $order->total,
         'payment_method' => $order->payment_method,
         'payment_status' => $order->payment_status,
-        'status' => $order->status,
-        'lines_count' => $order->lines()->count(),
-        'created_at' => $order->created_at
+        'status'         => $order->status,
+        'lines_count'    => $order->lines()->count(),
+        'created_at'     => $order->created_at,
     ]);
 })->name('test.bulk-order-payment');
 
@@ -184,9 +180,7 @@ Route::get('/debug-payment', function () {
     return view('debug-payment');
 })->name('debug.payment');
 
-
 Route::get('/login-as/{user}', function ($user) {
     Auth::loginUsingId($user);
     return redirect()->route('dashboard');
 })->name('login.as');
-
