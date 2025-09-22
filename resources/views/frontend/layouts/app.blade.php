@@ -977,10 +977,10 @@
                         <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
                             href="{{ route('about') }}">About Us</a>
                     </li>
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
                             href="{{ route('contact') }}">Contact</a>
-                    </li> --}}
+                    </li>
                 </ul>
             </div>
 
@@ -1138,58 +1138,41 @@
         @yield('content')
     </main>
 
-    <!-- Footer -->
-    <footer class="core-peptides-footer">
+    <footer class="footer-section py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 mb-4">
-                    <div class="footer-brand">
-                        <img src="{{ asset('assets/APC Logo White.png') }}" alt="Purepharm Peptide Logo"
-                            class="w-50 img-fluid">
+            <div class="footer-box p-4 p-md-5 rounded-4 bg-white shadow-sm">
+                <div class="row align-items-center">
+                    <!-- Left logo & text -->
+                    <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                        <img src="https://via.placeholder.com/50x50?text=Logo" alt="Logo" class="mb-3">
+                        <h6 class="fw-bold mb-1">Verified compounds.</h6>
+                        <p class="mb-0">Ready to ship.</p>
                     </div>
-                    <div class="footer-disclaimer">
-                        <p>All products are sold for research, laboratory, or analytical purposes only, and are not for
-                            human consumption.</p>
-                        <p>American Peptides is a chemical supplier. We are not a compounding pharmacy or chemical
-                            compounding facility as defined under 503A of the Federal Food, Drug, and Cosmetic act.</p>
-                        <p>The statements made within this website have not been evaluated by the US Food and Drug
-                            Administration. The products we offer are not intended to diagnose, treat, cure or prevent
-                            any disease.</p>
-                    </div>
-                    <div class="footer-warning">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        Human/Animal Consumption Prohibited: Laboratory/in-Vitro Experimental Use Only
+                    <!-- Right contact -->
+                    <div class="col-md-6 text-center text-md-end">
+                        <p class="mb-1 text-muted">Need help? Text us, and a team member will reply in minutes.</p>
+                        <a href="tel:+19729190219" class="fw-bold text-primary">+1 (972) 919-0219</a>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="footer-links-title">Quick Links</h5>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('products.index') }}">Research Peptides</a></li>
-                        <li><a href="{{ route('about') }}">About Us</a></li>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="{{ route('contact') }}">Contact</a></li>
-                    </ul>
+                <hr class="my-4">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start small text-muted">
+                        © Purepharmpeptides 2025. All rights reserved
+                    </div>
+                    <div class="col-md-6 text-center text-md-end small">
+                        <a href="#" class="me-3 text-decoration-none text-muted">Privacy Policy</a>
+                        <a href="#" class="text-decoration-none text-muted">Terms of Service</a>
+                    </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="compliance-title">Payment Methods</h5>
-                    <img src="{{ asset('assets/images/home/payment.png') }}" alt="Payment Methods"
-                        class="img-fluid">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <p class="copyright">
-                        ©
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script> American Peptides. All Rights Reserved.
-                    </p>
-                </div>
+                <p class="small mt-3 text-muted">
+                    The statements made on this website have not been evaluated by the U.S. Food and Drug
+                    Administration.
+                    The products offered are not intended to diagnose, treat, cure, or prevent any disease.
+                    Direct Peptides is not a compounding pharmacy or chemical compounding facility as defined under
+                    Section 503A of the Federal Food, Drug, and Cosmetic Act,
+                    and all products are sold strictly for research purposes only and are not for human or animal
+                    consumption.
+                </p>
             </div>
         </div>
     </footer>

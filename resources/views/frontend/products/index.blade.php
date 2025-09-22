@@ -275,7 +275,44 @@
     </div>
 
     @include('components.product.newsletter-section')
-
+    <footer class="footer-section py-5">
+        <div class="container">
+            <div class="footer-box p-4 p-md-5 rounded-4 bg-white shadow-sm">
+                <div class="row align-items-center">
+                    <!-- Left logo & text -->
+                    <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                        <img src="https://via.placeholder.com/50x50?text=Logo" alt="Logo" class="mb-3">
+                        <h6 class="fw-bold mb-1">Verified compounds.</h6>
+                        <p class="mb-0">Ready to ship.</p>
+                    </div>
+                    <!-- Right contact -->
+                    <div class="col-md-6 text-center text-md-end">
+                        <p class="mb-1 text-muted">Need help? Text us, and a team member will reply in minutes.</p>
+                        <a href="tel:+19729190219" class="fw-bold text-primary">+1 (972) 919-0219</a>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start small text-muted">
+                        © DirectPeptides 2025. All rights reserved
+                    </div>
+                    <div class="col-md-6 text-center text-md-end small">
+                        <a href="#" class="me-3 text-decoration-none text-muted">Privacy Policy</a>
+                        <a href="#" class="text-decoration-none text-muted">Terms of Service</a>
+                    </div>
+                </div>
+                <p class="small mt-3 text-muted">
+                    The statements made on this website have not been evaluated by the U.S. Food and Drug
+                    Administration.
+                    The products offered are not intended to diagnose, treat, cure, or prevent any disease.
+                    Direct Peptides is not a compounding pharmacy or chemical compounding facility as defined under
+                    Section 503A of the Federal Food, Drug, and Cosmetic Act,
+                    and all products are sold strictly for research purposes only and are not for human or animal
+                    consumption.
+                </p>
+            </div>
+        </div>
+    </footer>
     <!-- Enhanced Product Card Styles -->
     <style>
         .hero-section {
@@ -340,7 +377,7 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
-      
+
         .badge {
             font-weight: 500;
         }
