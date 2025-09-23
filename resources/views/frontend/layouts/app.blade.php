@@ -31,7 +31,8 @@
     <style>
         /* Global Styles */
         :root {
-            --primary-color: #3a4efc;
+            --primary-color: #0483c6;
+            ;
             --secondary-color: #222;
             --accent-color: #00c6ff;
             --light-color: #f9f9f9;
@@ -718,7 +719,7 @@
         }
 
         /* Enhanced Footer */
-        .core-peptides-footer {
+        /* .core-peptides-footer {
             background: #6e6f72;
             color: white;
             padding: 3rem 0 1rem;
@@ -807,7 +808,7 @@
         .footer-links a:hover {
             color: var(--secondary-color);
             transform: translateX(5px);
-        }
+        } */
 
         .compliance-title {
             color: white;
@@ -962,8 +963,7 @@
             <div class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('home.*') ? 'active' : '' }}"
-                            href="{{ route('home') }}">Home</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}"
@@ -1138,43 +1138,43 @@
         @yield('content')
     </main>
 
-    <footer class="footer-section py-5">
-        <div class="container">
-            <div class="footer-box p-4 p-md-5 rounded-4 bg-white shadow-sm">
-                <div class="row align-items-center">
-                    <!-- Left logo & text -->
-                    <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
-                        <img src="https://via.placeholder.com/50x50?text=Logo" alt="Logo" class="mb-3">
-                        <h6 class="fw-bold mb-1">Verified compounds.</h6>
-                        <p class="mb-0">Ready to ship.</p>
-                    </div>
-                    <!-- Right contact -->
-                    <div class="col-md-6 text-center text-md-end">
-                        <p class="mb-1 text-muted">Need help? Text us, and a team member will reply in minutes.</p>
-                        <a href="tel:+19729190219" class="fw-bold text-primary">+1 (972) 919-0219</a>
-                    </div>
+    <footer class="footer-section">
+
+        <div class="footer-box p-4 p-md-5 bg-white shadow-sm">
+            <div class="row align-items-center">
+                <!-- Left logo & text -->
+                <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                    <img src="https://via.placeholder.com/50x50?text=Logo" alt="Logo" class="mb-3">
+                    <h6 class="fw-bold mb-1">Verified compounds.</h6>
+                    <p class="mb-0">Ready to ship.</p>
                 </div>
-                <hr class="my-4">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start small text-muted">
-                        © Purepharmpeptides 2025. All rights reserved
-                    </div>
-                    <div class="col-md-6 text-center text-md-end small">
-                        <a href="#" class="me-3 text-decoration-none text-muted">Privacy Policy</a>
-                        <a href="#" class="text-decoration-none text-muted">Terms of Service</a>
-                    </div>
+                <!-- Right contact -->
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-1 text-muted">Need help? Text us, and a team member will reply in minutes.</p>
+                    <a href="tel:+19729190219" class="fw-bold text-primary">+1 (972) 919-0219</a>
                 </div>
-                <p class="small mt-3 text-muted">
-                    The statements made on this website have not been evaluated by the U.S. Food and Drug
-                    Administration.
-                    The products offered are not intended to diagnose, treat, cure, or prevent any disease.
-                    Direct Peptides is not a compounding pharmacy or chemical compounding facility as defined under
-                    Section 503A of the Federal Food, Drug, and Cosmetic Act,
-                    and all products are sold strictly for research purposes only and are not for human or animal
-                    consumption.
-                </p>
             </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start text-primary">
+                    © Purepharmpeptides 2025. All rights reserved
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="me-3 text-decoration-none text-primary">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none text-primary">Terms of Service</a>
+                </div>
+            </div>
+            <p class="small mt-3 text-muted">
+                The statements made on this website have not been evaluated by the U.S. Food and Drug
+                Administration.
+                The products offered are not intended to diagnose, treat, cure, or prevent any disease.
+                Direct Peptides is not a compounding pharmacy or chemical compounding facility as defined under
+                Section 503A of the Federal Food, Drug, and Cosmetic Act,
+                and all products are sold strictly for research purposes only and are not for human or animal
+                consumption.
+            </p>
         </div>
+
     </footer>
 
     <!-- Scroll to Top Button -->

@@ -9,65 +9,68 @@
     peptides, research chemicals')
 
 @section('content')
-    <!-- Hero Section with Background -->
-    <div class="hero-section position-relative text-white py-5 mb-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="research-banner-content col-lg-9 mx-auto text-center bg-white text-secondary p-4 bg-opacity-75">
-                    <h1 class="display-4 fw-bold text-uppercase mb-3">Research Peptide Collection</h1>
-                    <p class="lead mb-4  opacity-90">High-quality peptides for laboratory research with guaranteed purity
-                        and
-                        analytical documentation</p>
-                    <div class="hero-stats d-flex justify-content-center gap-4 flex-wrap">
-                        <div class="stat-item text-center">
-                            <div class="stat-number  display-5">{{ $products->total() }}+</div>
-                            <div class="stat-label small   fs-4">Peptides</div>
-                        </div>
-                        <div class="stat-item text-center">
-                            <div class="stat-number  display-5">98%+</div>
-                            <div class="stat-label small fs-4">Purity</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
 
     <div class="container">
-        <!-- Quick Search Bar -->
-        <div class="quick-search-section mb-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <form method="GET" action="{{ route('products.index') }}" class="search-form">
-                        <div class="input-group input-group-lg shadow-sm">
-                            <span class="input-group-text bg-white border-end-0">
-                                <i class="bi bi-search text-primary"></i>
-                            </span>
-                            <input type="text" class="form-control border-start-0 ps-0" name="search"
-                                value="{{ request('search') }}"
-                                placeholder="Search peptides by name, sequence, or catalog number..."
-                                aria-label="Search peptides">
-                            <button class="btn bg-primary text-white px-4" type="submit">
-                                <i class="bi bi-search me-2"></i>Search
-                            </button>
-                        </div>
-                    </form>
+        <section class="features-marquee">
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    {{-- Original --}}
+                    <div class="marquee-group">
+                        <div class="feature-item">✅ Fast and Discreet Shipping</div>
+                        <div class="feature-item">✅ Affordable Pricing</div>
+                        <div class="feature-item">✅ 24/7 Support</div>
+                        <div class="feature-item">✅ Shipped in the USA</div>
+                        <div class="feature-item">✅ Quality-assured Ingredients</div>
+                    </div>
+
+                    {{-- 1st Duplicate --}}
+                    <div class="marquee-group">
+                        <div class="feature-item">✅ Fast and Shipping</div>
+                        <div class="feature-item">✅ Affordable Pricing</div>
+                        <div class="feature-item">✅ 24/7 Support</div>
+                        <div class="feature-item">✅ Shipped in the USA</div>
+                        <div class="feature-item">✅ Quality-assured Ingredients</div>
+                    </div>
+
+
                 </div>
             </div>
-        </div>
-        <br>
-        <br>
+        </section>
+
+
         <div class="row">
+            <h2 class="section-title">Explore Our Products</h2>
             <!-- Sidebar Filters (Desktop) -->
             <div class="col-lg-3 mb-4 d-none d-lg-block">
-                <div class="position-sticky" style="top: 100px;">
-                    <div class="card border-0 shadow-sm">
+                <div class="position-sticky" style="top: 70px;"> <!-- one sticky wrapper -->
+
+                    <!-- Search -->
+                    <form method="GET" action="{{ route('products.index') }}"
+                        class="search-form card border-0 shadow-sm mb-3">
                         <div class="card-header text-white"
-                            style="background: #0483c6;>
-                            <h5 class="mb-0">
-                            <i class="bi bi-funnel me-2"></i>Filters & Search
-                            </h5>
+                            style="background: #0483c6; border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
+                            <h6 class="mb-0 d-flex align-items-center">
+                                <i class="bi bi-search me-2"></i>
+                                <small>Name / Sequence / Catalog No.</small>
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group smart-search">
+                                <input type="text" class="form-control" name="search" value="{{ request('search') }}"
+                                    placeholder="Search peptides..." aria-label="Search peptides">
+                                <button class="btn btn-primary px-3" type="submit">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Filters -->
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header text-white" style="background: #0483c6;">
+                            <h6 class="mb-0">
+                                <i class="bi bi-funnel me-2"></i>Filters
+                            </h6>
                         </div>
                         <div class="card-body p-4">
                             @include('frontend.products._filters', [
@@ -77,6 +80,7 @@
                     </div>
                 </div>
             </div>
+
 
             <!-- Mobile Filter Toggle -->
             <div class="col-12 d-lg-none mb-4">
@@ -173,65 +177,7 @@
                     </div>
                 @endif
 
-                <!-- Results Header -->
-                {{-- <div class="results-header mb-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <div class="results-summary">
-                                <h6 class="text-muted mb-0">
-                                    <i class="bi bi-info-circle me-1"></i>
-                                    Showing {{ $products->firstItem() ?? 0 }} to {{ $products->lastItem() ?? 0 }} of
-                                    {{ $products->total() }} peptides
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="view-controls d-flex justify-content-md-end gap-2">
-                                <!-- Sort Dropdown -->
-                                <div class="dropdown">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown">
-                                        <i class="bi bi-sort-down me-1"></i>
-                                        @php
-                                            $sortLabels = [
-                                                'name' => 'Name A-Z',
-                                                'name_desc' => 'Name Z-A',
-                                                'price' => 'Price Low-High',
-                                                'price_desc' => 'Price High-Low',
-                                                'newest' => 'Newest First',
-                                                'popular' => 'Most Popular',
-                                            ];
-                                            $currentSort = $sortLabels[request('sort')] ?? 'Newest First';
-                                        @endphp
-                                        {{ $currentSort }}
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        @foreach ($sortLabels as $value => $label)
-                                            <li>
-                                                <a class="dropdown-item {{ request('sort') == $value ? 'active' : '' }}"
-                                                    href="{{ route('products.index', array_merge(request()->all(), ['sort' => $value])) }}">
-                                                    {{ $label }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
 
-                                <!-- View Toggle -->
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-outline-secondary active" id="gridView"
-                                        title="Grid View">
-                                        <i class="bi bi-grid-3x3-gap"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-outline-secondary" id="listView"
-                                        title="List View">
-                                        <i class="bi bi-list"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
 
                 <!-- Products Grid -->
                 @if ($products->count() > 0)
@@ -239,7 +185,7 @@
                         <div class="row">
 
                             @foreach ($products as $product)
-                                <div class="col-md-4 col-lg-3 col-sm-6">
+                                <div class="col-md-4 col-lg-3 col-sm-6 mb-3">
                                     <x-product-card :product="$product" />
                                 </div>
                             @endforeach
@@ -274,45 +220,7 @@
         </div>
     </div>
 
-    @include('components.product.newsletter-section')
-    <footer class="footer-section py-5">
-        <div class="container">
-            <div class="footer-box p-4 p-md-5 rounded-4 bg-white shadow-sm">
-                <div class="row align-items-center">
-                    <!-- Left logo & text -->
-                    <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
-                        <img src="https://via.placeholder.com/50x50?text=Logo" alt="Logo" class="mb-3">
-                        <h6 class="fw-bold mb-1">Verified compounds.</h6>
-                        <p class="mb-0">Ready to ship.</p>
-                    </div>
-                    <!-- Right contact -->
-                    <div class="col-md-6 text-center text-md-end">
-                        <p class="mb-1 text-muted">Need help? Text us, and a team member will reply in minutes.</p>
-                        <a href="tel:+19729190219" class="fw-bold text-primary">+1 (972) 919-0219</a>
-                    </div>
-                </div>
-                <hr class="my-4">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start small text-muted">
-                        © DirectPeptides 2025. All rights reserved
-                    </div>
-                    <div class="col-md-6 text-center text-md-end small">
-                        <a href="#" class="me-3 text-decoration-none text-muted">Privacy Policy</a>
-                        <a href="#" class="text-decoration-none text-muted">Terms of Service</a>
-                    </div>
-                </div>
-                <p class="small mt-3 text-muted">
-                    The statements made on this website have not been evaluated by the U.S. Food and Drug
-                    Administration.
-                    The products offered are not intended to diagnose, treat, cure, or prevent any disease.
-                    Direct Peptides is not a compounding pharmacy or chemical compounding facility as defined under
-                    Section 503A of the Federal Food, Drug, and Cosmetic Act,
-                    and all products are sold strictly for research purposes only and are not for human or animal
-                    consumption.
-                </p>
-            </div>
-        </div>
-    </footer>
+
     <!-- Enhanced Product Card Styles -->
     <style>
         .hero-section {
@@ -334,37 +242,27 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
-        .search-form .form-control:focus {
+        .smart-search .form-control {
+            border-radius: 50px 0 0 50px;
+            padding-left: 18px;
+            border-right: none;
             box-shadow: none;
-            border-color: #667eea;
+            transition: all 0.2s ease-in-out;
         }
 
-        .search-form .input-group {
-            border-radius: 50px;
-            overflow: hidden;
+        .smart-search .form-control:focus {
+            border-color: #0483c6;
+            box-shadow: 0 0 0 0.2rem rgba(4, 131, 198, 0.25);
         }
 
-        .search-form .input-group-text {
-            border: none;
-        }
-
-        .search-form .form-control {
-            border: none;
-            padding: 1rem 1.5rem;
-        }
-
-        .research-banner-content {
-            border-radius: 35px;
-        }
-
-        .stat-number {
-            font-size: 55px;
-            font-weight: bolder;
-        }
-
-        .search-form .btn {
+        .smart-search .btn {
             border-radius: 0 50px 50px 0;
-            padding: 1rem 2rem;
+            background: #0483c6;
+            border: none;
+        }
+
+        .smart-search .btn:hover {
+            background: #036ba0;
         }
 
         .card {
@@ -404,9 +302,9 @@
 
         .pagination .page-link {
             border-radius: 8px;
-            margin: 0 2px;
+            margin: 0 4px;
             border: none;
-            color: #667eea;
+            color: #000000;
         }
 
         .pagination .page-item.active .page-link {

@@ -7,11 +7,11 @@
                     margin: 5px;
                     border-radius: 10px;
                     padding: 8px;">
-            <div class="text" style="justify-content: center;display: flex;font-weight: bold;color: #414141">Need help? Text
+            <div class="text" style="justify-content: center;display: flex;font-weight: bold;color: #6d7582">Need help? Text
                 us,
                 and a team member
                 will reply in mins <br>
-                <samp style="color: blue; margin-left: 5px;">+1 (972) 919-0219</samp>
+                <samp style="color: rgb(27, 119, 177); margin-left: 5px;">+1 (972) 919-0219</samp>
             </div>
         </div>
         <section class="hero-section"
@@ -299,7 +299,6 @@
             </div>
         </section>
 
-        <!-- Footer Section -->
-      
+
     </main>
 @endsection
