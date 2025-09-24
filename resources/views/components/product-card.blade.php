@@ -15,15 +15,9 @@
 
                 <!-- Price -->
                 <div class=" mb-3 text-center product-price">
-                    @if ($product->isWholesalerUser() && $product->hasBothPricingTypes())
-                        <div class="small text-muted mb-1">From {{ $product->getDisplayPrice() }}</div>
-                        <div class="small">
-                            <span class="badge bg-primary me-1">Unit</span>
-                            <span class="badge bg-success">Kit</span>
-                        </div>
-                    @else
-                        ${{ number_format($product->getPrice(), 2) }}
-                    @endif
+
+                    ${{ number_format($product->price, 2) }}
+
                 </div>
                 <a href="{{ route('products.show', $product) }}" class="btn btn-link">See Details</a>
             </div>

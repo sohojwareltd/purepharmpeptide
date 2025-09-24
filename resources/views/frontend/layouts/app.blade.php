@@ -1151,7 +1151,7 @@
                 <!-- Right contact -->
                 <div class="col-md-6 text-center text-md-end">
                     <p class="mb-1 text-muted">Need help? Text us, and a team member will reply in minutes.</p>
-                    <a href="tel:+19729190219" class="fw-bold text-primary">+1 (972) 919-0219</a>
+                    <a href="tel:+8801303550622" class="fw-bold text-primary">+88 (01) 30355-0622</a>
                 </div>
             </div>
             <hr class="my-4">

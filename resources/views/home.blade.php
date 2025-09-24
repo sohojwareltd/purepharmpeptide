@@ -11,7 +11,7 @@
                 us,
                 and a team member
                 will reply in mins <br>
-                <samp style="color: rgb(27, 119, 177); margin-left: 5px;">+1 (972) 919-0219</samp>
+                <samp style="color: rgb(27, 119, 177); margin-left: 5px;">+88 (013) 0355-0622</samp>
             </div>
         </div>
         <section class="hero-section"
@@ -65,7 +65,7 @@
             </div>
         </section>
         <section class="products-section">
-            <h2>Explore Our Peptides</h2>
+            <h2>Our Peptides</h2>
             <div class="products-marquee">
                 <div class="products-track">
                     @foreach ($products as $product)
@@ -73,6 +73,7 @@
                             <x-product-card :product="$product" />
                         </div>
                     @endforeach
+                    <a href="{{ route('products.index') }}">View All Products</a>
                 </div>
             </div>
         </section>
@@ -89,7 +90,7 @@
                             <a href="#" class="promo-btn">View products</a>
                         </div>
                         <div class="mt-4">
-                            <img src="https://via.placeholder.com/400x150?text=DirectPeptides+Box" alt="DirectPeptides Box"
+                            <img src="https://via.placeholder.com/400x150?text=DirectPeptides+Box" alt="purepeptides Box"
                                 class="promo-img">
                         </div>
                     </div>
@@ -203,7 +204,7 @@
                 <div class="col-lg-6 mb-4 mb-lg-0 text-lg-start text-center">
                     <h2>Text us, our dedicated team is here to help</h2>
                     <p>Reach out and get a response within minutes.</p>
-                    <a href="tel:+19729190219" class="phone-number">+1 (972) 919-0219</a>
+                    <a href="tel:+8801303550622" class="phone-number">+88 (013) 0355-0622</a>
                     <div class="mt-4 d-flex justify-content-lg-start justify-content-center gap-3">
                         <img src="https://via.placeholder.com/150x220?text=Box" class="img-fluid product-img"
                             alt="Product Box">
@@ -291,7 +292,8 @@
                     </div>
                     <!-- Right button -->
                     <div class="col-lg-5 text-lg-end text-center mt-4 mt-lg-0">
-                        <a href="#" class="btn btn-primary px-4 py-2 rounded-pill">Shop Now</a>
+                        <a href="{{ route('products.index') }}" class="btn btn-primary px-4 py-2 rounded-pill">Shop
+                            Now</a>
                     </div>
                 </div>
                 <!-- Decorative background -->

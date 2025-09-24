@@ -1,24 +1,23 @@
 <?php
-
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\ProductResource\Pages;
+use App\Filament\Resources\ResourcePermissionTrait;
 use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use App\Filament\Resources\ProductResource\Pages;
-use App\Filament\Resources\ResourcePermissionTrait;
 use Illuminate\Support\Str;
 
 class ProductResource extends Resource
 {
     use ResourcePermissionTrait;
-    protected static ?string $model = Product::class;
+    protected static ?string $model           = Product::class;
     protected static ?string $navigationLabel = 'Products';
     protected static ?string $navigationGroup = 'Catalogue';
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort     = 3;
 
     public static function form(Form $form): Form
     {
@@ -41,24 +40,40 @@ class ProductResource extends Resource
                             Forms\Components\Select::make('category_id')
                                 ->label('Category')
                                 ->relationship('category', 'name')
-                                ->searchable()
                                 ->nullable()
                                 ->helperText('Assign a category for better organization.'),
-                            Forms\Components\Select::make('tax_class_id')
-                                ->label('Tax Class')
-                                ->relationship('taxClass', 'name')
-                                //    ->searchable()
+                            Forms\Components\TextInput::make('stock')
+                                ->required()
+                                ->label('Stock')
                                 ->nullable()
-                                ->helperText('Assign a tax class for this product.'),
+                                ->numeric()
+                                ->helperText('Set the stock for this product.'),
+                            Forms\Components\TextInput::make('sku')->required()->label('SKU')->maxLength(100)->nullable()
+                                ->helperText('Stock Keeping Unit identifier for the product.'),
                             Forms\Components\Select::make('status')
                                 ->options([
-                                    'draft' => 'Draft',
-                                    'active' => 'Active',
+                                    'draft'    => 'Draft',
+                                    'active'   => 'Active',
                                     'archived' => 'Archived',
                                 ])
                                 ->default('draft')
                                 ->required()
-                                ->helperText('Set the product status.')
+                                ->helperText('Set the product status.'),
+
+                            Forms\Components\TextInput::make('price')
+                                ->required()
+                                ->label('Product Price')
+                                ->numeric()
+                                ->helperText('Set the single price for this product.'),
+
+                            Forms\Components\Toggle::make('is_featured')
+                                ->label('Is Featured')
+                                ->default(false),
+
+                            Forms\Components\Toggle::make('track_quantity')
+                                ->label('Track Quantity')
+                                ->default(false),
+
                         ]),
 
                     Forms\Components\Tabs\Tab::make('Media')
@@ -82,39 +97,6 @@ class ProductResource extends Resource
                                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp'])
                                 ->maxSize(2048),
                         ]),
-                    Forms\Components\Tabs\Tab::make('Price')
-                        ->icon('heroicon-o-currency-dollar')
-                        ->schema([
-                            Forms\Components\Grid::make(5)
-                                ->schema([
-                                    Forms\Components\Fieldset::make('Retailer')
-                                        ->schema([
-                                            Forms\Components\TextInput::make('price.retailer.unit_price')->label('Unit Price')->numeric()->required()->columnSpanFull(),
-                                       
-                                        ]),
-                                    Forms\Components\Fieldset::make('Wholesale 1')
-                                        ->schema([
-                                            Forms\Components\TextInput::make('price.wholesale_1.unit_price')->label('Unit Price')->numeric()->required(),
-                                            Forms\Components\TextInput::make('price.wholesale_1.kit_price')->label('Kit Price')->numeric()->nullable(),
-                                        ]),
-                                    Forms\Components\Fieldset::make('Wholesale 2')
-                                        ->schema([
-                                            Forms\Components\TextInput::make('price.wholesale_2.unit_price')->label('Unit Price')->numeric()->required(),
-                                            Forms\Components\TextInput::make('price.wholesale_2.kit_price')->label('Kit Price')->numeric()->nullable(),
-                                        ]),
-                                    Forms\Components\Fieldset::make('Distributor 1')
-                                        ->schema([
-                                            Forms\Components\TextInput::make('price.distributor_1.unit_price')->label('Unit Price')->numeric()->required(),
-                                            Forms\Components\TextInput::make('price.distributor_1.kit_price')->label('Kit Price')->numeric()->nullable(),
-                                        ]),
-                                    Forms\Components\Fieldset::make('Distributor 2')
-                                        ->schema([
-                                            Forms\Components\TextInput::make('price.distributor_2.unit_price')->label('Unit Price')->numeric()->required(),
-                                            Forms\Components\TextInput::make('price.distributor_2.kit_price')->label('Kit Price')->numeric()->nullable(),
-                                        ]),
-                                ]),
-
-                        ])->maxWidth('full')->columns(1)->columnSpanFull(),
                     Forms\Components\Tabs\Tab::make('SEO')
                         ->icon('heroicon-o-magnifying-glass')
                         ->schema([
@@ -126,7 +108,7 @@ class ProductResource extends Resource
                         ]),
                 ])->maxWidth('full')
                 ->columns(2)
-                ->columnSpanFull()
+                ->columnSpanFull(),
         ]);
     }
 
@@ -135,24 +117,16 @@ class ProductResource extends Resource
         return $table->columns([
             Tables\Columns\ImageColumn::make('thumbnail')->label('Thumbnail')->size(40),
             Tables\Columns\TextColumn::make('name')->searchable(),
-            Tables\Columns\TextColumn::make('taxClass.name')->label('Tax Class')->sortable(),
-            Tables\Columns\TextColumn::make('variants')
-                ->label('Variants')
-                ->formatStateUsing(function ($state, $record) {
-                    if (is_array($record->variants) && count($record->variants) > 0) {
-                        $variantNames = collect($record->variants)->pluck('name')->implode(', ');
-                        return $variantNames;
-                    }
-                    return '-';
-                })
-                ->tooltip('Shows all variant names'),
+            Tables\Columns\TextColumn::make('price')->label('Price')->sortable(),
+            Tables\Columns\TextColumn::make('stock')
+                ->label('Stock'),
             Tables\Columns\TextColumn::make('status')->sortable(),
             Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable(),
         ])->filters([
             Tables\Filters\SelectFilter::make('status')
                 ->options([
-                    'draft' => 'Draft',
-                    'active' => 'Active',
+                    'draft'    => 'Draft',
+                    'active'   => 'Active',
                     'archived' => 'Archived',
                 ]),
         ])->actions([
@@ -174,9 +148,9 @@ class ProductResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProducts::route('/'),
+            'index'  => Pages\ListProducts::route('/'),
             'create' => Pages\CreateProduct::route('/create'),
-            'edit' => Pages\EditProduct::route('/{record}/edit'),
+            'edit'   => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
 }

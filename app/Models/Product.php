@@ -1,13 +1,9 @@
 <?php
-
 namespace App\Models;
 
-use App\Enums\Level;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
-
 use App\Models\Traits\SelfHealingSlug;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
@@ -31,20 +27,9 @@ class Product extends Model
 
     ];
 
-    protected $casts = [
-        'price' => 'array',
-    ];
-
-  
-
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function taxClass()
-    {
-        return $this->belongsTo(\App\Models\TaxClass::class);
     }
 
     /**
@@ -55,23 +40,14 @@ class Product extends Model
         return $query->where('is_featured', true);
     }
 
-   
-
-
-
- 
-
-
-    
-
     /**
      * Get display price based on selected type
      */
-    public function getDisplayPrice($type = 'unit'): string
-    {
-        $price = $this->getPrice($type);
-        return '$' . number_format($price, 2);
-    }
+    // public function getDisplayPrice(): string
+    // {
+    //     $price = $this->getPrice();
+    //     return '$' . number_format($price, 2);
+    // }
 
     /*
      * Get image URL for frontend display
