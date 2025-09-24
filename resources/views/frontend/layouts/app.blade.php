@@ -974,13 +974,17 @@
                             href="{{ route('blog.index') }}">Blog</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}"
+                            href="tel:+8801303550622">Need Help ?</a>
+                    </li>
+                    {{-- <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
                             href="{{ route('about') }}">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
                             href="{{ route('contact') }}">Contact</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
 
@@ -1062,7 +1066,7 @@
                         <i class="fas fa-flask "></i>Research Peptides
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
                         href="{{ route('about') }}">
                         <i class="fas fa-building "></i>About Us
@@ -1073,7 +1077,7 @@
                         href="{{ route('contact') }}">
                         <i class="fas fa-envelope "></i>Contact
                     </a>
-                </li>
+                </li> --}}
             </ul>
 
             <!-- Mobile Account Actions -->
