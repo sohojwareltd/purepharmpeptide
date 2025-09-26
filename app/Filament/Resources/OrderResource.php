@@ -23,8 +23,9 @@ class OrderResource extends Resource
     use ResourcePermissionTrait;
     protected static ?string $model = Order::class;
     protected static ?string $navigationLabel = 'Orders';
-    protected static ?string $navigationGroup = 'Sales';
-    protected static ?int $navigationSort = 1;
+    protected static ?string $pluralLabel     = 'Orders';
+    protected static ?string $modelLabel      = 'Order';
+    protected static ?string $navigationIcon  = 'heroicon-o-shopping-cart';
 
     public static function form(Form $form): Form
     {

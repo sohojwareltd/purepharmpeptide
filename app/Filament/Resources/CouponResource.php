@@ -20,9 +20,9 @@ class CouponResource extends Resource
 
     protected static ?string $model = Coupon::class;
     protected static ?string $navigationLabel = 'Coupons';
-    protected static ?string $navigationGroup = 'Sales';
-    protected static ?int $navigationSort = 2;
-
+    protected static ?string $navigationIcon  = 'heroicon-o-rectangle-stack';
+    protected static ?string $pluralLabel     = 'Coupons';
+    protected static ?string $modelLabel      = 'Coupons';
     public static function form(Form $form): Form
     {
         return $form->schema([

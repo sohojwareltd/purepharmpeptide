@@ -19,7 +19,7 @@ class NewsletterSubscriptionResource extends Resource
     protected static ?string $model = NewsletterSubscription::class;
 
     protected static ?string $navigationLabel = 'Subscribers';
-    protected static ?string $navigationIcon  = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon  = 'heroicon-o-users';
     protected static ?string $pluralLabel     = 'Subscribers';
     protected static ?string $modelLabel      = 'Subscriber';
 

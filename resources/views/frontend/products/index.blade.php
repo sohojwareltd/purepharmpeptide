@@ -217,7 +217,100 @@
                     </div>
                 @endif
             </div>
+            <section class="container py-5">
+
+                <div class="row g-4">
+                    <!-- left Card -->
+                    <div class="col-lg-6">
+                        <div class="promo-card text-white shadow-sm h-100" style="background:#2e334f;">
+                            <div class="d-flex flex-column justify-content-between h-100">
+                                <div>
+                                    <h4 class="fw-bold">Have questions? Text us.</h4>
+                                    <p class="">Reach out and get a response within minutes.
+                                    </p>
+                                    <a href="#" class="promo-btn">Shop Now</a>
+                                </div>
+                                <div class="text-end">
+                                    <img src="https://via.placeholder.com/120x120?text=Logo" alt="Logo"
+                                        class="promo-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- right Card -->
+                    <div class="col-lg-6">
+                        <div class="promo-card bg-light d-flex flex-column justify-content-between h-100">
+                            <div>
+                                <h4 class="fw-bold">Oreder in 3 Clicks. <br>Delivered in 3 days.</h4>
+                                <p class="text-muted">
+                                    Easy click to order, and we will
+                                    ship it same day
+                                </p>
+                                <a href="#" class="promo-btn">View products</a>
+                            </div>
+                            <div class="mt-4">
+                                <img src="https://via.placeholder.com/400x150?text=DirectPeptides+Box"
+                                    alt="purepeptides Box" class="promo-img">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
+            <!-- FAQ Section -->
+            <section class="faq-section container">
+                <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+                <div class="accordion custom-accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                What are peptides and how do they work?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                            <div class="accordion-body">
+                                Peptides are short chains of amino acids that occur naturally in organisms,
+                                where they act as messengers in many biological systems.
+                                Some are developed for medical use, while laboratory research focuses on
+                                their cellular-level activity.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Does my order come with instructions?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                            <div class="accordion-body">
+                                Orders are for research use only and do not include medical instructions.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                How long do products take to deliver?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                            <div class="accordion-body">
+                                Typical delivery time is 3–7 business days depending on your location.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
+
+
     </div>
 
 

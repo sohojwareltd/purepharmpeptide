@@ -17,8 +17,9 @@ class CategoryResource extends Resource
     use ResourcePermissionTrait;
     protected static ?string $model = Category::class;
     protected static ?string $navigationLabel = 'Categories';
-    protected static ?string $navigationGroup = 'Catalogue';
-    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationGroup = 'Products';
+    
+    protected static ?string $navigationGroupIcon  = 'heroicon-s-cube';
 
     public static function form(Form $form): Form
     {
