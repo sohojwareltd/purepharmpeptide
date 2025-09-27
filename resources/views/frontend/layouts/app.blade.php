@@ -857,9 +857,9 @@
         <div class="container-fluid px-4">
             <!-- Logo -->
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="{{ Storage::url(setting('store.logo')) }}" alt="{{ Storage::url(setting('store.logo')) }}"
+                <img src="{{ Storage::url(setting('store.logo')) }}" alt="logo"
                     class="d-none d-lg-inline">
-                <img src="{{ Storage::url(setting('store.logo')) }}" alt="Purepharmpeptide logo" class="d-lg-none">
+                <img src="{{ Storage::url(setting('store.logo')) }}" alt="logo" class="d-lg-none">
             </a>
 
             {{-- <!-- Desktop Search -->
