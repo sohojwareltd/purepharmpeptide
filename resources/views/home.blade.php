@@ -26,8 +26,8 @@
                     <a class="mt-5" href="{{ route('products.index') }}">SHOP PEPTIDES</a>
                 </article>
                 <figure>
-                    <img src="{{ asset('assets/peptideHero.png') }}"
-                        alt="Peptides" style="max-width:340px;border-radius:12px;">
+                    <img src="{{ asset('assets/peptideHero.png') }}" alt="Peptides"
+                        style="max-width:340px;border-radius:12px;">
                 </figure>
             </div>
         </section>
@@ -73,7 +73,10 @@
                             <x-product-card :product="$product" />
                         </div>
                     @endforeach
-                    <a href="{{ route('products.index') }}">View All Products</a>
+
+                </div>
+                <div class="text-center mt-4">
+                    <a class="btn btn-primary" href="{{ route('products.index') }}">View All Products</a>
                 </div>
             </div>
         </section>
