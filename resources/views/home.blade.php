@@ -26,8 +26,8 @@
                     <a class="mt-5" href="{{ route('products.index') }}">SHOP PEPTIDES</a>
                 </article>
                 <figure>
-                    <img src="{{ asset('assets/peptideHero.png') }}" alt="Peptides"
-                        style="max-width:340px;border-radius:12px;">
+                    <img src="{{ asset('assets/peptideHero.png') }}"
+                        alt="Peptides" style="max-width:340px;border-radius:12px;">
                 </figure>
             </div>
         </section>
