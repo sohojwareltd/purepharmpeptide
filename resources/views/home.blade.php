@@ -21,7 +21,7 @@
                         margin:12px;">
             <div class="hero-section__content" style="border-radius:10px;">
                 <article class="text-center">
-                    <h1>99% Pure Peptides</h1>
+                    <h1>Pure-Pharm-Peptides</h1>
                     <p>Proudly synthesized by industry <br> leading scientists</p>
                     <a class="mt-5" href="{{ route('products.index') }}">SHOP PEPTIDES</a>
                 </article>
