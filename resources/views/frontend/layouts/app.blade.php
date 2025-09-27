@@ -120,7 +120,7 @@
         }
 
         .navbar-brand img {
-            height: clamp(28px, 5vw, 40px);
+            height:50px;
             width: auto;
             transition: var(--transition);
         }
@@ -718,97 +718,6 @@
             position: relative;
         }
 
-        /* Enhanced Footer */
-        /* .core-peptides-footer {
-            background: #6e6f72;
-            color: white;
-            padding: 3rem 0 1rem;
-            margin-top: auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .core-peptides-footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .footer-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-brand .core {
-            color: var(--primary-color);
-        }
-
-        .footer-brand .peptides {
-            color: var(--secondary-color);
-        }
-
-        .footer-disclaimer {
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-disclaimer p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            color: #bdc3c7;
-        }
-
-        .footer-warning {
-            background: rgba(255, 26, 1, 0.507);
-            border: 1px solid rgb(255, 25, 0);
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: #ffd7d3;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-links-title {
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-block;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary-color);
-            transform: translateX(5px);
-        } */
 
         .compliance-title {
             color: white;
@@ -948,8 +857,9 @@
         <div class="container-fluid px-4">
             <!-- Logo -->
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="" alt="Purepharmpeptide Logo" class="d-none d-lg-inline">
-                <img src="" alt="Purepharmpeptide logo" class="d-lg-none">
+                <img src="{{ Storage::url(setting('store.logo')) }}" alt="{{ Storage::url(setting('store.logo')) }}"
+                    class="d-none d-lg-inline">
+                <img src="{{ Storage::url(setting('store.logo')) }}" alt="Purepharmpeptide logo" class="d-lg-none">
             </a>
 
             {{-- <!-- Desktop Search -->
@@ -963,7 +873,8 @@
             <div class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                            href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}"
@@ -995,7 +906,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-count-navbar" class="cart-badge">{{ \App\Facades\Cart::getItemCount() }}</span>
                 </a>
-
+                {{-- 
                 <!-- Account -->
                 <div class="dropdown">
                     <a class="icon-btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -1028,7 +939,7 @@
                             </li>
                         @endauth
                     </ul>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Mobile Actions -->
@@ -1063,7 +974,7 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}"
                         href="{{ route('products.index') }}">
-                        <i class="fas fa-flask "></i>Research Peptides
+                        <i class="fas fa-flask "></i>Purepharmpeptides
                     </a>
                 </li>
                 {{-- <li class="nav-item">
@@ -1148,7 +1059,7 @@
             <div class="row align-items-center">
                 <!-- Left logo & text -->
                 <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
-                    <img src="https://via.placeholder.com/50x50?text=Logo" alt="Logo" class="mb-3">
+                    <img src="{{ Storage::url(setting('store.footer_logo')) }}" alt="Logo" class="mb-3">
                     <h6 class="fw-bold mb-1">Verified compounds.</h6>
                     <p class="mb-0">Ready to ship.</p>
                 </div>

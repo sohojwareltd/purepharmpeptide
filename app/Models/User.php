@@ -19,7 +19,6 @@ class User extends Authenticatable implements FilamentUser
 
     public const ROLE_CUSTOMER = 2;
     public const ROLE_ADMIN = 1;
-    public const ROLE_WHOLESALER = 3;
 
     public function canAccessPanel(Panel $panel): bool
     {
@@ -42,7 +41,6 @@ class User extends Authenticatable implements FilamentUser
         'zip',
         'country',
         'details',
-        'is_wholesaler',
     ];
 
     /**

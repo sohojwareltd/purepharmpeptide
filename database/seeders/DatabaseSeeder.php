@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             // EternaReadsSeeder::class, 
             // BrandSeeder::class,
             CategorySeeder::class,
-            ProductSeeder::class,
+            // ProductSeeder::class,
             // OrderSeeder::class,
             // OrderHistorySeeder::class,
             CouponSeeder::class,
@@ -33,13 +33,13 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             BlogCategorySeeder::class,
             BlogPostSeeder::class,
-            SliderSeeder::class,
+            // SliderSeeder::class,
             FaqSeeder::class,
             MenuSeeder::class,
          
-            ShippingZoneSeeder::class,
-            CountryShippingZoneSeeder::class,
-            ShippingMethodSeeder::class,
+            // ShippingZoneSeeder::class,
+            // CountryShippingZoneSeeder::class,
+            // ShippingMethodSeeder::class,
         ]);
     }
 }
