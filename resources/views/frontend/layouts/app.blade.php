@@ -906,7 +906,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-count-navbar" class="cart-badge">{{ \App\Facades\Cart::getItemCount() }}</span>
                 </a>
-                {{-- 
+                
                 <!-- Account -->
                 <div class="dropdown">
                     <a class="icon-btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -939,7 +939,7 @@
                             </li>
                         @endauth
                     </ul>
-                </div> --}}
+                </div>
             </div>
 
             <!-- Mobile Actions -->

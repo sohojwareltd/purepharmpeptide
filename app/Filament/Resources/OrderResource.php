@@ -157,17 +157,17 @@ class OrderResource extends Resource
                 ->color('gray'),
             
             // Shipping Information
-            Tables\Columns\TextColumn::make('shipping_method')
-                ->label('Shipping')
-                ->badge()
-                ->color('blue')
-                ->icon('heroicon-o-truck'),
+            // Tables\Columns\TextColumn::make('shipping_method')
+            //     ->label('Shipping')
+            //     ->badge()
+            //     ->color('blue')
+            //     ->icon('heroicon-o-truck'),
             
-            Tables\Columns\TextColumn::make('tracking')
-                ->label('Tracking')
-                ->copyable()
-                ->icon('heroicon-o-qr-code')
-                ->placeholder('No tracking'),
+            // Tables\Columns\TextColumn::make('tracking')
+            //     ->label('Tracking')
+            //     ->copyable()
+            //     ->icon('heroicon-o-qr-code')
+            //     ->placeholder('No tracking'),
             
             // Location Information
             Tables\Columns\TextColumn::make('shipping_address.city')
