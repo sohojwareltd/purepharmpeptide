@@ -220,42 +220,28 @@
             <section class="container py-5">
 
                 <div class="row g-4">
-                    <!-- left Card -->
-                    <div class="col-lg-6">
-                        <div class="promo-card text-white shadow-sm h-100" style="background:#2e334f;">
-                            <div class="d-flex flex-column justify-content-between h-100">
-                                <div>
-                                    <h4 class="fw-bold">Have questions? Text us.</h4>
-                                    <p class="">Reach out and get a response within minutes.
-                                    </p>
-                                    <a href="#" class="promo-btn">Shop Now</a>
-                                </div>
-                                <div class="text-end">
-                                    <img src="https://via.placeholder.com/120x120?text=Logo" alt="Logo"
-                                        class="promo-img">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- right Card -->
+                    <!-- Left Card -->
                     <div class="col-lg-6">
-                        <div class="promo-card bg-light d-flex flex-column justify-content-between h-100">
+                        <div class="promo-card d-flex flex-column justify-content-between h-100 gradient-left text-white">
                             <div>
-                                <h4 class="fw-bold">Oreder in 3 Clicks. <br>Delivered in 3 days.</h4>
-                                <p class="text-muted">
-                                    Easy click to order, and we will
-                                    ship it same day
-                                </p>
-                                <a href="#" class="promo-btn">View products</a>
-                            </div>
-                            <div class="mt-4">
-                                <img src="https://via.placeholder.com/400x150?text=DirectPeptides+Box"
-                                    alt="purepeptides Box" class="promo-img">
+                                <h4 class="fw-bold">Have a question?</h4>
+                                <p class="text-light">We're here to help.</p>
+                                <a href="tel:+8801303550622" class="btn btn-light"><i class="bi bi-telephone me-2"></i> +88 (013) 0355-0622</a>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Right Card -->
+                    <div class="col-lg-6">
+                        <div class="promo-card d-flex flex-column justify-content-between h-100 gradient-right text-white">
+                            <div>
+                                <h4 class="fw-bold">Over many peptides available.<br>Manufactured in the USA.</h4>
+                                <p>Proudly crafted in the USA to the highest research standards.</p>
+                                <a href="{{ route('products.index') }}" class="promo-btn">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 

@@ -120,7 +120,7 @@
         }
 
         .navbar-brand img {
-            height:50px;
+            height: 50px;
             width: auto;
             transition: var(--transition);
         }
@@ -857,8 +857,7 @@
         <div class="container-fluid px-4">
             <!-- Logo -->
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="{{ Storage::url(setting('store.logo')) }}" alt="logo"
-                    class="d-none d-lg-inline">
+                <img src="{{ Storage::url(setting('store.logo')) }}" alt="logo" class="d-none d-lg-inline">
                 <img src="{{ Storage::url(setting('store.logo')) }}" alt="logo" class="d-lg-none">
             </a>
 
@@ -886,7 +885,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}"
-                            href="tel:+8801303550622">Need Help ?</a>
+                            href="tel:+8801303550622"><i class="bi bi-telephone me-2"></i> Need Help ?</a>
                     </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
@@ -906,9 +905,10 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-count-navbar" class="cart-badge">{{ \App\Facades\Cart::getItemCount() }}</span>
                 </a>
-                
+
                 <!-- Account -->
                 <div class="dropdown">
+
                     <a class="icon-btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="far fa-user"></i>
                         <span>Account</span>
@@ -972,27 +972,26 @@
             <!-- Mobile Navigation -->
             <ul class="navbar-nav d-flex flex-column align-items-start mb-4">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}"
-                        href="{{ route('products.index') }}">
-                        <i class="fas fa-flask "></i>Purepharmpeptides
-                    </a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
-                        href="{{ route('about') }}">
-                        <i class="fas fa-building "></i>About Us
-                    </a>
+                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                        href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
-                        href="{{ route('contact') }}">
-                        <i class="fas fa-envelope "></i>Contact
-                    </a>
-                </li> --}}
+                    <a class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}"
+                        href="{{ route('products.index') }}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}"
+                        href="{{ route('blog.index') }}">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}"
+                        href="tel:+8801303550622"><i class="bi bi-telephone me-2"></i> Need Help ?</a>
+                </li>
             </ul>
 
             <!-- Mobile Account Actions -->
             <div class="mobile-account-section text-dark">
+
                 <h6 class="section-title">Account</h6>
                 @guest
                     <ul class="navbar-nav d-flex flex-column align-items-start mb-4">

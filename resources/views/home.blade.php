@@ -86,32 +86,22 @@
 
                 <!-- Left Card -->
                 <div class="col-lg-6">
-                    <div class="promo-card bg-light d-flex flex-column justify-content-between h-100">
+                    <div class="promo-card d-flex flex-column justify-content-between h-100 gradient-left text-white">
                         <div>
                             <h4 class="fw-bold">Verified compounds.<br>Ready to ship.</h4>
-                            <p class="text-muted">HPLC-tested for 99% purity.</p>
-                            <a href="#" class="promo-btn">View products</a>
-                        </div>
-                        <div class="mt-4">
-                            <img src="https://via.placeholder.com/400x150?text=DirectPeptides+Box" alt="purepeptides Box"
-                                class="promo-img">
+                            <p class="text-light">highest purity.</p>
+                            <a href="{{ route('products.index') }}" class="promo-btn">View products</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Card -->
                 <div class="col-lg-6">
-                    <div class="promo-card text-white shadow-sm h-100" style="background:#2e334f;">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                            <div>
-                                <h4 class="fw-bold">Over 50 peptides available.<br>Manufactured in the USA.</h4>
-                                <p class="">Proudly crafted in the USA to the highest research standards.
-                                </p>
-                                <a href="#" class="promo-btn">Shop Now</a>
-                            </div>
-                            <div class="text-end">
-                                <img src="https://via.placeholder.com/120x120?text=Logo" alt="Logo" class="promo-img">
-                            </div>
+                    <div class="promo-card d-flex flex-column justify-content-between h-100 gradient-right text-white">
+                        <div>
+                            <h4 class="fw-bold">Over many peptides available.<br>Manufactured in the USA.</h4>
+                            <p>Proudly crafted in the USA to the highest research standards.</p>
+                            <a href="{{ route('products.index') }}" class="promo-btn">Shop Now</a>
                         </div>
                     </div>
                 </div>
@@ -119,6 +109,9 @@
             </div>
 
         </section>
+
+
+
         <section class="section">
             <div class="container">
                 <h2 class="section-title">How It Works</h2>
@@ -201,27 +194,29 @@
             </div>
         </section>
         <!-- Contact Section -->
-        <section class="contact-section container">
-            <div class="row align-items-center">
-                <!-- Left side -->
-                <div class="col-lg-6 mb-4 mb-lg-0 text-lg-start text-center">
-                    <h2>Text us, our dedicated team is here to help</h2>
-                    <p>Reach out and get a response within minutes.</p>
-                    <a href="tel:+8801303550622" class="phone-number">+88 (013) 0355-0622</a>
-                    <div class="mt-4 d-flex justify-content-lg-start justify-content-center gap-3">
-                        <img src="https://via.placeholder.com/150x220?text=Box" class="img-fluid product-img"
-                            alt="Product Box">
-                        <img src="https://via.placeholder.com/120x180?text=Vial" class="img-fluid product-img"
-                            alt="Product Vial">
+        <section class="contact-section">
+            <div class="container">
+                <div class="row align-items-center justify-content-center text-center text-lg-start">
+                    <!-- Left side -->
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <h2>Text us, our dedicated team is here to help</h2>
+                        <p>Reach out and get a response within minutes.</p>
+                        <a href="tel:+8801303550622" class="phone-number"><i class="bi bi-telephone me-2"></i>+88 (013)
+                            0355-0622</a>
                     </div>
-                </div>
-                <!-- Right side -->
-                <div class="col-lg-6 text-center">
-                    <img src="https://via.placeholder.com/300x500?text=Phone+Mockup" alt="Phone Chat"
-                        class="img-fluid phone-mockup">
+                    <!-- Right side -->
+                    <div class="col-lg-6 text-center">
+                        <div class="phone-gradient">
+                            <h3>24/7 Live Chat</h3>
+                            <p>Quick answers from our support team.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+
+
 
         <hr class="container">
 
