@@ -33,6 +33,7 @@ class HomeController extends Controller
     }
     public function store(Request $request)
     {
+        
         $validated = $request->validate([
             'name'           => 'nullable|string|max:255',
             'email'          => 'required|email|unique:newsletter_subscriptions,email',
