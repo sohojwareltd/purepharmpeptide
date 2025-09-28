@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CustomerResource\Pages;
@@ -13,7 +12,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CustomerResource extends Resource
 {
@@ -23,7 +21,7 @@ class CustomerResource extends Resource
 
     protected static ?string $navigationLabel = 'Customers';
     protected static ?string $navigationGroup = 'People';
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort     = 1;
 
     public static function getEloquentQuery(): Builder
     {
@@ -56,18 +54,18 @@ class CustomerResource extends Resource
                             ->preload()
                             ->options(Role::where('name', '!=', 'admin')->pluck('display_name', 'id')),
                     ])->columns(2),
-                
+
                 Forms\Components\Section::make('Password')
                     ->schema([
                         Forms\Components\TextInput::make('password')
                             ->password()
-                            ->dehydrated(fn ($state) => filled($state))
-                            ->required(fn (string $context): bool => $context === 'create')
+                            ->dehydrated(fn($state) => filled($state))
+                            ->required(fn(string $context): bool => $context === 'create')
                             ->minLength(8)
                             ->maxLength(255)
                             ->helperText('Leave empty to keep current password when editing'),
                     ]),
-                
+
                 Forms\Components\Section::make('Contact Information')
                     ->schema([
                         Forms\Components\TextInput::make('phone')
@@ -84,7 +82,7 @@ class CustomerResource extends Resource
                         Forms\Components\TextInput::make('country')
                             ->maxLength(255),
                     ])->columns(2),
-                
+
                 Forms\Components\Section::make('Account Status')
                     ->schema([
                         Forms\Components\DateTimePicker::make('email_verified_at')
@@ -110,14 +108,14 @@ class CustomerResource extends Resource
                     ->badge()
                     ->color('primary')
                     ->sortable(),
-                    Tables\Columns\IconColumn::make('is_wholesaler')
-                    ->label('Wholesaler')
-                    ->boolean()
-                    ->getStateUsing(fn ($record) => $record->is_wholesaler)
-                    ->trueIcon('heroicon-o-check-circle')
-                    ->falseIcon('heroicon-o-x-circle')
-                    ->trueColor('success')
-                    ->falseColor('danger'),
+                // Tables\Columns\IconColumn::make('is_wholesaler')
+                // ->label('Wholesaler')
+                // ->boolean()
+                // ->getStateUsing(fn ($record) => $record->is_wholesaler)
+                // ->trueIcon('heroicon-o-check-circle')
+                // ->falseIcon('heroicon-o-x-circle')
+                // ->trueColor('success')
+                // ->falseColor('danger'),
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable()
                     ->toggleable(),
@@ -145,7 +143,7 @@ class CustomerResource extends Resource
                 Tables\Columns\IconColumn::make('email_verified_at')
                     ->label('Verified')
                     ->boolean()
-                    ->getStateUsing(fn ($record) => !is_null($record->email_verified_at))
+                    ->getStateUsing(fn($record) => ! is_null($record->email_verified_at))
                     ->trueIcon('heroicon-o-check-circle')
                     ->falseIcon('heroicon-o-x-circle')
                     ->trueColor('success')
@@ -167,16 +165,16 @@ class CustomerResource extends Resource
                     ->preload(),
                 Tables\Filters\Filter::make('verified')
                     ->label('Email Verified')
-                    ->query(fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
+                    ->query(fn(Builder $query): Builder => $query->whereNotNull('email_verified_at')),
                 Tables\Filters\Filter::make('unverified')
                     ->label('Email Not Verified')
-                    ->query(fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
+                    ->query(fn(Builder $query): Builder => $query->whereNull('email_verified_at')),
                 Tables\Filters\Filter::make('has_orders')
                     ->label('Has Orders')
-                    ->query(fn (Builder $query): Builder => $query->whereHas('orders')),
+                    ->query(fn(Builder $query): Builder => $query->whereHas('orders')),
                 Tables\Filters\Filter::make('no_orders')
                     ->label('No Orders')
-                    ->query(fn (Builder $query): Builder => $query->whereDoesntHave('orders')),
+                    ->query(fn(Builder $query): Builder => $query->whereDoesntHave('orders')),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -201,10 +199,10 @@ class CustomerResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCustomers::route('/'),
+            'index'  => Pages\ListCustomers::route('/'),
             'create' => Pages\CreateCustomer::route('/create'),
-            'view' => Pages\ViewCustomer::route('/{record}'),
-            'edit' => Pages\EditCustomer::route('/{record}/edit'),
+            'view'   => Pages\ViewCustomer::route('/{record}'),
+            'edit'   => Pages\EditCustomer::route('/{record}/edit'),
         ];
     }
 }
