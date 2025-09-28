@@ -7,10 +7,10 @@
                       <p class="mb-4">Get all of the latest peptide news, curated for you</p>
                       <form class="row g-2">
                           <div class="col-md-4">
-                              <input type="text" class="form-control rounded-pill" placeholder="First Name">
+                              <input type="text" class="form-control rounded-pill" placeholder="FullName" name="name">
                           </div>
                           <div class="col-md-5">
-                              <input type="email" class="form-control rounded-pill" placeholder="me@gmail.com">
+                              <input type="email" class="form-control rounded-pill" placeholder="me@gmail.com" name="email">
                           </div>
                           <div class="col-md-3">
                               <button class="btn btn-primary w-100 rounded-pill">Subscribe</button>
