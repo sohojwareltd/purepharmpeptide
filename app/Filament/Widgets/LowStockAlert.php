@@ -66,9 +66,9 @@ class LowStockAlert extends BaseWidget
                     ->label('Category')
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('brand.name')
-                    ->label('Brand')
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('brand.name')
+                //     ->label('Brand')
+                //     ->sortable(),
 
                 Tables\Columns\IconColumn::make('is_active')
                     ->label('Active')
