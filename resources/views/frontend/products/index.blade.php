@@ -227,7 +227,12 @@
                             <div>
                                 <h4 class="fw-bold">Have a question?</h4>
                                 <p class="text-light">We're here to help.</p>
-                                <a href="tel:+8801303550622" class="btn btn-light"><i class="bi bi-telephone me-2"></i> +88 (013) 0355-0622</a>
+                                <a href="tel:+8801303550622" class="btn btn-light"
+                                    style="background-color:#f8f9fa; color:#000; transition:0.3s;"
+                                    onmouseover="this.style.backgroundColor='#343a40'; this.style.color='#fff';"
+                                    onmouseout="this.style.backgroundColor='#f8f9fa'; this.style.color='#000';">
+                                    <i class="bi bi-telephone me-2"></i> +88 (013) 0355-0622
+                                </a>
                             </div>
                         </div>
                     </div>

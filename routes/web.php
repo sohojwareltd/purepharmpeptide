@@ -37,9 +37,9 @@ Route::get('/', function () {
 })->name('home');
 Route::post('/newsletter/subscribe', [HomeController::class, 'store'])->name('newsletter.subscribe');
 // Static Pages
-Route::get('/about', [PageController::class, 'about'])->name('about');
-Route::get('/contact', [PageController::class, 'contact'])->name('contact');
-Route::post('/contact', [PageController::class, 'store'])->name('contact.store');
+// Route::get('/about', [PageController::class, 'about'])->name('about');
+// Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+// Route::post('/contact', [PageController::class, 'store'])->name('contact.store');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 
 // E-commerce Frontend Routes
