@@ -40,7 +40,6 @@ class NewsletterSubscriptionResource extends Resource
                 Tables\Columns\TextColumn::make('id')->sortable(),
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('email')->searchable(),
-                Tables\Columns\TextColumn::make('contact_number'),
                 Tables\Columns\TextColumn::make('created_at')->label('Subscribed At')->dateTime(),
             ])
             ->defaultSort('created_at', 'desc')
