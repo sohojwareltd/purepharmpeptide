@@ -1,28 +1,21 @@
 <?php
-
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TaxRateResource\Pages;
-use App\Filament\Resources\TaxRateResource\RelationManagers;
 use App\Models\TaxRate;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Models\Country;
-use App\Models\State;
 
 class TaxRateResource extends Resource
 {
     protected static ?string $model = TaxRate::class;
 
-    // protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationGroup = 'Settings';
-    protected static ?int $navigationSort = 2;
+    protected static bool $shouldRegisterNavigation = false;
+    protected static ?string $navigationGroup       = 'Settings';
+    protected static ?int $navigationSort           = 2;
 
     public static function form(Form $form): Form
     {
@@ -41,7 +34,7 @@ class TaxRateResource extends Resource
                     ->relationship('state', 'name')
                     ->searchable()
                     ->helperText('Select a state or province.')
-                    ->visible(fn ($get) => !empty($get('country_id')))
+                    ->visible(fn($get) => ! empty($get('country_id')))
                     ->reactive(),
                 Forms\Components\TextInput::make('rate')->numeric()->required(),
             ]);
@@ -80,9 +73,9 @@ class TaxRateResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTaxRates::route('/'),
+            'index'  => Pages\ListTaxRates::route('/'),
             'create' => Pages\CreateTaxRate::route('/create'),
-            'edit' => Pages\EditTaxRate::route('/{record}/edit'),
+            'edit'   => Pages\EditTaxRate::route('/{record}/edit'),
         ];
     }
 }

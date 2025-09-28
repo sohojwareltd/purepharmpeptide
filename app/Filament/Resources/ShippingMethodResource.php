@@ -1,25 +1,21 @@
 <?php
-
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ShippingMethodResource\Pages;
-use App\Filament\Resources\ShippingMethodResource\RelationManagers;
 use App\Models\ShippingMethod;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ShippingMethodResource extends Resource
 {
     protected static ?string $model = ShippingMethod::class;
 
     // protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?int $navigationSort = 5;
+    protected static bool $shouldRegisterNavigation = false;
+    protected static ?int $navigationSort           = 5;
 
     public static function form(Form $form): Form
     {
@@ -31,9 +27,9 @@ class ShippingMethodResource extends Resource
                 Forms\Components\TextInput::make('name')->required()->maxLength(255),
                 Forms\Components\Select::make('type')
                     ->options([
-                        'flat_rate' => 'Flat Rate',
+                        'flat_rate'     => 'Flat Rate',
                         'free_shipping' => 'Free Shipping',
-                        'local_pickup' => 'Local Pickup',
+                        'local_pickup'  => 'Local Pickup',
                     ])->required(),
                 Forms\Components\TextInput::make('rate')->numeric()->nullable(),
             ]);
@@ -72,9 +68,9 @@ class ShippingMethodResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListShippingMethods::route('/'),
+            'index'  => Pages\ListShippingMethods::route('/'),
             'create' => Pages\CreateShippingMethod::route('/create'),
-            'edit' => Pages\EditShippingMethod::route('/{record}/edit'),
+            'edit'   => Pages\EditShippingMethod::route('/{record}/edit'),
         ];
     }
 }

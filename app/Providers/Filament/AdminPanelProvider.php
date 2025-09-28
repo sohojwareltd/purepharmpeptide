@@ -61,7 +61,7 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-o-currency-dollar')
                     ->collapsed(),
                 NavigationGroup::make()
-                    ->label('Catalogue')
+                    ->label('Products')
                     ->icon('heroicon-o-circle-stack')
                     ->collapsed(),
                 NavigationGroup::make()

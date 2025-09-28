@@ -23,9 +23,11 @@ class BlogCategoryResource extends Resource
     protected static ?string $model = BlogCategory::class;
 
       protected static ?string $navigationLabel = 'Blogs Categories';
-     protected static ?string $navigationIcon  = 'heroicon-o-clipboard';
+    //  protected static ?string $navigationIcon  = 'heroicon-o-clipboard';
+     protected static ?string $navigationGroup = 'Content Management';
+     protected static ?int $navigationSort     = 4;
     protected static ?string $pluralLabel     = 'Blogs Categories';
-    protected static ?string $modelLabel      = 'Blogs Categories';
+    // protected static ?string $modelLabel      = 'Blogs Categories';
 
     public static function form(Form $form): Form
     {
