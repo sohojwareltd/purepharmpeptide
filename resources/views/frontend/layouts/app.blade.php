@@ -1082,7 +1082,7 @@
                 The statements made on this website have not been evaluated by the U.S. Food and Drug
                 Administration.
                 The products offered are not intended to diagnose, treat, cure, or prevent any disease.
-                Direct Peptides is not a compounding pharmacy or chemical compounding facility as defined under
+                Pure-pharm-peptides is not a compounding pharmacy or chemical compounding facility as defined under
                 Section 503A of the Federal Food, Drug, and Cosmetic Act,
                 and all products are sold strictly for research purposes only and are not for human or animal
                 consumption.
