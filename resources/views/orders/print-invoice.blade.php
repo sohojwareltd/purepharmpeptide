@@ -368,8 +368,8 @@
                     <div class="brand-contact">+1 (800) 555-0199</div>
                 </div>
                 <div class="header-right text-secondary col-md-4">
-                    <div class="business-address">456 Research Drive, Biotech Valley</div>
-                    <div class="business-address">State, City, TX - 77001</div>
+                    <div class="business-address">Barisal,Bangladesh</div>
+                    <div class="business-address">State,Barisal,8200</div>
                     <div class="tax-id">TAX ID 99XXXX5678XXX</div>
                 </div>
             </div>

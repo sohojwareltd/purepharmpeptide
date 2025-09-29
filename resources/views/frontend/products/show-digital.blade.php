@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', $product->name . ' - MyShop')
+@section('title', $product->name . ' - Pure-pharm-peptides')
 
 @section('content')
 <div class="container">

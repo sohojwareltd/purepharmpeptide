@@ -1,11 +1,11 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Research Peptides - Premium Peptide Supplier')
+@section('title', 'Pure-pharm-peptides - Peptides Supplier')
 @section('meta_description',
     'Explore our collection of high-quality research peptides for laboratory use. Find the
     perfect peptides for your research needs with guaranteed purity and quality.')
 @section('meta_keywords',
-    'research peptides, peptide supplier, laboratory peptides, peptide research, high purity
+    'Pure-pharm-peptides, peptide supplier, laboratory peptides, peptide research, high purity
     peptides, research chemicals')
 
 @section('content')
