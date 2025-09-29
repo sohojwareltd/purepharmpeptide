@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice #{{ $order->id }} - American Peptide</title>
+    <title>Invoice #{{ $order->id }} - Purepharmpeptides</title>
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;700&display=swap"
@@ -357,14 +357,14 @@
     <div class="invoice-main">
         <div class="invoice-header">
             <div class="row">
-                <div class="brand-title col-md-8">American Peptide</div>
+                <div class="brand-title col-md-8">Purepharmpeptides</div>
                 {{-- <button onclick="printInvoice()" class="print-button col-md-4 no-print">🖨️
         Print Invoice</button> --}}
             </div>
             <div class="row">
                 <div class="header-left col-md-8">
-                    <div class="brand-contact">www.americanpeptide.com</div>
-                    <div class="brand-contact">info@americanpeptide.com</div>
+                    <div class="brand-contact">www.purepharmpeptides.com</div>
+                    <div class="brand-contact">info@purepharmpeptides.com</div>
                     <div class="brand-contact">+1 (800) 555-0199</div>
                 </div>
                 <div class="header-right text-secondary col-md-4">
