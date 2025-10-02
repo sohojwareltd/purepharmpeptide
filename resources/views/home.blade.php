@@ -11,7 +11,7 @@
                 us,
                 and a team member
                 will reply in mins <br>
-                <samp style="color: rgb(27, 119, 177); margin-left: 5px;">+88 (013) 0355-0622</samp>
+                <samp style="color: rgb(27, 119, 177); margin-left: 5px;">example@example.com</samp>
             </div>
         </div>
         <section class="hero-section"
@@ -201,8 +201,9 @@
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <h2>Text us, our dedicated team is here to help</h2>
                         <p>Reach out and get a response within minutes.</p>
-                        <a href="tel:+8801303550622" class="phone-number"><i class="bi bi-telephone me-2"></i>+88 (013)
-                            0355-0622</a>
+                        <a href="mailto:example@example.com" class="phone-number"><i
+                                class="bi bi-envelope me-2"></i>example@example.com</a>
+
                     </div>
                     <!-- Right side -->
                     <div class="col-lg-6 text-center">

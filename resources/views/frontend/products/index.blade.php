@@ -231,7 +231,7 @@
                                     style="background-color:#f8f9fa; color:#000; transition:0.3s;"
                                     onmouseover="this.style.backgroundColor='#343a40'; this.style.color='#fff';"
                                     onmouseout="this.style.backgroundColor='#f8f9fa'; this.style.color='#000';">
-                                    <i class="bi bi-telephone me-2"></i> +88 (013) 0355-0622
+                                    <i class="bi bi-envelope me-2"></i> example@example.com
                                 </a>
                             </div>
                         </div>

@@ -885,7 +885,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}"
-                            href="tel:+8801303550622"><i class="bi bi-telephone me-2"></i> Need Help ?</a>
+                            href="mailto:+example@example.com"><i class="bi bi-envelope me-2"></i> Need Help ?</a>
                     </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
@@ -985,7 +985,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}"
-                        href="tel:+8801303550622"><i class="bi bi-telephone me-2"></i> Need Help ?</a>
+                        href="mailto:+example@example.com"><i class="bi bi-envelope me-2"></i> Need Help ?</a>
                 </li>
             </ul>
 
@@ -1065,7 +1065,7 @@
                 <!-- Right contact -->
                 <div class="col-md-6 text-center text-md-end">
                     <p class="mb-1 text-muted">Need help? Text us, and a team member will reply in minutes.</p>
-                    <a href="tel:+8801303550622" class="fw-bold text-primary">+88 (01) 30355-0622</a>
+                    <a href="mailto:+example@example.com" class="fw-bold text-primary">example@example.com</a>
                 </div>
             </div>
             <hr class="my-4">
@@ -1079,8 +1079,7 @@
                 </div>
             </div>
             <p class="small mt-3 text-muted">
-                The statements made on this website have not been evaluated by the U.S. Food and Drug
-                Administration.
+                Food and Drug Administration.Tested in the USA – 3rd Party Verified.
                 The products offered are not intended to diagnose, treat, cure, or prevent any disease.
                 Pure-pharm-peptides is not a compounding pharmacy or chemical compounding facility as defined under
                 Section 503A of the Federal Food, Drug, and Cosmetic Act,
