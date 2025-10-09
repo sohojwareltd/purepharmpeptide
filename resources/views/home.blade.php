@@ -94,6 +94,9 @@
                 @php
                     $howItWorks = setting('homepage.how_it_works');
                     $steps = is_string($howItWorks) ? json_decode($howItWorks, true) : $howItWorks;
+
+                    // Ensure $steps is always an array
+                    $steps = is_array($steps) ? $steps : [];
                 @endphp
 
                 <div class="row g-4">
@@ -120,14 +123,14 @@
                     $leftFeatures = setting('homepage.why_left_features');
                     $rightFeatures = setting('homepage.why_right_features');
 
-                    // Ensure they're arrays (in case they're stored as JSON in DB)
-                    if (!is_array($leftFeatures)) {
-                        $leftFeatures = json_decode($leftFeatures ?? '[]', true);
-                    }
-                    if (!is_array($rightFeatures)) {
-                        $rightFeatures = json_decode($rightFeatures ?? '[]', true);
-                    }
+                    $leftFeatures = is_string($leftFeatures) ? json_decode($leftFeatures, true) : $leftFeatures;
+                    $rightFeatures = is_string($rightFeatures) ? json_decode($rightFeatures, true) : $rightFeatures;
+
+                    // Always ensure they're arrays
+                    $leftFeatures = is_array($leftFeatures) ? $leftFeatures : [];
+                    $rightFeatures = is_array($rightFeatures) ? $rightFeatures : [];
                 @endphp
+
 
                 <div class="row mt-5 pt-5">
                     <div class="col-lg-10 mx-auto">
