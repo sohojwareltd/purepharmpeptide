@@ -92,7 +92,6 @@ class StoreSettings extends BaseSettings
                                 ->schema([
                                     TextInput::make('homepage.hero_title')
                                         ->label('Hero Title')
-                                        ->required()
                                         ->helperText('Main title in the hero section.'),
                                     Textarea::make('homepage.hero_subtitle')
                                         ->label('Hero Subtitle')
@@ -152,8 +151,7 @@ class StoreSettings extends BaseSettings
                                 ->description('Manage the Why Choose Us section content on the homepage.')
                                 ->schema([
                                     TextInput::make('homepage.why_title')
-                                        ->label('Section Title')
-                                        ->required(),
+                                        ->label('Section Title'),
 
                                     Textarea::make('homepage.why_description')
                                         ->label('Section Description')
