@@ -37,7 +37,7 @@
             <div class="marquee-container">
                 <div class="marquee-content">
                     @for ($i = 0; $i < 2; $i++)
-                        {{-- duplicate content twice for smooth looping --}}
+                      
                         <div class="marquee-group">
                             @foreach (setting('homepage.features_marquee', []) as $feature)
                                 <div class="feature-item">✅{{ $feature['text'] }}</div>
@@ -95,7 +95,7 @@
                     $howItWorks = setting('homepage.how_it_works');
                     $steps = is_string($howItWorks) ? json_decode($howItWorks, true) : $howItWorks;
 
-                    // Ensure $steps is always an array
+              
                     $steps = is_array($steps) ? $steps : [];
                 @endphp
 
@@ -126,7 +126,7 @@
                     $leftFeatures = is_string($leftFeatures) ? json_decode($leftFeatures, true) : $leftFeatures;
                     $rightFeatures = is_string($rightFeatures) ? json_decode($rightFeatures, true) : $rightFeatures;
 
-                    // Always ensure they're arrays
+              
                     $leftFeatures = is_array($leftFeatures) ? $leftFeatures : [];
                     $rightFeatures = is_array($rightFeatures) ? $rightFeatures : [];
                 @endphp
@@ -138,17 +138,14 @@
                             <div class="decoration-circle circle-1"></div>
                             <div class="decoration-circle circle-2"></div>
 
-                            {{-- ✅ Top Badge (Image or Text Fallback) --}}
-                            @if (setting('homepage.why_badge_image'))
-                                <div class="guarantee-badge">
-                                    <img src="{{ Storage::url(setting('homepage.why_badge_image')) }}" alt="Badge"
-                                        style="max-width:120px;">
-                                </div>
-                            @elseif (setting('homepage.why_badge_text'))
-                                <div class="guarantee-badge">{!! setting('homepage.why_badge_text') !!}</div>
-                            @endif
 
-                            {{-- ✅ Section Title & Description --}}
+                            <div class="guarantee-badge">
+                                <img src="{{ Storage::url(setting('homepage.why_badge_image')) }}" alt="Badge"
+                                    style="max-width:120px;">
+                            </div>
+
+
+                     
                             <h2 class="text-center mb-4">
                                 {{ setting('homepage.why_title') }}
                             </h2>
@@ -157,7 +154,7 @@
                                 {{ setting('homepage.why_description') }}
                             </p>
 
-                            {{-- ✅ Feature Lists --}}
+                        
                             <div class="row mt-5">
                                 <div class="col-md-6">
                                     <ul class="feature-list">
@@ -175,14 +172,13 @@
                                 </div>
                             </div>
 
-                            {{-- ✅ Bottom Badge (optional — if you want to add in Filament later) --}}
+
                             @if (setting('homepage.why_purity_text'))
                                 <div class="text-center mt-4">
                                     <span class="purity-badge">{{ setting('homepage.why_purity_text') }}</span>
                                 </div>
                             @endif
 
-                            {{-- ✅ Footer Text --}}
                             @if (setting('homepage.why_footer_text'))
                                 <p class="text-center mt-4">{{ setting('homepage.why_footer_text') }}</p>
                             @endif
@@ -192,11 +188,11 @@
 
             </div>
         </section>
-        <!-- Contact Section -->
+
         <section class="contact-section">
             <div class="container">
                 <div class="row align-items-center justify-content-center text-center text-lg-start">
-                    <!-- Left side -->
+             
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <h2>Text us, our dedicated team is here to help</h2>
                         <p>Reach out and get a response within minutes.</p>
@@ -204,7 +200,7 @@
                                 class="bi bi-envelope me-2"></i>{{ setting('store.email') }}</a>
 
                     </div>
-                    <!-- Right side -->
+           
                     <div class="col-lg-6 text-center">
                         <div class="phone-gradient">
                             <h3>24/7 Support</h3>
@@ -220,7 +216,7 @@
 
         <hr class="container">
 
-        <!-- FAQ Section -->
+
         <section class="faq-section container">
             <h2 class="text-center mb-4">Frequently Asked Questions</h2>
             <div class="accordion custom-accordion" id="faqAccordion">
@@ -243,7 +239,7 @@
                 </div>
             </div>
         </section>
-        <!-- Newsletter Section -->
+    
         <x-product.newsletter-section />
 
 

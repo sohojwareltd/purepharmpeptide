@@ -157,9 +157,6 @@ class StoreSettings extends BaseSettings
                                         ->label('Section Description')
                                         ->rows(2),
 
-                                    TextInput::make('homepage.why_badge_text')
-                                        ->label('Top Badge Text (supports <br>)'),
-
                                     FileUpload::make('homepage.why_badge_image')
                                         ->label('Top Badge Image')
                                         ->image()
