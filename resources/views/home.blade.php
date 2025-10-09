@@ -11,7 +11,7 @@
                 us,
                 and a team member
                 will reply in mins <br>
-                <samp style="color: rgb(27, 119, 177); margin-left: 5px;">example@example.com</samp>
+                <samp style="color: rgb(27, 119, 177); margin-left: 5px;">{{ setting('store.email') }}</samp>
             </div>
         </div>
         <section class="hero-section"
@@ -21,13 +21,14 @@
                         margin:12px;">
             <div class="hero-section__content" style="border-radius:10px;">
                 <article class="text-center">
-                    <h1>Pure-Pharm-Peptides</h1>
-                    <p>Proudly synthesized by industry <br> leading scientists</p>
-                    <a class="mt-5" href="{{ route('products.index') }}">SHOP PEPTIDES</a>
+                    <h1>{{ setting('homepage.hero_title') }}</h1>
+                    <p>{{ setting('homepage.hero_subtitle') }}</p>
+                    <a class="mt-5" href="{{ route('products.index') }}">{{ setting('homepage.hero_cta_text') }}</a>
                 </article>
                 <figure>
-                    <img src="{{ asset('assets/peptideHero.png') }}" alt="Peptides"
+                    <img src="{{ Storage::url(setting('homepage.hero_image')) }}" alt="Peptides"
                         style="max-width:340px;border-radius:12px;">
+
                 </figure>
             </div>
         </section>
@@ -35,32 +36,14 @@
         <section class="features-marquee">
             <div class="marquee-container">
                 <div class="marquee-content">
-                    {{-- Original --}}
-                    <div class="marquee-group">
-                        <div class="feature-item">✅ Fast and Discreet Shipping</div>
-                        <div class="feature-item">✅ Affordable Pricing</div>
-                        <div class="feature-item">✅ 24/7 Support</div>
-                        <div class="feature-item">✅ Shipped in the USA</div>
-                        <div class="feature-item">✅ Quality-assured Ingredients</div>
-                    </div>
-
-                    {{-- 1st Duplicate --}}
-                    <div class="marquee-group">
-                        <div class="feature-item">✅ Fast and Shipping</div>
-                        <div class="feature-item">✅ Affordable Pricing</div>
-                        <div class="feature-item">✅ 24/7 Support</div>
-                        <div class="feature-item">✅ Shipped in the USA</div>
-                        <div class="feature-item">✅ Quality-assured Ingredients</div>
-                    </div>
-
-                    {{-- 2nd Duplicate --}}
-                    <div class="marquee-group">
-                        <div class="feature-item">✅ Fast and Discreet Shipping </div>
-                        <div class="feature-item">✅ Affordable Pricing</div>
-                        <div class="feature-item">✅ 24/7 Support</div>
-                        <div class="feature-item">✅ Shipped in the USA</div>
-                        <div class="feature-item">✅ Quality-assured Ingredients</div>
-                    </div>
+                    @for ($i = 0; $i < 2; $i++)
+                        {{-- duplicate content twice for smooth looping --}}
+                        <div class="marquee-group">
+                            @foreach (setting('homepage.features_marquee', []) as $feature)
+                                <div class="feature-item">✅{{ $feature['text'] }}</div>
+                            @endforeach
+                        </div>
+                    @endfor
                 </div>
             </div>
         </section>
@@ -81,33 +64,21 @@
             </div>
         </section>
         <section class="container py-5">
-
             <div class="row g-4">
-
-                <!-- Left Card -->
-                <div class="col-lg-6">
-                    <div class="promo-card d-flex flex-column justify-content-between h-100 gradient-left text-white">
-                        <div>
-                            <h4 class="fw-bold">Verified compounds.<br>Ready to ship.</h4>
-                            <p class="text-light">highest purity.</p>
-                            <a href="{{ route('products.index') }}" class="promo-btn">View products</a>
+                @foreach (setting('homepage.promo_cards', []) as $index => $card)
+                    <div class="col-lg-6">
+                        <div
+                            class="promo-card d-flex flex-column justify-content-between h-100 
+                            {{ $index % 2 === 0 ? 'gradient-left text-white' : 'gradient-right text-white' }}">
+                            <div>
+                                <h4 class="fw-bold">{!! $card['title'] ?? '' !!}</h4>
+                                <p class="text-light">{!! $card['description'] ?? '' !!}</p>
+                                <a href="{{ route('products.index') }}" class="promo-btn">View products</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Right Card -->
-                <div class="col-lg-6">
-                    <div class="promo-card d-flex flex-column justify-content-between h-100 gradient-right text-white">
-                        <div>
-                            <h4 class="fw-bold">Over many peptides available.<br>Manufactured in the USA.</h4>
-                            <p>Proudly crafted in the USA to the highest research standards.</p>
-                            <a href="{{ route('products.index') }}" class="promo-btn">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
-
         </section>
 
 
@@ -115,82 +86,102 @@
         <section class="section">
             <div class="container">
                 <h2 class="section-title">How It Works</h2>
+                @php
+                    $howItWorks = setting('homepage.how_it_works');
+                    $steps = is_string($howItWorks) ? json_decode($howItWorks, true) : $howItWorks;
+                @endphp
 
                 <div class="row g-4">
-                    <!-- Step 1 -->
-                    <div class="col-md-4">
-                        <div class="how-it-works-card">
-                            <div class="step-number">1</div>
-                            <div class="icon-wrapper">
-                                <i class="fas fa-rocket"></i>
+                    @foreach ($steps as $index => $step)
+                        <div class="col-md-4">
+                            <div class="how-it-works-card">
+                                <div class="step-number">{{ $index + 1 }}</div>
+                                <div class="icon-wrapper">
+                                    @if ($index === 0)
+                                        <i class="fas fa-rocket"></i>
+                                    @elseif ($index === 1)
+                                        <i class="fas fa-shipping-fast"></i>
+                                    @else
+                                        <i class="fas fa-headset"></i>
+                                    @endif
+                                </div>
+                                <h3>{{ $step['title'] ?? '' }}</h3>
+                                <p>{{ $step['description'] ?? '' }}</p>
                             </div>
-                            <h3>Order in seconds</h3>
-                            <p>Create and place orders with our intuitive platform designed for researchers.</p>
                         </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="col-md-4">
-                        <div class="how-it-works-card">
-                            <div class="step-number">2</div>
-                            <div class="icon-wrapper">
-                                <i class="fas fa-shipping-fast"></i>
-                            </div>
-                            <h3>Fast & reliable shipping</h3>
-                            <p>Same-day dispatch with tracking for all your lab needs.</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="col-md-4">
-                        <div class="how-it-works-card">
-                            <div class="step-number">3</div>
-                            <div class="icon-wrapper">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                            <h3>Get support anytime</h3>
-                            <p>24/7 chat support with scientific experts ready to assist you.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+                @php
+                    $leftFeatures = setting('homepage.why_left_features');
+                    $rightFeatures = setting('homepage.why_right_features');
+
+                    // Ensure they're arrays (in case they're stored as JSON in DB)
+                    if (!is_array($leftFeatures)) {
+                        $leftFeatures = json_decode($leftFeatures ?? '[]', true);
+                    }
+                    if (!is_array($rightFeatures)) {
+                        $rightFeatures = json_decode($rightFeatures ?? '[]', true);
+                    }
+                @endphp
 
                 <div class="row mt-5 pt-5">
                     <div class="col-lg-10 mx-auto">
                         <div class="why-choose-us">
                             <div class="decoration-circle circle-1"></div>
                             <div class="decoration-circle circle-2"></div>
-                            <div class="guarantee-badge">Quality<br>Guaranteed</div>
 
-                            <h2 class="text-center mb-4">Why choose Direct Peptides?</h2>
-                            <p class="text-center lead">At Direct Peptides, we're committed to supporting scientific
-                                research with the highest quality compounds available.</p>
+                            {{-- ✅ Top Badge (Image or Text Fallback) --}}
+                            @if (setting('homepage.why_badge_image'))
+                                <div class="guarantee-badge">
+                                    <img src="{{ Storage::url(setting('homepage.why_badge_image')) }}" alt="Badge"
+                                        style="max-width:120px;">
+                                </div>
+                            @elseif (setting('homepage.why_badge_text'))
+                                <div class="guarantee-badge">{!! setting('homepage.why_badge_text') !!}</div>
+                            @endif
 
+                            {{-- ✅ Section Title & Description --}}
+                            <h2 class="text-center mb-4">
+                                {{ setting('homepage.why_title') }}
+                            </h2>
+
+                            <p class="text-center lead">
+                                {{ setting('homepage.why_description') }}
+                            </p>
+
+                            {{-- ✅ Feature Lists --}}
                             <div class="row mt-5">
                                 <div class="col-md-6">
                                     <ul class="feature-list">
-                                        <li>Manufactured in FDA-registered facilities in the USA</li>
-                                        <li>Rigorous HPLC testing for purity verification</li>
-                                        <li>Comprehensive certificates of analysis</li>
+                                        @foreach ($leftFeatures as $feature)
+                                            <li>{{ $feature['text'] ?? '' }}</li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
                                     <ul class="feature-list">
-                                        <li>99% minimum purity guarantee</li>
-                                        <li>Transparent manufacturing processes</li>
-                                        <li>Trusted by research institutions worldwide</li>
+                                        @foreach ($rightFeatures as $feature)
+                                            <li>{{ $feature['text'] ?? '' }}</li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
 
-                            <div class="text-center mt-4">
-                                <span class="purity-badge">99% Purity Guaranteed</span>
-                            </div>
+                            {{-- ✅ Bottom Badge (optional — if you want to add in Filament later) --}}
+                            @if (setting('homepage.why_purity_text'))
+                                <div class="text-center mt-4">
+                                    <span class="purity-badge">{{ setting('homepage.why_purity_text') }}</span>
+                                </div>
+                            @endif
 
-                            <p class="text-center mt-4">This ensures researchers receive consistent, high-quality materials
-                                backed by full transparency and trusted lab standards.</p>
+                            {{-- ✅ Footer Text --}}
+                            @if (setting('homepage.why_footer_text'))
+                                <p class="text-center mt-4">{{ setting('homepage.why_footer_text') }}</p>
+                            @endif
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
         <!-- Contact Section -->
@@ -201,14 +192,14 @@
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <h2>Text us, our dedicated team is here to help</h2>
                         <p>Reach out and get a response within minutes.</p>
-                        <a href="mailto:example@example.com" class="phone-number"><i
-                                class="bi bi-envelope me-2"></i>example@example.com</a>
+                        <a href="mailto:{{ setting('store.email') }}" class="phone-number"><i
+                                class="bi bi-envelope me-2"></i>{{ setting('store.email') }}</a>
 
                     </div>
                     <!-- Right side -->
                     <div class="col-lg-6 text-center">
                         <div class="phone-gradient">
-                            <h3>24/7 Live Chat</h3>
+                            <h3>24/7 Support</h3>
                             <p>Quick answers from our support team.</p>
                         </div>
                     </div>
@@ -226,46 +217,21 @@
             <h2 class="text-center mb-4">Frequently Asked Questions</h2>
             <div class="accordion custom-accordion" id="faqAccordion">
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            What are peptides and how do they work?
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
-                        <div class="accordion-body">
-                            Peptides are short chains of amino acids that occur naturally in organisms,
-                            where they act as messengers in many biological systems.
-                            Some are developed for medical use, while laboratory research focuses on
-                            their cellular-level activity.
+                    @foreach ($faqitems as $faqitem)
+                        <h2 class="accordion-header" id="heading{{ $faqitem->id }}">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{ $faqitem->id }}" aria-expanded="true"
+                                aria-controls="collapse{{ $faqitem->id }}">
+                                {{ $faqitem->question }}
+                            </button>
+                        </h2>
+                        <div id="collapse{{ $faqitem->id }}" class="accordion-collapse collapse"
+                            aria-labelledby="heading{{ $faqitem->id }}">
+                            <div class="accordion-body">
+                                {!! $faqitem->answer !!}
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Does my order come with instructions?
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
-                        <div class="accordion-body">
-                            Orders are for research use only and do not include medical instructions.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            How long do products take to deliver?
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
-                        <div class="accordion-body">
-                            Typical delivery time is 3–7 business days depending on your location.
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>

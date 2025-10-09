@@ -13,6 +13,7 @@ use App\Http\Controllers\User\BulkOrderController;
 use App\Mail\NewOrderNotification;
 use App\Mail\OrderConfirmation;
 use App\Mail\WelcomeEmail;
+use App\Models\FaqItem;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $products = Product::all();
-    return view('home', compact('products'));
+    $faqitems = FaqItem::where('is_active', true)
+        ->get();
+
+    return view('home', compact('products', 'faqitems'));
 })->name('home');
 Route::post('/newsletter/subscribe', [HomeController::class, 'store'])->name('newsletter.subscribe');
 // Static Pages

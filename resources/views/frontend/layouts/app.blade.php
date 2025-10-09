@@ -962,7 +962,7 @@
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
         <div class="offcanvas-header">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="{{ asset('logo.png') }}" alt="American Peptide Mobile Logo">
+                <img src="{{ Storage::url(setting('logo.png')) }}" alt="American Peptide Mobile Logo">
             </a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -1065,7 +1065,8 @@
                 <!-- Right contact -->
                 <div class="col-md-6 text-center text-md-end">
                     <p class="mb-1 text-muted">Need help? Text us, and a team member will reply in minutes.</p>
-                    <a href="mailto:+example@example.com" class="fw-bold text-primary">example@example.com</a>
+                    <a href="mailto:+{{ setting('store.email') }}"
+                        class="fw-bold text-primary">{{ setting('store.email') }}</a>
                 </div>
             </div>
             <hr class="my-4">
@@ -1079,7 +1080,7 @@
                 </div>
             </div>
             <p class="small mt-3 text-muted">
-                Food and Drug Administration.Tested in the USA – 3rd Party Verified.
+                Food and Drug Administration.– 3rd Party Verified.
                 The products offered are not intended to diagnose, treat, cure, or prevent any disease.
                 Pure-pharm-peptides is not a compounding pharmacy or chemical compounding facility as defined under
                 Section 503A of the Federal Food, Drug, and Cosmetic Act,

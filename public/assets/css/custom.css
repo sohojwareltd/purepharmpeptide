@@ -657,12 +657,12 @@
 
  .guarantee-badge {
      position: absolute;
-     top: -11px;
-     right: -5px;
+     top: 9px;
+     right: 5px;
      background: var(--accent);
      color: white;
-     width: 80px;
-     height: 80px;
+     width: 90px;
+     height: 90px;
      border-radius: 50%;
      display: flex;
      align-items: center;
