@@ -63,9 +63,14 @@
                 </div>
             </div>
         </section>
+        @php
+            $promoCards = setting('homepage.promo_cards');
+            $promoCards = is_array($promoCards) ? $promoCards : json_decode($promoCards ?? '[]', true);
+        @endphp
+
         <section class="container py-5">
             <div class="row g-4">
-                @foreach (setting('homepage.promo_cards', []) as $index => $card)
+                @foreach ($promoCards as $index => $card)
                     <div class="col-lg-6">
                         <div
                             class="promo-card d-flex flex-column justify-content-between h-100 
@@ -73,13 +78,13 @@
                             <div>
                                 <h4 class="fw-bold">{!! $card['title'] ?? '' !!}</h4>
                                 <p class="text-light">{!! $card['description'] ?? '' !!}</p>
-                                <a href="{{ route('products.index') }}" class="promo-btn">View products</a>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
         </section>
+
 
 
 
