@@ -193,7 +193,7 @@
             <div class="container">
                 <div class="row align-items-center justify-content-center text-center text-lg-start">
              
-                    <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="col-lg-6 mb-4 mb-lg-0 text-center">
                         <h2>Text us, our dedicated team is here to help</h2>
                         <p>Reach out and get a response within minutes.</p>
                         <a href="mailto:{{ setting('store.email') }}" class="phone-number"><i
@@ -201,12 +201,6 @@
 
                     </div>
            
-                    <div class="col-lg-6 text-center">
-                        <div class="phone-gradient">
-                            <h3>24/7 Support</h3>
-                            <p>Quick answers from our support team.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
