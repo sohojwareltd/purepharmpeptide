@@ -794,6 +794,8 @@
  /* FAQ Section */
  .faq-section {
      padding: 3rem 1rem;
+     width: 50%;
+     height: auto;
  }
 
  .faq-section h2 {
