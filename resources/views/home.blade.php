@@ -73,9 +73,9 @@
                 @foreach ($promoCards as $index => $card)
                     <div class="col-lg-6">
                         <div
-                            class="promo-card d-flex flex-column justify-content-between h-100 
+                            class="promo-card d-flex flex-column justify-content-between h-100 w-70 p-4 rounded-3
                             {{ $index % 2 === 0 ? 'gradient-left text-white' : 'gradient-right text-white' }}">
-                            <div>
+                            <div class="text-center">
                                 <h4 class="fw-bold">{!! $card['title'] ?? '' !!}</h4>
                                 <p class="text-light">{!! $card['description'] ?? '' !!}</p>
                             </div>
