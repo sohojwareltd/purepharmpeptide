@@ -23,6 +23,51 @@
      font-weight: 700;
  }
 
+ .framer {
+     background-color: rgb(243, 243, 248);
+     margin: 5px;
+     border-radius: 10px;
+     padding: 12px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     flex-direction: row;
+     flex-wrap: wrap;
+     width: 100%;
+ }
+
+ .framer .text {
+     font-weight: bold;
+     color: #6d7582;
+ }
+
+ .framer .email {
+     color: rgb(27, 119, 177);
+     margin-left: 8px;
+     font-weight: 500;
+ }
+
+ /* 📱 Mobile Responsive */
+ @media (max-width: 768px) {
+     .framer {
+         flex-direction: column;
+         border-radius: 0;
+         margin: 0;
+         padding: 20px 10px;
+     }
+
+     .framer .text {
+         font-size: 0.95rem;
+         margin-bottom: 5px;
+     }
+
+     .framer .email {
+         margin-left: 0;
+         font-size: 0.9rem;
+     }
+ }
+
  /* Home Page Hero Section */
  .hero-section {
      display: flex;
@@ -87,6 +132,55 @@
      color: #6d7582;
  }
 
+ @media (max-width: 992px) {
+     .hero-section__content {
+         flex-direction: column;
+         text-align: center;
+         gap: 1.5rem;
+         padding: 20px 10px;
+     }
+
+     .hero-section__content article {
+         max-width: 100%;
+         animation: none;
+     }
+
+     .hero-section__content figure {
+         max-width: 100%;
+         animation: none;
+     }
+
+     .hero-section__content article h1 {
+         font-size: 2rem;
+         line-height: 2.5rem;
+         width: 100%;
+         text-align: center;
+         justify-content: center;
+     }
+
+     .hero-section__content article p {
+         font-size: 1.2rem;
+         line-height: 1.8rem;
+         margin: 10px auto;
+         text-align: center;
+         justify-content: center;
+     }
+
+     .hero-section__content article a {
+         width: auto;
+         display: inline-block;
+         text-align: center;
+         font-size: 1rem;
+         padding: 10px 20px;
+     }
+
+     .hero-section__content figure img {
+         max-width: 280px;
+         width: 100%;
+         height: auto;
+     }
+ }
+
  /* Animations */
  @keyframes fadeInLeft {
      from {
@@ -122,147 +216,7 @@
      }
  }
 
- /* Responsive */
- @media (max-width: 992px) {
-     .hero-section {
-         height: 75vh;
-     }
 
-     .hero-section__content {
-         width: 75%;
-         padding: 25px 35px;
-         flex-direction: column;
-         align-items: center;
-         text-align: center;
-     }
-
-     .hero-section__content article {
-         margin-bottom: 25px;
-     }
-
-     .hero-section__content article h1 {
-         font-size: 2rem;
-         line-height: 2.8rem;
-     }
-
-     .hero-section__content article p {
-         font-size: 1.1rem;
-         margin: 30px 0px;
-         margin-bottom: 40px;
-     }
-
-     .hero-section__content article a {
-         font-size: 1.2rem;
-         padding: 12px 30px;
-     }
-
-     .hero-section__content figure img {
-         height: 220px;
-     }
- }
-
- @media (max-width: 768px) {
-     .hero-section {
-         height: 70vh;
-     }
-
-     .hero-section__content {
-         width: 88%;
-         padding: 20px 25px;
-         border-radius: 35px;
-     }
-
-     .hero-section__content article h1 {
-         font-size: 2.2rem;
-         line-height: 2.4rem;
-     }
-
-     .hero-section__content article p {
-         font-size: 1rem;
-         margin: 25px 0px;
-         margin-bottom: 35px;
-         line-height: 1.3rem;
-     }
-
-     .hero-section__content article a {
-         font-size: 1.1rem;
-         padding: 10px 25px;
-         border-radius: 15px;
-     }
-
-     .hero-section__content figure img {
-         height: 180px;
-     }
- }
-
- @media (max-width: 576px) {
-     .hero-section {
-         height: 65vh;
-     }
-
-     .hero-section__content {
-         width: 92%;
-         padding: 18px 20px;
-         border-radius: 30px;
-     }
-
-     .hero-section__content article h1 {
-         font-size: 1.9rem;
-         line-height: 2.1rem;
-     }
-
-     .hero-section__content article p {
-         font-size: 0.95rem;
-         margin: 20px 0px;
-         margin-bottom: 30px;
-         line-height: 1.2rem;
-     }
-
-     .hero-section__content article a {
-         font-size: 1rem;
-         padding: 8px 22px;
-         border-radius: 12px;
-     }
-
-     .hero-section__content figure img {
-         height: 150px;
-     }
- }
-
- @media (max-width: 480px) {
-     .hero-section {
-         height: 60vh;
-     }
-
-     .hero-section__content {
-         width: 95%;
-         padding: 15px 18px;
-         border-radius: 25px;
-     }
-
-     .hero-section__content article h1 {
-
-         font-size: 1.7rem;
-         line-height: 1.9rem;
-     }
-
-     .hero-section__content article p {
-         font-size: 0.9rem;
-         margin: 18px 0px;
-         margin-bottom: 25px;
-         line-height: 1.1rem;
-     }
-
-     .hero-section__content article a {
-         font-size: 0.95rem;
-         padding: 7px 20px;
-         border-radius: 10px;
-     }
-
-     .hero-section__content figure img {
-         height: 130px;
-     }
- }
 
  /* ---------- Features Marquee ---------- */
  .features-marquee {
@@ -753,6 +707,16 @@
      color: #fff;
  }
 
+ .contact-section h2 {
+     font-size: 1.8rem;
+ }
+
+ @media (min-width: 992px) {
+     .contact-section h2 {
+         font-size: 2.2rem;
+     }
+ }
+
  /* Right side box */
  .phone-gradient {
      background: linear-gradient(135deg, #fafafa, #eaeaea);
@@ -793,10 +757,11 @@
 
  /* FAQ Section */
  .faq-section {
-     padding: 3rem 1rem;
-     width: 50%;
-     height: auto;
+     max-width: 900px;
+     margin: 0 auto;
+     padding: 40px 20px;
  }
+
 
  .faq-section h2 {
      font-weight: 700;
@@ -824,6 +789,28 @@
      font-size: 0.95rem;
      color: #555;
      line-height: 1.6;
+ }
+
+ @media (max-width: 992px) {
+     .faq-section {
+         width: 100%;
+         max-width: 100%;
+         margin: 0;
+         padding: 30px 10px;
+         border-radius: 0;
+     }
+
+     .faq-section h2 {
+         font-size: 1.6rem;
+     }
+
+     .accordion-button {
+         font-size: 1rem;
+     }
+
+     .accordion-body {
+         font-size: 0.95rem;
+     }
  }
 
  /* Newsletter Section */

@@ -2,18 +2,15 @@
 
 @section('content')
     <main>
-        <div class="framer"
-            style="background-color: rgb(243, 243, 248);
-                    margin: 5px;
-                    border-radius: 10px;
-                    padding: 8px;">
-            <div class="text" style="justify-content: center;display: flex;font-weight: bold;color: #6d7582">Need help? Text
-                us,
-                and a team member
-                will reply in mins <br>
-                <samp style="color: rgb(27, 119, 177); margin-left: 5px;">{{ setting('store.email') }}</samp>
+        <div class="framer">
+            <div class="text">
+                Need help? Text us, and a team member will reply in minutes
+            </div>
+            <div class="email">
+                <samp>{{ setting('store.email') }}</samp>
             </div>
         </div>
+
         <section class="hero-section"
             style="background: linear-gradient(180deg, var(--token-a409bc3c-6abc-43a1-9adf-53ef9b45db63, rgb(250, 250, 250)) 0%, var(--token-a6d10e5a-39b6-4177-b1c3-03a50ebc7f8b, rgb(243, 243, 248)) 100%);
                         opacity: 1;
@@ -23,7 +20,7 @@
                 <article class="text-center">
                     <h1>{{ setting('homepage.hero_title') }}</h1>
                     <p>{{ setting('homepage.hero_subtitle') }}</p>
-                    <a class="mt-5" href="{{ route('products.index') }}">{{ setting('homepage.hero_cta_text') }}</a>
+                    <a class="" href="{{ route('products.index') }}">{{ setting('homepage.hero_cta_text') }}</a>
                 </article>
                 <figure>
                     <img src="{{ Storage::url(setting('homepage.hero_image')) }}" alt="Peptides"
@@ -37,7 +34,6 @@
             <div class="marquee-container">
                 <div class="marquee-content">
                     @for ($i = 0; $i < 2; $i++)
-                      
                         <div class="marquee-group">
                             @foreach (setting('homepage.features_marquee', []) as $feature)
                                 <div class="feature-item">✅{{ $feature['text'] }}</div>
@@ -95,7 +91,6 @@
                     $howItWorks = setting('homepage.how_it_works');
                     $steps = is_string($howItWorks) ? json_decode($howItWorks, true) : $howItWorks;
 
-              
                     $steps = is_array($steps) ? $steps : [];
                 @endphp
 
@@ -126,7 +121,6 @@
                     $leftFeatures = is_string($leftFeatures) ? json_decode($leftFeatures, true) : $leftFeatures;
                     $rightFeatures = is_string($rightFeatures) ? json_decode($rightFeatures, true) : $rightFeatures;
 
-              
                     $leftFeatures = is_array($leftFeatures) ? $leftFeatures : [];
                     $rightFeatures = is_array($rightFeatures) ? $rightFeatures : [];
                 @endphp
@@ -141,11 +135,11 @@
 
                             <div class="guarantee-badge">
                                 <img src="{{ Storage::url(setting('homepage.why_badge_image')) }}" alt="Badge"
-                                    style="max-width:120px;">
+                                    style="max-width:80px;">
                             </div>
 
 
-                     
+
                             <h2 class="text-center mb-4">
                                 {{ setting('homepage.why_title') }}
                             </h2>
@@ -154,7 +148,7 @@
                                 {{ setting('homepage.why_description') }}
                             </p>
 
-                        
+
                             <div class="row mt-5">
                                 <div class="col-md-6">
                                     <ul class="feature-list">
@@ -173,11 +167,7 @@
                             </div>
 
 
-                            @if (setting('homepage.why_purity_text'))
-                                <div class="text-center mt-4">
-                                    <span class="purity-badge">{{ setting('homepage.why_purity_text') }}</span>
-                                </div>
-                            @endif
+
 
                             @if (setting('homepage.why_footer_text'))
                                 <p class="text-center mt-4">{{ setting('homepage.why_footer_text') }}</p>
@@ -189,21 +179,22 @@
             </div>
         </section>
 
-        <section class="contact-section">
+        <section class="contact-section py-5">
             <div class="container">
                 <div class="row align-items-center justify-content-center text-center text-lg-start">
-             
-                    <div class="col-lg-6 mb-4 mb-lg-0 text-center">
-                        <h2>Text us, our dedicated team is here to help</h2>
-                        <p>Reach out and get a response within minutes.</p>
-                        <a href="mailto:{{ setting('store.email') }}" class="phone-number"><i
-                                class="bi bi-envelope me-2"></i>{{ setting('store.email') }}</a>
-
+                    <div class="col-12 col-md-10 col-lg-6 mb-4 mb-lg-0">
+                        <h2 class="fw-bold mb-3">Text us, our dedicated team is here to help</h2>
+                        <p class="mb-4">Reach out and get a response within minutes.</p>
+                        <a href="mailto:{{ setting('store.email') }}"
+                            class="d-inline-flex align-items-center justify-content-center px-4 py-2 rounded-pill text-white bg-primary text-decoration-none shadow-sm hover-shadow-lg">
+                            <i class="bi bi-envelope me-2 fs-5"></i>
+                            <span class="fs-6">{{ setting('store.email') }}</span>
+                        </a>
                     </div>
-           
                 </div>
             </div>
         </section>
+
 
 
 
@@ -214,11 +205,11 @@
         <section class="faq-section container">
             <h2 class="text-center mb-4">Frequently Asked Questions</h2>
             <div class="accordion custom-accordion" id="faqAccordion">
-                <div class="accordion-item">
-                    @foreach ($faqitems as $faqitem)
+                @foreach ($faqitems as $faqitem)
+                    <div class="accordion-item">
                         <h2 class="accordion-header" id="heading{{ $faqitem->id }}">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapse{{ $faqitem->id }}" aria-expanded="true"
+                                data-bs-target="#collapse{{ $faqitem->id }}" aria-expanded="false"
                                 aria-controls="collapse{{ $faqitem->id }}">
                                 {{ $faqitem->question }}
                             </button>
@@ -229,11 +220,12 @@
                                 {!! $faqitem->answer !!}
                             </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
         </section>
-    
+
+
         <x-product.newsletter-section />
 
 
