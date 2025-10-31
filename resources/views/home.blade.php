@@ -11,21 +11,15 @@
             </div>
         </div>
 
-        <section class="hero-section"
-            style="background: linear-gradient(180deg, var(--token-a409bc3c-6abc-43a1-9adf-53ef9b45db63, rgb(250, 250, 250)) 0%, var(--token-a6d10e5a-39b6-4177-b1c3-03a50ebc7f8b, rgb(243, 243, 248)) 100%);
-                        opacity: 1;
-                        border-radius: 8px;
-                        margin:12px;">
-            <div class="hero-section__content" style="border-radius:10px;">
+        <section class="hero-section">
+            <div class="hero-section__content">
                 <article class="text-center">
-                    <h1 style="color: black !important;">{{ setting('homepage.hero_title') }}</h1>
+                    <h1>{{ setting('homepage.hero_title') }}</h1>
                     <p>{{ setting('homepage.hero_subtitle') }}</p>
                     <a class="" href="{{ route('products.index') }}">{{ setting('homepage.hero_cta_text') }}</a>
                 </article>
                 <figure>
-                    <img src="{{ Storage::url(setting('homepage.hero_image')) }}" alt="Peptides"
-                        style="max-width:340px;border-radius:12px;">
-
+                    <img src="{{ Storage::url(setting('homepage.hero_image')) }}" alt="Peptides">
                 </figure>
             </div>
         </section>
@@ -68,13 +62,9 @@
             <div class="row g-4">
                 @foreach ($promoCards as $index => $card)
                     <div class="col-lg-6">
-                        <div
-                            class="promo-card d-flex flex-column justify-content-between h-100 w-70 p-4 rounded-3
-                            {{ $index % 2 === 0 ? 'gradient-left text-white' : 'gradient-right text-white' }}">
-                            <div class="text-center">
-                                <h4 class="fw-bold">{!! $card['title'] ?? '' !!}</h4>
-                                <p class="text-light">{!! $card['description'] ?? '' !!}</p>
-                            </div>
+                        <div class="promo-card {{ $index % 2 === 0 ? 'gradient-left' : 'gradient-right' }}">
+                            <h3 class="promo-title">{!! $card['title'] ?? '' !!}</h3>
+                            <p class="promo-description">{!! $card['description'] ?? '' !!}</p>
                         </div>
                     </div>
                 @endforeach
