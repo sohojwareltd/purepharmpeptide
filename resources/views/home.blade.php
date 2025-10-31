@@ -4,7 +4,7 @@
     <main>
         <div class="framer">
             <div class="text">
-                Need help? Text us, and a team member will reply in minutes
+                Need help? Text us, and a team member will reply in email.
             </div>
             <div class="email">
                 <samp>{{ setting('store.email') }}</samp>
@@ -18,7 +18,7 @@
                         margin:12px;">
             <div class="hero-section__content" style="border-radius:10px;">
                 <article class="text-center">
-                    <h1>{{ setting('homepage.hero_title') }}</h1>
+                    <h1 style="color: black !important;">{{ setting('homepage.hero_title') }}</h1>
                     <p>{{ setting('homepage.hero_subtitle') }}</p>
                     <a class="" href="{{ route('products.index') }}">{{ setting('homepage.hero_cta_text') }}</a>
                 </article>
