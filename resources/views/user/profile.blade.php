@@ -239,7 +239,7 @@
 
 <style>
 .form-control:focus {
-    border-color: var(--primary-color);
+    border-color: var(--primary);
     box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
 }
 

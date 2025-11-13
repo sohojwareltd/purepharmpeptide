@@ -1,14 +1,20 @@
  :root {
-     --primary: #3498db;
-     --secondary: #2c3e50;
-     --accent: #ff6b6b;
-     --light: #f8f9fa;
-     --dark: #343a40;
+     --primary: #004FEF;
+     --secondary: #001A4D;
+     --accent: #8F92A2;
+     --light: #f9f9f9;
+     --dark: #111;
+     --border: #dee2e6;
+     --text: #6D6E71;
+     --transition: all 0.3s ease;
+     --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
+     --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.12);
+     --shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.15);
  }
 
  body {
-     font-family: 'Open Sans', sans-serif;
-     color: #444;
+     font-family: 'Sans 3', sans-serif;
+     color: var(--text);
      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
      min-height: 100vh;
      overflow-x: hidden;
@@ -21,7 +27,7 @@
  h4,
  h5,
  h6 {
-     font-family: 'Montserrat', sans-serif;
+     font-family: 'Sans 3', sans-serif;
      font-weight: 700;
  }
 
@@ -41,11 +47,11 @@
 
  .framer .text {
      font-weight: bold;
-     color: #6d7582;
+     color: var(--text);
  }
 
  .framer .email {
-     color: rgb(27, 119, 177);
+     color: var(--primary);
      margin-left: 8px;
      font-weight: 500;
  }
@@ -76,7 +82,7 @@
      align-items: center;
      justify-content: center;
      background: linear-gradient(180deg, rgb(250, 250, 250) 0%, rgb(243, 243, 248) 100%);
-     color: var(--dark-color);
+     color: var(--dark);
      overflow: hidden;
      max-width: 100%;
      border-radius: 8px;
@@ -122,26 +128,26 @@
      line-height: 1.2;
      text-align: center;
      text-transform: uppercase;
-     color: #000000;
+     color: var(--dark);
      margin-bottom: 20px;
  }
 
  .hero-section__content article a {
      display: inline-block;
-     background-color: #007bff;
+     background-color: var(--primary);
      text-decoration: none;
      padding: 12px 30px;
      font-weight: 700;
      color: #fff;
      font-size: 1rem;
      border-radius: 25px;
-     transition: all 0.3s ease;
+     transition: var(--transition);
  }
 
  .hero-section__content article a:hover {
-     background-color: #0056b3;
+     background-color: var(--secondary);
      transform: translateY(-2px);
-     box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+     box-shadow: var(--shadow-medium);
  }
 
  .hero-section__content article p {
@@ -150,7 +156,7 @@
      font-weight: 400;
      line-height: 1.6;
      text-align: center;
-     color: #6d7582;
+     color: var(--text);
  }
 
  @media (max-width: 992px) {
@@ -240,8 +246,7 @@
  /* ---------- Features Marquee ---------- */
  .features-marquee {
      background: var(--primary);
-     border-radius: 8px;
-     padding: 12px 0;
+     padding: 8px 0;
      margin: 30px 0;
      overflow: hidden;
      max-width: 100%;
@@ -307,7 +312,7 @@
      margin: 30px 0 20px;
      padding: 10px 15px;
      font-weight: bold;
-     color: #6d7582;
+     color: var(--secondary);
  }
 
  .products-marquee {
@@ -339,31 +344,22 @@
 
  .products-track {
      display: flex;
+     width: max-content;
      gap: 20px;
-     animation: products-scroll 50s linear infinite;
-     will-change: transform;
-     /* super slow */
  }
 
  .product-item {
      flex: 0 0 auto;
      width: 250px;
-     transition: transform 0.3s ease, box-shadow 0.3s ease;
  }
 
- /* .product-item:hover {
-     transform: scale(1.05);
-     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-     z-index: 10;
- } */
-
+ /* Products scroll animation */
  @keyframes products-scroll {
      0% {
-         transform: translateX(0);
+         transform: translateX(100%);
      }
-
      100% {
-         transform: translateX(-100%);
+         transform: translateX(-50%);
      }
  }
 
@@ -372,8 +368,8 @@
      background: #fff;
      border-radius: 12px;
      overflow: hidden;
-     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-     transition: all 0.3s ease-in-out;
+     box-shadow: var(--shadow-light);
+     transition: var(--transition);
      text-align: center;
      height: 100%;
      display: flex;
@@ -383,14 +379,16 @@
  /* Hover effect */
  .product-card:hover {
      transform: translateY(-8px);
-     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+     box-shadow: var(--shadow-heavy);
  }
 
  /* Product Image */
  .product-card .product-image {
-     transition: transform 0.4s ease;
-     border-bottom: 1px solid #eee;
-     object-fit: cover;
+     transition: var(--transition);
+     border-bottom: 1px solid var(--border);
+     object-fit: contain;
+     height: 200px;
+     margin: 5px;
  }
 
  .product-card:hover .product-image {
@@ -407,13 +405,12 @@
  .product-card .product-name {
      font-size: 1.1rem;
      font-weight: 600;
-     color: #222;
-     transition: color 0.3s;
+     color: var(--dark);
+     transition: var(--transition);
  }
 
  .product-card:hover .product-name {
-     color: #007bff;
-     /* Bootstrap primary */
+     color: var(--primary);
  }
 
  /* Price */
@@ -427,11 +424,11 @@
  .product-card .btn-link {
      text-decoration: none;
      font-weight: 500;
-     transition: all 0.3s ease;
+     transition: var(--transition);
  }
 
  .product-card .btn-link:hover {
-     color: #0056b3;
+     color: var(--secondary);
      text-decoration: underline;
  }
 
@@ -439,7 +436,7 @@
  .promo-card {
      border-radius: 16px;
      padding: 3rem 2.5rem;
-     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+     box-shadow: var(--shadow-medium);
      color: #fff;
      min-height: 160px;
      display: flex;
@@ -447,14 +444,14 @@
      justify-content: center;
      align-items: center;
      text-align: center;
-     transition: all 0.3s ease;
+     transition: var(--transition);
      position: relative;
      overflow: hidden;
  }
 
  .promo-card:hover {
      transform: translateY(-5px);
-     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+     box-shadow: var(--shadow-heavy);
  }
 
  .promo-card::before {
@@ -496,12 +493,12 @@
 
  /* Left gradient */
  .gradient-left {
-     background: linear-gradient(135deg, #3b7ba8 0%, #4a6d7c 100%);
+     background: linear-gradient(135deg, #001A4D 0%, #004FEF 100%);
  }
 
  /* Right gradient */
  .gradient-right {
-     background: linear-gradient(135deg, #4a6d7c 0%, #3b7ba8 100%);
+     background: linear-gradient(135deg, #004FEF 0%, #001A4D 100%);
  }
 
  @media (max-width: 992px) {
@@ -527,7 +524,7 @@
  .section-title {
      text-align: center;
      margin-bottom: 60px;
-     color: #6d7582;
+     color: var(--secondary);
      position: relative;
  }
 
@@ -546,9 +543,9 @@
      padding: 35px 30px;
      border-radius: 15px;
      background: rgba(255, 255, 255, 0.9);
-     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+     box-shadow: var(--shadow-light);
      height: 100%;
-     transition: all 0.4s ease;
+     transition: var(--transition);
      position: relative;
      overflow: hidden;
      border: none;
@@ -569,7 +566,7 @@
 
  .how-it-works-card:hover {
      transform: translateY(-10px);
-     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+     box-shadow: var(--shadow-medium);
  }
 
  .how-it-works-card:hover:before {
@@ -690,8 +687,8 @@
      right: 5px;
      background: var(--accent);
      color: white;
-     width: 90px;
-     height: 90px;
+     width: 68px;
+     height: 68px;
      border-radius: 50%;
      display: flex;
      align-items: center;
@@ -832,7 +829,7 @@
 
  /* FAQ Section */
  .faq-section {
-     max-width: 900px;
+     max-width: 1200px !important;
      margin: 0 auto;
      padding: 40px 20px;
  }
@@ -840,29 +837,29 @@
 
  .faq-section h2 {
      font-weight: 700;
-     color: #6d7582;
+     color: var(--secondary);
  }
 
  .custom-accordion .accordion-item {
      border: none;
-     border-bottom: 1px solid #ddd;
+     border-bottom: 1px solid var(--border);
  }
 
  .custom-accordion .accordion-button {
      font-weight: 600;
-     color: #333;
+     color: var(--dark);
      background: none;
      box-shadow: none;
  }
 
  .custom-accordion .accordion-button:not(.collapsed) {
-     color: #0066cc;
-     background: #f7f9fc;
+     color: var(--primary);
+     background: var(--light);
  }
 
  .custom-accordion .accordion-body {
      font-size: 0.95rem;
-     color: #555;
+     color: var(--text);
      line-height: 1.6;
  }
 

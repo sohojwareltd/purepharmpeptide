@@ -12,7 +12,7 @@
 
 /* Custom styles for Eterna Reads */
 :root {
-    --primary-color: #0082CA;
+    --primary: #0082CA;
     --primary-dark: #7A6B5A;
     --secondary-color: #A8B5A0;
     --accent-color: #D4C4B7;
@@ -50,7 +50,7 @@
 }
 
 .carousel-indicators button.active {
-    background-color: var(--primary-color);
+    background-color: var(--primary);
 }
 
 .carousel-control-prev,
@@ -85,14 +85,14 @@
 }
 
 .page-link:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(--primary);
+    border-color: var(--primary);
     color: var(--white);
 }
 
 .page-item.active .page-link {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(--primary);
+    border-color: var(--primary);
     color: var(--white);
 }
 
@@ -115,8 +115,8 @@
 }
 
 .btn-group .btn.active {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(--primary);
+    border-color: var(--primary);
     color: var(--white);
 }
 
@@ -211,7 +211,7 @@
 }
 
 .product-card:hover .card-title {
-    color: var(--primary-color);
+    color: var(--primary);
     transition: color 0.3s ease;
 }
 
@@ -274,7 +274,7 @@
 
 .product-card-premium:hover {
     box-shadow: 0 16px 48px 0 rgba(155, 139, 122, 0.18), 0 4px 16px 0 rgba(155, 139, 122, 0.10);
-    border-color: var(--primary-color);
+    border-color: var(--primary);
     transform: translateY(-6px) scale(1.015);
 }
 
@@ -322,7 +322,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.15rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--primary);
     letter-spacing: 0.01em;
     margin-bottom: 0.25rem;
 }
@@ -333,7 +333,7 @@
 }
 
 .premium-title a:hover {
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 .premium-desc {
@@ -415,7 +415,7 @@
 }
 
 .btn-premium {
-    background: linear-gradient(90deg, var(--primary-color) 60%, var(--secondary-color) 100%);
+    background: linear-gradient(90deg, var(--primary) 60%, var(--secondary-color) 100%);
     color: var(--white);
     border: none;
     border-radius: 2rem;
@@ -434,7 +434,7 @@
 
 .btn-premium:hover,
 .btn-premium:focus {
-    background: linear-gradient(90deg, var(--secondary-color) 40%, var(--primary-color) 100%);
+    background: linear-gradient(90deg, var(--secondary-color) 40%, var(--primary) 100%);
     color: var(--white);
     box-shadow: 0 8px 32px 0 rgba(155, 139, 122, 0.18);
     transform: translateY(-2px) scale(1.03);

@@ -31,14 +31,13 @@
     <style>
         /* Global Styles */
         :root {
-            --primary-color: #0483c6;
-            ;
-            --secondary-color: #222;
-            --accent-color: #00c6ff;
-            --light-color: #f9f9f9;
-            --dark-color: #111;
-            --border-color: #dee2e6;
-            --text-color: #6D6E71;
+            --primary: #004FEF;
+            --secondary: #001A4D;
+            --accent: #8F92A2;
+            --light: #f9f9f9;
+            --dark: #111;
+            --border: #dee2e6;
+            --text: #6D6E71;
             --transition: all 0.3s ease;
             --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
             --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.12);
@@ -50,7 +49,9 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Sans 3', sans-serif;
+            color: var(--text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
@@ -60,19 +61,19 @@
         .table,
         .table th,
         .table td {
-            color: var(--dark-color) !important;
+            color: var(--dark) !important;
         }
 
         .text-muted {
-            color: #6c757d !important;
+            color: var(--text) !important;
         }
 
         .text-secondary {
-            color: #6c757d !important;
+            color: var(--text) !important;
         }
 
         .text-body-secondary {
-            color: #6c757d !important;
+            color: var(--text) !important;
         }
 
         /* Enhanced Navbar Styles */
@@ -92,7 +93,7 @@
         }
 
         .navbar .nav-link {
-            color: var(--dark-color);
+            color: var(--secondary);
             font-weight: 500;
             margin: 0 10px;
             transition: color 0.3s;
@@ -100,7 +101,7 @@
 
         .navbar .nav-link.active,
         .navbar .nav-link:hover {
-            color: var(--primary-color);
+            color: var(--primary);
         }
 
         .navbar-brand {
@@ -109,13 +110,13 @@
             gap: 0.7rem;
             font-size: clamp(1.2rem, 2.5vw, 1.5rem);
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--secondary);
             text-decoration: none;
             transition: var(--transition);
         }
 
         .navbar-brand:hover {
-            color: var(--secondary-color);
+            color: var(--primary);
             transform: translateY(-1px);
         }
 
@@ -133,7 +134,7 @@
         }
 
         .navbar-nav .nav-link {
-            color: var(--text-color) !important;
+            color: var(--secondary) !important;
             font-weight: 500;
             font-size: 0.95rem;
             padding: 0.5rem 0;
@@ -150,7 +151,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             transition: var(--transition);
             border-radius: 1px;
         }
@@ -162,7 +163,7 @@
 
         .navbar-nav .nav-link:hover,
         .navbar-nav .nav-link.active {
-            color: var(--primary-color) !important;
+            color: var(--primary) !important;
             transform: translateY(-1px);
         }
 
@@ -177,10 +178,10 @@
         .search-box input[type="text"] {
             width: 100%;
             padding: 0.75rem 1rem 0.75rem 2.5rem;
-            border: 2px solid var(--border-color);
+            border: 2px solid var(--border);
             border-radius: 25px;
             font-size: 0.95rem;
-            color: var(--text-color);
+            color: var(--text);
             background: #fff;
             outline: none;
             transition: var(--transition);
@@ -188,8 +189,8 @@
         }
 
         .search-box input[type="text"]:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(0, 104, 122, 0.25), var(--shadow-medium);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(0, 79, 239, 0.25), var(--shadow-medium);
             transform: translateY(-1px);
         }
 
@@ -198,13 +199,13 @@
             left: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--text-color);
+            color: var(--text);
             font-size: 1rem;
             transition: var(--transition);
         }
 
         .search-box input[type="text"]:focus+.fa-search {
-            color: var(--primary-color);
+            color: var(--primary);
         }
 
         /* Enhanced Icon Buttons */
@@ -212,7 +213,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--text-color) !important;
+            color: var(--text) !important;
             font-size: 0.95rem;
             background: none;
             border: none;
@@ -231,7 +232,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             opacity: 0;
             transition: var(--transition);
             z-index: -1;
@@ -242,7 +243,7 @@
         }
 
         .icon-btn:hover {
-            color: var(--primary-color) !important;
+            color: var(--primary) !important;
             transform: translateY(-2px);
             box-shadow: var(--shadow-light);
         }
@@ -261,8 +262,8 @@
             position: absolute;
             top: -5px;
             right: -8px;
-            background: #0483c6 !important;
-            color: white !important;
+            background: var(--primary) !important;
+            color: var(--light) !important;
             font-size: 0.75rem;
             font-weight: 600;
             padding: 0.25rem 0.5rem;
@@ -313,15 +314,15 @@
             padding: 0.75rem 1rem;
             border-radius: 8px;
             transition: var(--transition);
-            color: var(--text-color);
+            color: var(--text);
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
         .dropdown-item:hover {
-            background: rgba(0, 104, 122, 0.1);
-            color: var(--primary-color);
+            background: rgba(0, 79, 239, 0.1);
+            color: var(--primary);
             transform: translateX(5px);
         }
 
@@ -346,7 +347,7 @@
         }
 
         .navbar-toggler:hover {
-            background: rgba(0, 104, 122, 0.1);
+            background: rgba(0, 79, 239, 0.1);
             transform: scale(1.05);
         }
 
@@ -365,7 +366,7 @@
             display: block;
             height: 2px;
             width: 100%;
-            background: var(--text-color);
+            background: var(--text);
             border-radius: 1px;
             position: absolute;
             left: 0;
@@ -408,13 +409,13 @@
         }
 
         .offcanvas-header {
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid var(--border);
             padding: 1rem 1.5rem;
             background: white;
         }
 
         .offcanvas-header .navbar-brand {
-            color: var(--primary-color);
+            color: var(--primary);
             font-size: 1.1rem;
             font-weight: 600;
         }
@@ -440,26 +441,26 @@
             max-width: 100%;
             margin: 0;
             padding: 1rem 1.5rem;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid var(--border);
         }
 
         .offcanvas .search-box input[type="text"] {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
+            background: var(--light);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 0.75rem 1rem 0.75rem 2.5rem;
             font-size: 0.9rem;
-            color: var(--text-color);
+            color: var(--text);
         }
 
         .offcanvas .search-box input[type="text"]:focus {
             background: white;
-            border-color: var(--primary-color);
+            border-color: var(--primary);
             outline: none;
         }
 
         .offcanvas .search-box .fa-search {
-            color: #6c757d;
+            color: var(--text);
             font-size: 0.9rem;
         }
 
@@ -475,44 +476,44 @@
             padding: 1rem 1.5rem;
             border: none;
             font-size: 1rem;
-            color: var(--text-color) !important;
+            color: var(--text) !important;
             transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 0.75rem;
             font-weight: 500;
-            border-bottom: 1px solid #f8f9fa;
+            border-bottom: 1px solid var(--light);
         }
 
         .offcanvas .nav-link i {
             width: 20px;
             text-align: center;
             font-size: 1rem;
-            color: #6c757d;
+            color: var(--text);
         }
 
         .offcanvas .nav-link:hover,
         .offcanvas .nav-link.active {
-            color: var(--primary-color) !important;
-            background: #f8f9fa;
+            color: var(--primary) !important;
+            background: var(--light);
         }
 
         .offcanvas .nav-link.active {
-            color: var(--primary-color) !important;
+            color: var(--primary) !important;
             font-weight: 600;
         }
 
         /* Mobile Account Actions */
         .mobile-account-section {
             padding: 1rem 1.5rem;
-            border-top: 1px solid #e9ecef;
+            border-top: 1px solid var(--border);
             background: white;
         }
 
         .mobile-account-section .section-title {
             font-size: 0.8rem;
             font-weight: 600;
-            color: #6c757d;
+            color: var(--text);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 0.75rem;
@@ -523,12 +524,12 @@
             width: 100%;
             padding: 0.75rem 0;
             border: none;
-            color: var(--text-color) !important;
+            color: var(--text) !important;
             font-size: 0.95rem;
             font-weight: 500;
             background: transparent;
             border-radius: 0;
-            border-bottom: 1px solid #f8f9fa;
+            border-bottom: 1px solid var(--light);
         }
 
         .mobile-account-section .icon-btn:last-child {
@@ -536,15 +537,15 @@
         }
 
         .mobile-account-section .icon-btn:hover {
-            color: var(--primary-color) !important;
-            background: #f8f9fa;
+            color: var(--primary) !important;
+            background: var(--light);
         }
 
         .mobile-account-section .icon-btn i {
             width: 20px;
             text-align: center;
             font-size: 1rem;
-            color: #6c757d;
+            color: var(--text);
         }
 
         .mobile-account-section .icon-btn span {
@@ -555,7 +556,7 @@
         .mobile-account-section .cart-badge {
             position: static;
             margin-left: auto;
-            background: var(--primary-color) !important;
+            background: var(--primary) !important;
             color: white !important;
             font-size: 0.7rem;
             font-weight: 600;
@@ -586,7 +587,7 @@
             justify-content: center;
             width: 60px;
             height: 60px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
             border-radius: 50%;
             text-decoration: none;
@@ -729,11 +730,11 @@
 
         .copyright {
             text-align: center;
-            color: #95a5a6;
+            color: var(--accent);
             font-size: 0.9rem;
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid #34495e;
+            border-top: 1px solid var(--secondary);
             position: relative;
             z-index: 1;
         }
@@ -818,7 +819,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
             border: none;
             border-radius: 50%;
@@ -884,7 +885,7 @@
                             href="{{ route('blog.index') }}">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}"
+                        <a class="nav-link"
                             href="mailto:+example@example.com"><i class="bi bi-envelope me-2"></i> Need Help ?</a>
                     </li>
                     {{-- <li class="nav-item">
@@ -1092,7 +1093,7 @@
     </footer>
 
     <!-- Scroll to Top Button -->
-    <button class="scroll-to-top text-secondary " id="scrollToTop" style="background: #c8eaf5 !important;"
+    <button class="scroll-to-top" id="scrollToTop" style="background: var(--primary) !important; color: white !important;"
         title="Scroll to top">
         <i class="fas fa-chevron-up"></i>
     </button>

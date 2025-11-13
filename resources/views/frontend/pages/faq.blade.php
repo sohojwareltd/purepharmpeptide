@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Page Header -->
-<section class="page-header py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));">
+<section class="page-header py-5" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
@@ -42,7 +42,7 @@
                     <div id="{{ $category->slug }}" class="faq-section mb-5">
                         <h2 class="section-title mb-4">
                             @if($category->icon)
-                                <i class="{{ $category->icon }} me-2" style="color: {{ $category->color ?? 'var(--primary-color)' }};"></i>
+                                <i class="{{ $category->icon }} me-2" style="color: {{ $category->color ?? 'var(--primary)' }};"></i>
                             @endif
                             {{ $category->name }}
                         </h2>
@@ -86,7 +86,7 @@
                 <!-- Privacy Policy Section -->
                 <div id="privacy" class="faq-section mb-5">
                     <h2 class="section-title mb-4">
-                        <i class="bi bi-shield-check me-2" style="color: var(--primary-color);"></i>
+                        <i class="bi bi-shield-check me-2" style="color: var(--primary);"></i>
                         Privacy Policy
                     </h2>
                     
@@ -153,7 +153,7 @@
                 <div class="row g-4">
                     <div class="col-md-4">
                         <div class="support-option">
-                            <i class="bi bi-envelope-fill fs-1 mb-3" style="color: var(--primary-color);"></i>
+                            <i class="bi bi-envelope-fill fs-1 mb-3" style="color: var(--primary);"></i>
                             <h4 class="h5 mb-2">Email Us</h4>
                             <p class="text-muted small mb-2">Get a response within 24 hours</p>
                             <a href="mailto:support@eternareads.com" class="btn btn-outline-primary btn-sm">Send Email</a>

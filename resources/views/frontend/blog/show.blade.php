@@ -3,7 +3,79 @@
 @section('title', $post->title)
 
 @section('content')
-<div class="container py-5">
+<style>
+    .blog-show .badge.bg-primary,
+    .blog-show .card-header.bg-primary {
+        background-color: var(--primary) !important;
+        border-color: var(--primary) !important;
+    }
+
+    .blog-show .badge.bg-secondary,
+    .blog-show .card-header.bg-secondary {
+        background-color: var(--secondary) !important;
+    }
+
+    .blog-show .btn-outline-primary {
+        color: var(--primary);
+        border-color: var(--primary);
+    }
+
+    .blog-show .btn-outline-primary:hover {
+        background-color: var(--primary);
+        border-color: var(--primary);
+    }
+
+    .blog-show .btn-outline-info {
+        color: var(--primary);
+        border-color: var(--primary);
+    }
+
+    .blog-show .btn-outline-info:hover {
+        background-color: var(--primary);
+        border-color: var(--primary);
+    }
+
+    .blog-show .btn-outline-secondary {
+        color: var(--accent);
+        border-color: var(--accent);
+    }
+
+    .blog-show .btn-outline-secondary:hover {
+        background-color: var(--accent);
+        border-color: var(--accent);
+    }
+
+    .blog-show .text-muted {
+        color: var(--text) !important;
+    }
+
+    .blog-show .list-group-item.active {
+        background-color: var(--primary) !important;
+        border-color: var(--primary) !important;
+    }
+
+    .blog-show .badge.rounded-pill {
+        background-color: var(--primary) !important;
+    }
+
+    .blog-show .card {
+        transition: var(--transition);
+    }
+
+    .blog-show .card:hover {
+        box-shadow: var(--shadow-medium) !important;
+    }
+
+    .blog-show .breadcrumb-item a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    .blog-show .breadcrumb-item a:hover {
+        color: var(--secondary);
+    }
+</style>
+<div class="container py-5 blog-show">
     <div class="row">
         <div class="col-lg-8 mx-auto">
             <!-- Breadcrumb -->
@@ -178,13 +250,13 @@
 .blog-content h2 {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: var(--dark);
 }
 
 .blog-content h3 {
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
-    color: #444;
+    color: var(--text);
 }
 
 .blog-content p {
@@ -197,11 +269,11 @@
 }
 
 .blog-content blockquote {
-    border-left: 4px solid #007bff;
+    border-left: 4px solid var(--primary);
     padding-left: 1rem;
     margin: 1.5rem 0;
     font-style: italic;
-    color: #666;
+    color: var(--text);
 }
 
 .blog-content img {

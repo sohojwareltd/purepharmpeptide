@@ -78,7 +78,7 @@
         <!-- Filter Actions -->
         <div class="col-12 pt-2">
             <div class="d-flex gap-2 w-100">
-                <button type="submit" class="btn bg-primary text-white flex-fill">
+                <button type="submit" class="btn btn-primary text-white flex-fill">
                     <i class="bi bi-search me-2"></i>Apply Filters
                 </button>
                 <a href="{{ route('products.index') }}" class="btn btn-outline-secondary">
@@ -97,18 +97,18 @@
     
     .form-control, .form-select {
         border-radius: 8px;
-        border: 1px solid #e9ecef;
-        transition: all 0.2s ease;
+        border: 1px solid var(--border);
+        transition: var(--transition);
     }
     
     .form-control:focus, .form-select:focus {
-        border-color: #667eea;
-        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.2rem rgba(0, 79, 239, 0.25);
     }
     
     .input-group-text {
         border-radius: 8px 0 0 8px;
-        border: 1px solid #e9ecef;
+        border: 1px solid var(--border);
     }
     
     .input-group .form-control {
@@ -118,22 +118,22 @@
     .btn {
         border-radius: 8px;
         font-weight: 500;
-        transition: all 0.2s ease;
+        transition: var(--transition);
     }
     
     .btn-primary {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
         border: none;
     }
     
     .btn-primary:hover {
         transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        box-shadow: var(--shadow-medium);
     }
     
     .btn-outline-secondary:hover {
-        background-color: #6c757d;
-        border-color: #6c757d;
+        background-color: var(--accent);
+        border-color: var(--accent);
         transform: translateY(-1px);
     }
 </style> 

@@ -13,7 +13,7 @@
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <style>
         :root {
-            --primary-color: #0386cb;
+            --primary: #0386cb;
             /* Bright Blue */
             --secondary-color: #044e75;
             /* Dark Blue */
@@ -33,7 +33,7 @@
             position: fixed;
             top: 24px;
             right: 24px;
-            background: var(--primary-color);
+            background: var(--primary);
             color: var(--light-bg);
             border: none;
             padding: 12px 28px;
@@ -68,7 +68,7 @@
             font-weight: 700;
             letter-spacing: 1px;
             margin-bottom: 0.2em;
-            color: var(--primary-color);
+            color: var(--primary);
         }
 
         .brand-contact {
@@ -109,7 +109,7 @@
 
         .meta-block strong {
             font-weight: 600;
-            color: var(--primary-color);
+            color: var(--primary);
         }
 
         .meta-block .meta-label {
@@ -124,7 +124,7 @@
         }
 
         .meta-block .meta-accent {
-            color: var(--primary-color);
+            color: var(--primary);
             font-size: 1.3em;
             font-weight: 700;
         }
@@ -201,20 +201,20 @@
 
         .summary-table .value {
             text-align: right;
-            color: var(--primary-color);
+            color: var(--primary);
             font-weight: 600;
         }
 
         .summary-table .total-row {
             font-size: 1.2em;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--primary);
         }
 
         .thanks {
             margin: 48px 48px 0 48px;
             font-weight: 600;
-            color: var(--primary-color);
+            color: var(--primary);
             font-size: 1.05em;
         }
 

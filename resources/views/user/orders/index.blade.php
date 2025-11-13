@@ -235,18 +235,18 @@
 
 .page-link {
     border: none;
-    color: var(--primary-color);
+    color: var(--primary);
     padding: 0.5rem 0.75rem;
 }
 
 .page-link:hover {
-    background-color: var(--primary-color);
+    background-color: var(--primary);
     color: white;
 }
 
 .page-item.active .page-link {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(--primary);
+    border-color: var(--primary);
 }
 </style>
 

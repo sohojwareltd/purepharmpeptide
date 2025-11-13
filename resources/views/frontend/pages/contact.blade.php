@@ -182,7 +182,7 @@
                         <div class="col-md-6">
                             <div class="faq-item text-start">
                                 <h5 class="mb-2">
-                                    <i class="bi bi-question-circle me-2" style="color: var(--primary-color);"></i>
+                                    <i class="bi bi-question-circle me-2" style="color: var(--primary);"></i>
                                     How do I track my order?
                                 </h5>
                                 <p class="text-muted small">You'll receive a tracking number via email once your order
@@ -192,7 +192,7 @@
                         <div class="col-md-6">
                             <div class="faq-item text-start">
                                 <h5 class="mb-2">
-                                    <i class="bi bi-question-circle me-2" style="color: var(--primary-color);"></i>
+                                    <i class="bi bi-question-circle me-2" style="color: var(--primary);"></i>
                                     What's your return policy?
                                 </h5>
                                 <p class="text-muted small">We accept returns within 30 days for books in original
@@ -202,7 +202,7 @@
                         <div class="col-md-6">
                             <div class="faq-item text-start">
                                 <h5 class="mb-2">
-                                    <i class="bi bi-question-circle me-2" style="color: var(--primary-color);"></i>
+                                    <i class="bi bi-question-circle me-2" style="color: var(--primary);"></i>
                                     Do you ship internationally?
                                 </h5>
                                 <p class="text-muted small">Yes, we ship to most countries. Shipping rates vary by
@@ -212,7 +212,7 @@
                         <div class="col-md-6">
                             <div class="faq-item text-start">
                                 <h5 class="mb-2">
-                                    <i class="bi bi-question-circle me-2" style="color: var(--primary-color);"></i>
+                                    <i class="bi bi-question-circle me-2" style="color: var(--primary);"></i>
                                     Can I get book recommendations?
                                 </h5>
                                 <p class="text-muted small">Absolutely! Our team loves helping readers find their next
@@ -233,7 +233,7 @@
 
     {{-- <!-- Call to Action -->
     <section class="cta-section py-5"
-        style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));">
+        style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">

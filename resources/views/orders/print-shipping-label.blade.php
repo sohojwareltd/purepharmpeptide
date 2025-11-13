@@ -9,7 +9,7 @@
     <style>
         /* Define the color palette using CSS variables */
         :root {
-            --primary-color: #0386cb;
+            --primary: #0386cb;
             /* Bright Blue */
             --secondary-color: #044e75;
             /* Dark Blue */
@@ -43,7 +43,7 @@
         }
 
         .label-header {
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 2px solid var(--primary);
             padding-bottom: 1rem;
             margin-bottom: 1.5rem;
             display: flex;

@@ -1,13 +1,13 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Checkout - MyShop')
+@section('title', 'Pure-pharm-peptides')
 
 @section('content')
     <div class="container">
         <!-- Page Header -->
-        <div class="row mb-4">
+        <div class="row">
             <div class="col-12">
-                <h1 class="h3 mb-3">
+                <h1 class="h3 mt-3">
                     <i class="bi bi-credit-card"></i> Checkout
                 </h1>
             </div>
@@ -354,14 +354,17 @@
 
                                 <!-- Place Order Button -->
                                 <div class="row">
-                                    <div class="col-12 text-end">
-                                        <button type="submit" class="btn btn-primary btn-lg" id="place-order-btn">
+                                    <div class="col-8 text-end">
+                                        <button type="submit" class="btn btn-premium mb-3" id="place-order-btn">
                                             @if (!empty($isRepayment) && isset($order))
                                                 Repay Now
                                             @else
                                                 <i class="bi bi-check-circle"></i> Place Order
                                             @endif
                                         </button>
+                                        <a href="{{ route('products.index') }}" class="btn btn-premium">
+                                            <i class="bi bi-arrow-left me-2"></i>Back to Shop
+                                        </a>
                                     </div>
                                 </div>
 
@@ -399,13 +402,13 @@
             style: {
                 base: {
                     fontSize: '16px',
-                    color: '#424770',
+                    color: getComputedStyle(document.documentElement).getPropertyValue('--dark'),
                     '::placeholder': {
-                        color: '#aab7c4',
+                        color: getComputedStyle(document.documentElement).getPropertyValue('--text'),
                     },
                 },
                 invalid: {
-                    color: '#9e2146',
+                    color: '#dc3545',
                 },
             },
         });
@@ -668,7 +671,7 @@
                         console.log('response.redirect_required type:', typeof response.redirect_required);
                         console.log('response.redirect_required value:', response.redirect_required);
                         console.log('response.redirect_required === true:', response.redirect_required ===
-                        true);
+                            true);
 
                         if (response.redirect_required === true || response.redirect_required === 'true') {
                             console.log('PAYPAL REDIRECT DETECTED!');
@@ -856,3 +859,31 @@
         });
     </script>
 @endpush
+
+<style>
+    .btn-premium {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+        border: none !important;
+        color: white !important;
+        transition: var(--transition);
+        box-shadow: var(--shadow-light);
+    }
+
+    .btn-premium:hover {
+        background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%) !important;
+        box-shadow: var(--shadow-medium);
+        color: white !important;
+        transform: translateY(-2px);
+    }
+
+    /* Card Headers */
+    .card-header {
+        background: var(--primary) !important;
+        color: white !important;
+    }
+
+    .card-header h5,
+    .card-header i {
+        color: white !important;
+    }
+</style>

@@ -30,18 +30,15 @@ $light-blue: #8aa3a8;
 
 // CSS Custom Properties (for use in components)
 :root {
-  --primary-color: #{$primary};
-  --primary-dark: #{$primary-dark};
-  --secondary-color: #{$secondary};
-  --accent-color: #{$accent};
-  --success-color: #{$success};
-  --danger-color: #{$danger};
-  --warning-color: #{$warning};
-  --info-color: #{$info};
-  --light-bg: #{$light};
-  --dark-text: #{$dark};
-  --border-color: #{$border-color};
-  --non-photo-blue: #{$non-photo-blue};
-  --silver: #{$silver};
-  --light-blue: #{$light-blue};
+  --primary: #004FEF;
+  --secondary: #001A4D;
+  --accent: #8F92A2;
+  --light: #f9f9f9;
+  --dark: #111;
+  --border: #dee2e6;
+  --text: #6D6E71;
+  --transition: all 0.3s ease;
+  --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.12);
+  --shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.15);
 }

@@ -11,25 +11,18 @@
 @section('content')
 
     <div class="container">
-        <section class="features-marquee">
-            <div class="marquee-container">
-                <div class="marquee-content">
+        <section class="products-features-marquee">
+            <div class="products-marquee-container">
+                <div class="products-marquee-content">
                     {{-- Original --}}
-                    <div class="marquee-group">
-                        <div class="feature-item">✅ Fast and Discreet Shipping</div>
-                        <div class="feature-item">✅ Affordable Pricing</div>
-                        <div class="feature-item">✅ 24/7 Support</div>
-                        <div class="feature-item">✅ Shipped in the USA</div>
-                        <div class="feature-item">✅ Quality-assured Ingredients</div>
-                    </div>
-
-                    {{-- 1st Duplicate --}}
-                    <div class="marquee-group">
-                        <div class="feature-item">✅ Fast and Shipping</div>
-                        <div class="feature-item">✅ Affordable Pricing</div>
-                        <div class="feature-item">✅ 24/7 Support</div>
-                        <div class="feature-item">✅ Shipped in the USA</div>
-                        <div class="feature-item">✅ Quality-assured Ingredients</div>
+                    <div class="products-marquee-group">
+                        @for ($i = 0; $i < 2; $i++)
+                            <div class="marquee-group">
+                                @foreach (setting('homepage.features_marquee', []) as $feature)
+                                    <div class="">✅{{ $feature['text'] }}</div>
+                                @endforeach
+                            </div>
+                        @endfor
                     </div>
 
 
@@ -48,17 +41,16 @@
                     <form method="GET" action="{{ route('products.index') }}"
                         class="search-form card border-0 shadow-sm mb-3">
                         <div class="card-header text-white"
-                            style="background: #0483c6; border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
+                            style="background: var(--primary); border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
                             <h6 class="mb-0 d-flex align-items-center">
-                                <i class="bi bi-search me-2"></i>
-                                <small>Name / Sequence / Catalog No.</small>
+                                <i class="bi bi-search me-2"></i>Name / Sequence / Catalog No.
                             </h6>
                         </div>
                         <div class="card-body">
                             <div class="input-group smart-search">
                                 <input type="text" class="form-control" name="search" value="{{ request('search') }}"
                                     placeholder="Search peptides..." aria-label="Search peptides">
-                                <button class="btn btn-primary px-3" type="submit">
+                                <button class="btn btn-outline-secondary px-3" type="submit">
                                     <i class="bi bi-search"></i>
                                 </button>
                             </div>
@@ -67,7 +59,7 @@
 
                     <!-- Filters -->
                     <div class="card border-0 shadow-sm">
-                        <div class="card-header text-white" style="background: #0483c6;">
+                        <div class="card-header text-white" style="background: var(--primary);">
                             <h6 class="mb-0">
                                 <i class="bi bi-funnel me-2"></i>Filters
                             </h6>
@@ -217,7 +209,7 @@
                     </div>
                 @endif
             </div>
-       
+
         </div>
 
 
@@ -226,8 +218,52 @@
 
     <!-- Enhanced Product Card Styles -->
     <style>
+        /* ---------- Products Features Marquee ---------- */
+        .products-features-marquee {
+            padding: 8px 0;
+            margin: 30px 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .products-marquee-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .products-marquee-content {
+            display: flex;
+            width: max-content;
+            animation: products-features-scroll 10s linear infinite;
+            will-change: transform;
+        }
+
+        .products-marquee-group {
+            display: flex;
+            gap: 50px;
+            padding-right: 50px;
+            color: var(--secondary);
+        }
+
+     
+
+        .products-feature-item strong {
+            font-weight: 700;
+        }
+
+        @keyframes products-features-scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-33.33%);
+            }
+        }
+
         .hero-section {
-            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
             position: relative;
             overflow: hidden;
         }
@@ -242,40 +278,17 @@
         }
 
         .bg-gradient-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .smart-search .form-control {
-            border-radius: 50px 0 0 50px;
-            padding-left: 18px;
-            border-right: none;
-            box-shadow: none;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .smart-search .form-control:focus {
-            border-color: #0483c6;
-            box-shadow: 0 0 0 0.2rem rgba(4, 131, 198, 0.25);
-        }
-
-        .smart-search .btn {
-            border-radius: 0 50px 50px 0;
-            background: #0483c6;
-            border: none;
-        }
-
-        .smart-search .btn:hover {
-            background: #036ba0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
         }
 
         .card {
-            transition: all 0.3s ease;
+            transition: var(--transition);
             border-radius: 12px;
         }
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-light);
         }
 
 
@@ -288,31 +301,31 @@
         }
 
         .btn-group .btn.active {
-            background-color: #667eea;
-            border-color: #667eea;
+            background-color: var(--primary);
+            border-color: var(--primary);
             color: white;
         }
 
         .dropdown-menu {
             border-radius: 8px;
             border: none;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-medium);
         }
 
         .dropdown-item.active {
-            background-color: #667eea;
+            background-color: var(--primary);
         }
 
         .pagination .page-link {
             border-radius: 8px;
             margin: 0 4px;
             border: none;
-            color: #000000;
+            color: var(--dark);
         }
 
         .pagination .page-item.active .page-link {
-            background-color: #667eea;
-            border-color: #667eea;
+            background-color: var(--primary);
+            border-color: var(--primary);
         }
 
         .offcanvas {
@@ -330,10 +343,10 @@
         }
 
         .results-header {
-            background: #f8f9fa;
+            background: var(--light);
             padding: 1rem;
             border-radius: 12px;
-            border: 1px solid #e9ecef;
+            border: 1px solid var(--border);
         }
 
         .no-results-icon {
@@ -406,7 +419,7 @@
                 `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
             alert.style.zIndex = '9999';
             alert.style.borderRadius = '12px';
-            alert.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+            alert.style.boxShadow = 'var(--shadow-medium)';
             alert.innerHTML = `
                 <i class="bi bi-${type === 'success' ? 'check-circle' : 'exclamation-triangle'} me-2"></i>
                 ${message}

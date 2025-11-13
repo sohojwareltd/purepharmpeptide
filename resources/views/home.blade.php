@@ -45,11 +45,11 @@
                         <div class="product-item">
                             <x-product-card :product="$product" />
                         </div>
+                       
                     @endforeach
-
                 </div>
                 <div class="text-center mt-4">
-                    <a class="btn btn-primary" href="{{ route('products.index') }}">View All Products</a>
+                    <a class="btn btn-premium" href="{{ route('products.index') }}">View All Products</a>
                 </div>
             </div>
         </section>
@@ -169,23 +169,6 @@
             </div>
         </section>
 
-        {{-- <section class="contact-section py-5">
-            <div class="container">
-                <div class="row align-items-center justify-content-center text-center text-lg-start">
-                    <div class="col-12 col-md-10 col-lg-6 mb-4 mb-lg-0 text-center">
-                        <h2 class="fw-bold mb-3">Text us, our dedicated team is here to help</h2>
-                        <p class="mb-4">Reach out and get a response within minutes.</p>
-                        <a href="mailto:{{ setting('store.email') }}"
-                            class="d-inline-flex align-items-center justify-content-center px-4 py-2 rounded-pill text-white bg-primary text-decoration-none shadow-sm hover-shadow-lg">
-                            <i class="bi bi-envelope me-2 fs-5"></i>
-                            <span class="fs-6">{{ setting('store.email') }}</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-
-
 
 
 
@@ -221,3 +204,20 @@
 
     </main>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.products-track');
+        if (track) {
+            // Start from right side (off-screen)
+            track.style.transform = 'translateX(100%)';
+            
+            // Small delay then start animation
+            setTimeout(() => {
+                track.style.animation = 'products-scroll 20s linear infinite';
+            }, 100);
+        }
+    });
+</script>
+@endpush

@@ -18,14 +18,14 @@
         <div class="col-lg-6 mb-4">
             <div class="card">
                 <img id="mainImage" src="{{ $product->image_url ?? 'https://via.placeholder.com/600x400?text=No+Image' }}" 
-                     class="card-img-top" alt="{{ $product->name }}" style="height: 600px; object-fit: contain; background: #f8f9fa;">
+                     class="card-img-top" alt="{{ $product->name }}" style="height: 600px; object-fit: contain; background: var(--light);">
                 @if($product->gallery_urls && count($product->gallery_urls) > 0)
                     <div class="thumbnail-gallery mt-3 d-flex gap-2 px-3 pb-2">
-                        <div class="thumbnail-item" style="width: 100px; height: 120px; overflow: hidden; border-radius: 6px; border: 2px solid #007bff; background: #f8f9fa; cursor:pointer;" data-img="{{ $product->image_url }}">
+                        <div class="thumbnail-item" style="width: 100px; height: 120px; overflow: hidden; border-radius: 6px; border: 2px solid var(--primary); background: var(--light); cursor:pointer;" data-img="{{ $product->image_url }}">
                             <img src="{{ $product->image_url }}" alt="Main Image" style="width: 100%; height: 100%; object-fit: contain;">
                         </div>
                         @foreach($product->gallery_urls as $galleryImage)
-                            <div class="thumbnail-item" style="width: 100px; height: 120px; overflow: hidden; border-radius: 6px; border: 1.5px solid #e0e0e0; background: #f8f9fa; cursor:pointer;" data-img="{{ $galleryImage }}">
+                            <div class="thumbnail-item" style="width: 100px; height: 120px; overflow: hidden; border-radius: 6px; border: 1.5px solid var(--border); background: var(--light); cursor:pointer;" data-img="{{ $galleryImage }}">
                                 <img src="{{ $galleryImage }}" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
                         @endforeach
@@ -159,8 +159,8 @@ $(function() {
     $(document).on('click', '.thumbnail-item', function() {
         var imgUrl = $(this).data('img');
         $('#mainImage').attr('src', imgUrl);
-        $('.thumbnail-item').css('border', '1.5px solid #e0e0e0');
-        $(this).css('border', '2px solid #007bff');
+        $('.thumbnail-item').css('border', '1.5px solid var(--border)');
+        $(this).css('border', '2px solid var(--primary)');
     });
 });
 </script>
