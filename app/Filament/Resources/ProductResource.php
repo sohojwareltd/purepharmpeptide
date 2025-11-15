@@ -30,11 +30,13 @@ class ProductResource extends Resource
                             Forms\Components\TextInput::make('name')->required()->maxLength(255)
                                 ->live(onBlur: true)
                                 ->afterStateUpdated(function (string $state, callable $set) {
-                                    $set('slug', Str::slug($state));
+                                    $set('slug', self::generateUniqueSlug($state));
                                 })
                                 ->helperText('Enter the product name as it will appear to customers.'),
                             Forms\Components\TextInput::make('slug')->required()->maxLength(255)
-                                ->helperText('Unique URL slug for the product. Auto-generated from the name.'),
+                                ->unique(Product::class, 'slug', ignoreRecord: true)
+                                ->regex('/^[a-z0-9]+(?:-[a-z0-9]+)*$/')
+                                ->helperText('Unique URL slug (lowercase, numbers, hyphens). Auto-generated from the name.'),
                             Forms\Components\Textarea::make('description')
                                 ->helperText('Detailed product description.'),
                             Forms\Components\Select::make('category_id')
@@ -152,5 +154,18 @@ class ProductResource extends Resource
             'create' => Pages\CreateProduct::route('/create'),
             'edit'   => Pages\EditProduct::route('/{record}/edit'),
         ];
+    }
+    /**
+     * Generate a unique slug from a base string.
+     */
+    protected static function generateUniqueSlug(string $base): string
+    {
+        $slug = Str::slug($base);
+        $original = $slug;
+        $counter = 2;
+        while (Product::where('slug', $slug)->exists()) {
+            $slug = $original.'-'.$counter++;
+        }
+        return $slug;
     }
 }
