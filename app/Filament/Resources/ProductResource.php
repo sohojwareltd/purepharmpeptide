@@ -27,13 +27,18 @@ class ProductResource extends Resource
                     Forms\Components\Tabs\Tab::make('General')
                         ->icon('heroicon-o-information-circle')
                         ->schema([
-                            Forms\Components\TextInput::make('name')->required()->maxLength(255)
-                                ->live(onBlur: true)
+                            Forms\Components\TextInput::make('name')
+                                ->required()
+                                ->maxLength(255)
+                                ->live(debounce: 500)
                                 ->afterStateUpdated(function (string $state, callable $set) {
                                     $set('slug', self::generateUniqueSlug($state));
                                 })
                                 ->helperText('Enter the product name as it will appear to customers.'),
-                            Forms\Components\TextInput::make('slug')->required()->maxLength(255)
+                            Forms\Components\TextInput::make('slug')
+                                ->required()
+                                ->maxLength(255)
+                                ->live(debounce: 500)
                                 ->unique(Product::class, 'slug', ignoreRecord: true)
                                 ->regex('/^[a-z0-9]+(?:-[a-z0-9]+)*$/')
                                 ->helperText('Unique URL slug (lowercase, numbers, hyphens). Auto-generated from the name.'),
@@ -46,12 +51,17 @@ class ProductResource extends Resource
                                 ->helperText('Assign a category for better organization.'),
                             Forms\Components\TextInput::make('stock')
                                 ->required()
+                                ->live(debounce: 500)
                                 ->label('Stock')
-                                ->nullable()
                                 ->numeric()
-                                ->helperText('Set the stock for this product.'),
-                            Forms\Components\TextInput::make('sku')->required()->label('SKU')->maxLength(100)->nullable()
-                                ->helperText('Stock Keeping Unit identifier for the product.'),
+                                ->minValue(0)
+                                ->helperText('Set the stock for this product. (Required)'),
+                            Forms\Components\TextInput::make('sku')
+                                ->required()
+                                ->live(debounce: 500)
+                                ->label('SKU')
+                                ->maxLength(100)
+                                ->helperText('Stock Keeping Unit identifier for the product. (Required)'),
                             Forms\Components\Select::make('status')
                                 ->options([
                                     'draft'    => 'Draft',
@@ -64,9 +74,11 @@ class ProductResource extends Resource
 
                             Forms\Components\TextInput::make('price')
                                 ->required()
+                                ->live(debounce: 500)
                                 ->label('Product Price')
                                 ->numeric()
-                                ->helperText('Set the single price for this product.'),
+                                ->minValue(0)
+                                ->helperText('Set the single price for this product. (Required)'),
 
                             Forms\Components\Toggle::make('is_featured')
                                 ->label('Is Featured')
