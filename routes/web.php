@@ -33,7 +33,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $products = Product::all();
+    $products = Product::where('status', 'active')
+        ->orderBy('created_at', 'desc')
+        ->get();
     $faqitems = FaqItem::where('is_active', true)
         ->get();
 
