@@ -141,13 +141,13 @@
             z-index: 1050;
             border-bottom: none !important;
             border: none !important;
-            padding: 16px 0;
+            padding: 10px 0;
         }
 
         .navbar.scrolled {
             background: #FFFFFF;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            padding: 12px 0;
+            padding: 8px 0;
         }
 
         .navbar .nav-link {
@@ -178,7 +178,7 @@
         }
 
         .navbar-brand img {
-            height: 50px;
+            height: 42px;
             width: auto;
             transition: var(--transition);
         }
@@ -194,7 +194,7 @@
             color: var(--text) !important;
             font-weight: 500;
             font-size: 0.9rem;
-            padding: 0.6rem 1rem;
+            padding: 0.5rem 0.9rem;
             position: relative;
             transition: var(--transition);
             text-decoration: none;
