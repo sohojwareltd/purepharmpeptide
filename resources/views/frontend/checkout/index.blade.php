@@ -355,7 +355,7 @@
                                 <!-- Place Order Button -->
                                 <div class="row">
                                     <div class="col-8 text-end">
-                                        <button type="submit" class="btn btn-premium mb-3" id="place-order-btn">
+                                        <button type="submit" class="btn btn-premium mb-3" id="place-order-btn" style="color: white !important;">
                                             @if (!empty($isRepayment) && isset($order))
                                                 Repay Now
                                             @else
@@ -493,8 +493,9 @@
             const paymentMethod = $('#payment_method').val();
 
             // Show loading state
-            submitBtn.html('<i class="bi bi-hourglass-split"></i> Processing...');
+            submitBtn.html('<i class="bi bi-hourglass-split"></i>&nbsp;Processing...');
             submitBtn.prop('disabled', true);
+            submitBtn.css('color', 'white');
 
             // Basic validation
             const requiredFields = [
@@ -579,6 +580,7 @@
                 showToast('Please fill in all required fields', 'warning');
                 submitBtn.html(originalText);
                 submitBtn.prop('disabled', false);
+                submitBtn.css('color', 'white');
                 return false;
             }
 
@@ -707,6 +709,7 @@
                         showToast(response.message || 'Order failed. Please try again.', 'error');
                         $('#place-order-btn').html('<i class="bi bi-check-circle"></i> Place Order');
                         $('#place-order-btn').prop('disabled', false);
+                        $('#place-order-btn').css('color', 'white');
                     }
                 },
                 error: function(xhr) {
@@ -717,6 +720,7 @@
                     showToast(message, 'error');
                     $('#place-order-btn').html('<i class="bi bi-check-circle"></i> Place Order');
                     $('#place-order-btn').prop('disabled', false);
+                    $('#place-order-btn').css('color', 'white');
                 }
             });
         }
@@ -867,6 +871,7 @@
         color: white !important;
         transition: var(--transition);
         box-shadow: var(--shadow-light);
+        text-decoration: none;
     }
 
     .btn-premium:hover {
@@ -874,6 +879,36 @@
         box-shadow: var(--shadow-medium);
         color: white !important;
         transform: translateY(-2px);
+        text-decoration: none;
+    }
+
+    .btn-premium:focus,
+    .btn-premium:active {
+        color: white !important;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+        text-decoration: none;
+    }
+
+    #place-order-btn {
+        color: white !important;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+        border: none !important;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    #place-order-btn:disabled {
+        color: white !important;
+        opacity: 1;
+        cursor: not-allowed;
+    }
+
+    #place-order-btn i {
+        color: white !important;
     }
 
     /* Card Headers */

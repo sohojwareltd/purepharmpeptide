@@ -76,7 +76,7 @@
 
         <section class="section">
             <div class="container">
-                <h2 class="section-title">How It Works</h2>
+               <h2 class="section-title">How It Works</h2>
                 @php
                     $howItWorks = setting('homepage.how_it_works');
                     $steps = is_string($howItWorks) ? json_decode($howItWorks, true) : $howItWorks;
@@ -86,9 +86,8 @@
 
                 <div class="row g-4">
                     @foreach ($steps as $index => $step)
-                        <div class="col-md-4">
+                        <div class="col-12 col-md-6 col-lg-4">
                             <div class="how-it-works-card">
-                                <div class="step-number">{{ $index + 1 }}</div>
                                 <div class="icon-wrapper">
                                     @if ($index === 0)
                                         <i class="fas fa-rocket"></i>
@@ -100,7 +99,7 @@
                                 </div>
                                 <h3>{{ $step['title'] ?? '' }}</h3>
                                 <p>{{ $step['description'] ?? '' }}</p>
-                            </div>
+                             </div>
                         </div>
                     @endforeach
                 </div>

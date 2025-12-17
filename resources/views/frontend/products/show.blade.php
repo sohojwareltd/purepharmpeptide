@@ -209,7 +209,7 @@
         .add-to-cart-btn {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border: none;
-            color: white;
+            color: white !important;
             padding: 15px 30px;
             border-radius: 10px;
             font-weight: 600;
@@ -221,19 +221,29 @@
             justify-content: center;
             gap: 10px;
             box-shadow: var(--shadow-medium);
+            text-decoration: none;
         }
 
         .add-to-cart-btn:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-heavy);
             background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white !important;
         }
 
         .add-to-cart-btn:disabled {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent) 0%, #1abc9c 100%);
             cursor: not-allowed;
             transform: none;
-            box-shadow: none;
+            box-shadow: 0 4px 12px rgba(0, 212, 170, 0.2);
+            color: white !important;
+            opacity: 1;
+            text-decoration: none;
+        }
+        
+        .add-to-cart-btn:disabled:hover {
+            transform: none;
+            background: linear-gradient(135deg, var(--accent) 0%, #1abc9c 100%);
         }
 
         .product-description {
@@ -563,10 +573,17 @@
         }
 
         .popup-add-to-cart:disabled {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent) 0%, #1abc9c 100%);
             cursor: not-allowed;
             transform: none;
-            box-shadow: none;
+            box-shadow: 0 4px 12px rgba(0, 212, 170, 0.2);
+            color: white !important;
+            opacity: 1;
+        }
+        
+        .popup-add-to-cart:disabled:hover {
+            transform: none;
+            background: linear-gradient(135deg, var(--accent) 0%, #1abc9c 100%);
         }
 
         .popup-close {
@@ -1062,9 +1079,8 @@
             const quantity = parseInt($('#quantity').val());
             const price = parseFloat($('#product_price').val());
             const button = $('#add-to-cart-form').find('button[type="submit"]');
-            const originalText = button.html();
 
-            button.html('<i class="bi bi-hourglass-split"></i> Adding...');
+            button.html('<i class="bi bi-hourglass-split"></i>&nbsp;Adding...');
             button.prop('disabled', true);
 
             $.ajax({
@@ -1082,14 +1098,14 @@
                     } else {
                         showToast(response.message, 'danger');
                     }
-                    button.html(originalText);
+                    button.html('<i class="bi bi-cart-plus"></i>&nbsp;Add to Cart');
                     button.prop('disabled', false);
                 },
                 error: function(xhr) {
                     const response = xhr.responseJSON;
                     showToast(response?.message || 'Failed to add product to cart',
                         'danger');
-                    button.html(originalText);
+                    button.html('<i class="bi bi-cart-plus"></i>&nbsp;Add to Cart');
                     button.prop('disabled', false);
                 }
             });
@@ -1100,9 +1116,8 @@
             const quantity = parseInt($('#popupQuantity').val());
             const price = parseFloat($('#product_price').val());
             const button = $('#popupAddToCart');
-            const originalText = button.html();
 
-            button.html('<i class="bi bi-hourglass-split"></i> Adding...');
+            button.html('<i class="bi bi-hourglass-split"></i>&nbsp;Adding...');
             button.prop('disabled', true);
 
             $.ajax({
@@ -1122,14 +1137,14 @@
                     } else {
                         showToast(response.message, 'danger');
                     }
-                    button.html(originalText);
+                    button.html('<i class="bi bi-cart-plus"></i>&nbsp;Add to Cart');
                     button.prop('disabled', false);
                 },
                 error: function(xhr) {
                     const response = xhr.responseJSON;
                     showToast(response?.message || 'Failed to add product to cart',
                         'danger');
-                    button.html(originalText);
+                    button.html('<i class="bi bi-cart-plus"></i>&nbsp;Add to Cart');
                     button.prop('disabled', false);
                 }
             });

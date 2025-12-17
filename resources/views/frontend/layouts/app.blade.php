@@ -1278,14 +1278,6 @@
                     </ul>
                 @endguest
 
-                {{-- <ul class="navbar-nav d-flex flex-column align-items-start mb-4">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cart.index') }}">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span>Cart</span>
-                        </a>
-                    </li>
-                </ul> --}}
             </div>
         </div>
     </div>

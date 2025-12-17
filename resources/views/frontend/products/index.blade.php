@@ -42,7 +42,7 @@
                         class="search-form card border-0 shadow-sm mb-3">
                         <div class="card-header text-white"
                             style="background: var(--primary); border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
-                            <h6 class="mb-0 d-flex align-items-center">
+                            <h6 class="mb-0 d-flex align-items-center text-white">
                                 <i class="bi bi-search me-2"></i>Name / Sequence / Catalog No.
                             </h6>
                         </div>
@@ -60,7 +60,7 @@
                     <!-- Filters -->
                     <div class="card border-0 shadow-sm">
                         <div class="card-header text-white" style="background: var(--primary);">
-                            <h6 class="mb-0">
+                            <h6 class="mb-0 text-white">
                                 <i class="bi bi-funnel me-2"></i>Filters
                             </h6>
                         </div>
@@ -244,10 +244,10 @@
             display: flex;
             gap: 50px;
             padding-right: 50px;
-            color: var(--secondary);
+            color: var(--text-light);
         }
 
-     
+
 
         .products-feature-item strong {
             font-weight: 700;

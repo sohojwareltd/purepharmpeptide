@@ -401,16 +401,24 @@
         .btn-premium {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border: none;
-            color: white;
+            color: white !important;
             transition: var(--transition);
             box-shadow: var(--shadow-light);
+            text-decoration: none;
         }
 
         .btn-premium:hover {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
             box-shadow: var(--shadow-medium);
-            color: white;
+            color: white !important;
             transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .btn-premium:focus,
+        .btn-premium:active {
+            color: white !important;
+            text-decoration: none;
         }
 
         .cart-table td img {

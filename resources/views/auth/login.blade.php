@@ -314,8 +314,17 @@
     }
     
     .btn-primary:disabled {
-        opacity: 0.6;
+        background: linear-gradient(135deg, #667ea 0%, #764ba2 100%);
+        color: white !important;
         transform: none;
+        cursor: not-allowed;
+        opacity: 1;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .btn-primary:disabled:hover {
+        transform: none;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
     }
     
     /* Form Check */
