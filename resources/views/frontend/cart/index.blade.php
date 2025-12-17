@@ -386,6 +386,21 @@
             box-shadow: 0 2px 8px rgba(155, 139, 122, 0.08);
         }
 
+        .quantity-input {
+            color: var(--primary) !important;
+            background: #fff !important;
+            border: 1.5px solid var(--border) !important;
+            box-shadow: none !important;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .quantity-input:focus {
+            color: var(--primary) !important;
+            box-shadow: 0 0 0 0.2rem rgba(116, 96, 75, 0.15) !important;
+            outline: none;
+        }
+
         /* Button Styles */
         .btn-outline-secondary {
             border-color: var(--border);

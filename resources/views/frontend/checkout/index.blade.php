@@ -396,6 +396,8 @@
         // Initialize Stripe
         const stripe = Stripe('{{ setting('payments.stripe_key') }}');
         const elements = stripe.elements();
+        let cardComplete = false;
+        let isProcessing = false;
 
         // Create card element
         const cardElement = elements.create('card', {
@@ -422,10 +424,14 @@
             if (event.error) {
                 displayError.textContent = event.error.message;
                 displayError.style.display = 'block';
+                cardComplete = false;
             } else {
                 displayError.textContent = '';
                 displayError.style.display = 'none';
+                cardComplete = event.complete === true;
             }
+
+            togglePlaceOrderAvailability();
         });
 
         // Same as billing address toggle
@@ -484,18 +490,95 @@
             }
         });
 
+        function getTrimmedValue(selector) {
+            const val = $(selector).val();
+            return val ? val.toString().trim() : '';
+        }
+
+        function resetPlaceOrderButton(customText) {
+            const btn = $('#place-order-btn');
+            const fallback = '<i class="bi bi-check-circle"></i> Place Order';
+            const text = customText || btn.data('original-text') || fallback;
+            btn.html(text);
+            btn.prop('disabled', false);
+            btn.css('color', 'white');
+            isProcessing = false;
+        }
+
+        function setProcessingState() {
+            const btn = $('#place-order-btn');
+            if (!btn.data('original-text')) {
+                btn.data('original-text', btn.html());
+            }
+            btn.html('<i class="bi bi-hourglass-split"></i>&nbsp;Processing...');
+            btn.prop('disabled', true);
+            btn.css('color', 'white');
+            isProcessing = true;
+        }
+
+        function isBasicFormValid() {
+            const requiredFields = [
+                'billing_first_name', 'billing_last_name', 'billing_email', 'billing_phone',
+                'billing_address', 'billing_city', 'billing_zip', 'billing_country',
+                'payment_method'
+            ];
+
+            let valid = true;
+            requiredFields.forEach(field => {
+                if (!getTrimmedValue(`#${field}`)) {
+                    valid = false;
+                }
+            });
+
+            // Billing state
+            const billingStateSelect = $('#billing_state');
+            const billingStateText = $('#billing_state_text');
+            if (billingStateSelect.is(':visible') && billingStateSelect.attr('name') === 'billing_address[state]') {
+                if (!billingStateSelect.val()) valid = false;
+            } else if (billingStateText.is(':visible') && billingStateText.attr('name') === 'billing_address[state]') {
+                if (!getTrimmedValue('#billing_state_text')) valid = false;
+            }
+
+            // Shipping when not same as billing
+            if (!$('#same_as_billing').is(':checked')) {
+                const shippingFields = [
+                    'shipping_first_name', 'shipping_last_name', 'shipping_address',
+                    'shipping_city', 'shipping_zip', 'shipping_country'
+                ];
+                shippingFields.forEach(field => {
+                    if (!getTrimmedValue(`#${field}`)) {
+                        valid = false;
+                    }
+                });
+
+                const shippingStateSelect = $('#shipping_state');
+                const shippingStateText = $('#shipping_state_text');
+                if (shippingStateSelect.is(':visible') && shippingStateSelect.attr('name') === 'shipping_address[state]') {
+                    if (!shippingStateSelect.val()) valid = false;
+                } else if (shippingStateText.is(':visible') && shippingStateText.attr('name') === 'shipping_address[state]') {
+                    if (!getTrimmedValue('#shipping_state_text')) valid = false;
+                }
+            }
+
+            if ($('#payment_method').val() === 'stripe' && !cardComplete) {
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        function togglePlaceOrderAvailability() {
+            if (isProcessing) return; // don't override while processing
+            const btn = $('#place-order-btn');
+            btn.prop('disabled', !isBasicFormValid());
+        }
+
         // Form validation and submission
         $('#checkout-form').submit(function(e) {
             e.preventDefault();
 
             const submitBtn = $('#place-order-btn');
-            const originalText = submitBtn.html();
             const paymentMethod = $('#payment_method').val();
-
-            // Show loading state
-            submitBtn.html('<i class="bi bi-hourglass-split"></i>&nbsp;Processing...');
-            submitBtn.prop('disabled', true);
-            submitBtn.css('color', 'white');
 
             // Basic validation
             const requiredFields = [
@@ -506,7 +589,7 @@
 
             let isValid = true;
             requiredFields.forEach(field => {
-                const value = $(`#${field}`).val().trim();
+                const value = getTrimmedValue(`#${field}`);
                 if (!value) {
                     $(`#${field}`).addClass('is-invalid');
                     isValid = false;
@@ -514,6 +597,10 @@
                     $(`#${field}`).removeClass('is-invalid');
                 }
             });
+
+            if (paymentMethod === 'stripe' && !cardComplete) {
+                isValid = false;
+            }
 
             // Special validation for state fields
             const billingStateSelect = $('#billing_state');
@@ -531,7 +618,7 @@
                 }
             } else if (billingStateText.is(':visible') && billingStateText.attr('name') ===
                 'billing_address[state]') {
-                if (!billingStateText.val().trim()) {
+                if (!getTrimmedValue('#billing_state_text')) {
                     billingStateText.addClass('is-invalid');
                     isValid = false;
                 } else {
@@ -547,7 +634,7 @@
                 ];
 
                 shippingFields.forEach(field => {
-                    const value = $(`#${field}`).val().trim();
+                    const value = getTrimmedValue(`#${field}`);
                     if (!value) {
                         $(`#${field}`).addClass('is-invalid');
                         isValid = false;
@@ -567,7 +654,7 @@
                     }
                 } else if (shippingStateText.is(':visible') && shippingStateText.attr('name') ===
                     'shipping_address[state]') {
-                    if (!shippingStateText.val().trim()) {
+                    if (!getTrimmedValue('#shipping_state_text')) {
                         shippingStateText.addClass('is-invalid');
                         isValid = false;
                     } else {
@@ -577,12 +664,14 @@
             }
 
             if (!isValid) {
-                showToast('Please fill in all required fields', 'warning');
-                submitBtn.html(originalText);
-                submitBtn.prop('disabled', false);
-                submitBtn.css('color', 'white');
+                showToast('Please fill the form', 'warning');
+                resetPlaceOrderButton();
+                togglePlaceOrderAvailability();
                 return false;
             }
+
+            // Show loading state only after validation passes
+            setProcessingState();
 
             // If same as billing, copy billing to shipping
             if ($('#same_as_billing').is(':checked')) {
@@ -614,9 +703,9 @@
                         errorElement.textContent = result.error.message;
                         errorElement.style.display = 'block';
 
-                        submitBtn.html(originalText);
-                        submitBtn.prop('disabled', false);
+                        resetPlaceOrderButton();
                         showToast('Payment error: ' + result.error.message, 'error');
+                        togglePlaceOrderAvailability();
                     } else {
                         // Set payment token and submit form
                         $('#payment_token').val(result.paymentMethod.id);
@@ -657,6 +746,9 @@
                             console.log('Parsed response:', response);
                         } catch (e) {
                             console.error('Failed to parse response as JSON:', e);
+                            showToast('Could not process the response. Please try again.', 'error');
+                            resetPlaceOrderButton();
+                            togglePlaceOrderAvailability();
                             return;
                         }
                     }
@@ -692,8 +784,8 @@
                             } else {
                                 console.error('No redirect URL found in response');
                                 showToast('Error: No PayPal URL found', 'error');
-                                $('#place-order-btn').html('<i class="bi bi-check-circle"></i> Place Order');
-                                $('#place-order-btn').prop('disabled', false);
+                                resetPlaceOrderButton();
+                                togglePlaceOrderAvailability();
                                 return; // Prevent fallthrough to confirmation page
                             }
                         } else {
@@ -707,9 +799,8 @@
                         }
                     } else {
                         showToast(response.message || 'Order failed. Please try again.', 'error');
-                        $('#place-order-btn').html('<i class="bi bi-check-circle"></i> Place Order');
-                        $('#place-order-btn').prop('disabled', false);
-                        $('#place-order-btn').css('color', 'white');
+                        resetPlaceOrderButton();
+                        togglePlaceOrderAvailability();
                     }
                 },
                 error: function(xhr) {
@@ -718,12 +809,19 @@
                         message = xhr.responseJSON.message;
                     }
                     showToast(message, 'error');
-                    $('#place-order-btn').html('<i class="bi bi-check-circle"></i> Place Order');
-                    $('#place-order-btn').prop('disabled', false);
-                    $('#place-order-btn').css('color', 'white');
+                    resetPlaceOrderButton();
+                    togglePlaceOrderAvailability();
                 }
             });
         }
+
+        // Live enable/disable of Place Order based on required fields
+        $('#checkout-form input, #checkout-form select, #checkout-form textarea').on('input change', function() {
+            togglePlaceOrderAvailability();
+        });
+
+        // Initial toggle on load
+        togglePlaceOrderAvailability();
 
         // Toast notification function
         function showToast(message, type = 'info') {
