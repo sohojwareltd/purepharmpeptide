@@ -1063,12 +1063,19 @@ class CartService
     public function getItemsWithProducts()
     {
         $items = $this->getItems();
-        $productIds = array_column($items, 'product_id');
         
-        $products = Product::whereIn('id', $productIds)->get()->keyBy('id');
+        if (empty($items)) {
+            return $items;
+        }
+        
+        $productIds = array_column($items, 'product_id');
+        $products = Product::whereIn('id', $productIds)
+            ->select('id', 'name', 'sku', 'price', 'image_url', 'stock', 'track_quantity')
+            ->get()
+            ->keyBy('id');
         
         foreach ($items as &$item) {
-            $item['product'] = $products->get($item['product_id']);
+            $item['product'] = $products->get($item['product_id'], []);
         }
         
         return $items;

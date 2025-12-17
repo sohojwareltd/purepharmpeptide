@@ -14,8 +14,11 @@ class CartController extends Controller
      */
     public function index()
     {
+        // Get all cart data in one call to avoid recalculating
         $cart = Cart::getSummary();
-        $cartItems = Cart::getItemsWithProducts();
+        
+        // getSummary already contains items, use them directly
+        $cartItems = $cart['items'] ?? Cart::getItemsWithProducts();
         $subtotal = $cart['subtotal'];
         $discount = $cart['discount'];
         $tax = $cart['tax'];
@@ -91,21 +94,21 @@ class CartController extends Controller
             $result = Cart::updateByItemId($request->item_id, $request->quantity);
 
             if ($result['success']) {
+                // Get summary once instead of calling getSummary then getItemsWithProducts separately
                 $cartSummary = Cart::getSummary();
-                $cartItems = Cart::getItemsWithProducts();
                 
                 return response()->json([
                     'success' => true,
                     'message' => 'Cart updated successfully!',
-                    'cart_count' => Cart::getItemCount(),
-                    'cart_total' => Cart::getTotal(),
+                    'cart_count' => $result['cart_count'],
+                    'cart_total' => $result['cart_total'],
                     'item_total' => $result['item_total'],
                     'subtotal' => $cartSummary['subtotal'],
                     'discount' => $cartSummary['discount'],
                     'tax' => $cartSummary['tax'],
                     'shipping' => $cartSummary['shipping'],
                     'total' => $cartSummary['total'],
-                    'cart_items' => $cartItems,
+                    'cart_items' => $cartSummary['items'] ?? Cart::getItemsWithProducts(),
                 ]);
             } else {
                 return response()->json([

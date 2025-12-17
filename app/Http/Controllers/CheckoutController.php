@@ -39,9 +39,13 @@ class CheckoutController extends Controller
             $user->last_name = $nameParts[1] ?? '';
         }
 
-        // Pass all countries and states for dynamic dropdowns
-        $countries = \App\Models\Country::orderBy('name')->get();
-        $states = \App\Models\State::orderBy('name')->get();
+        // Pass all countries and states for dynamic dropdowns (with optimizations)
+        $countries = \App\Models\Country::select('id', 'name', 'iso2')
+            ->orderBy('name')
+            ->get();
+        $states = \App\Models\State::select('id', 'name', 'country_id')
+            ->orderBy('name')
+            ->get();
 
         return view('frontend.checkout.index', compact('cart', 'paymentMethodsArray', 'user', 'countries', 'states'));
     }
