@@ -40,7 +40,7 @@
                     <!-- Search -->
                     <form method="GET" action="{{ route('products.index') }}"
                         class="search-form card border-0 shadow-sm mb-3">
-                        <div class="card-header text-white"
+                        <div class="card-header text-white p-2"
                             style="background: var(--primary); border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
                             <h6 class="mb-0 d-flex align-items-center text-white">
                                 <i class="bi bi-search me-2"></i>Name / Sequence / Catalog No.
@@ -59,7 +59,7 @@
 
                     <!-- Filters -->
                     <div class="card border-0 shadow-sm">
-                        <div class="card-header text-white" style="background: var(--primary);">
+                        <div class="card-header text-white p-2" style="background: var(--primary);">
                             <h6 class="mb-0 text-white">
                                 <i class="bi bi-funnel me-2"></i>Filters
                             </h6>

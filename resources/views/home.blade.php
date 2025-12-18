@@ -349,27 +349,30 @@
 
         .heroCarousel .swiper-button-next,
         .heroCarousel .swiper-button-prev {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
+            background: none;
+            backdrop-filter: none;
+            width: auto;
+            height: auto;
+            border-radius: 0;
             color: white;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: color 0.2s ease;
+            border: none;
+            padding: 4px;
+            box-shadow: none;
         }
 
         .heroCarousel .swiper-button-next:hover,
         .heroCarousel .swiper-button-prev:hover {
-            background: rgba(255, 255, 255, 0.35);
-            transform: scale(1.1);
-            border-color: rgba(255, 255, 255, 0.5);
+            background: none;
+            transform: none;
+            border-color: transparent;
+            color: #d7e8ff;
         }
 
         .heroCarousel .swiper-button-next:after,
         .heroCarousel .swiper-button-prev:after {
-            font-size: 20px;
-            font-weight: bold;
+            font-size: 26px;
+            font-weight: 700;
         }
 
         .heroCarousel .swiper-pagination {
@@ -478,13 +481,12 @@
 
             .heroCarousel .swiper-button-next,
             .heroCarousel .swiper-button-prev {
-                width: 40px;
-                height: 40px;
+                padding: 2px;
             }
 
             .heroCarousel .swiper-button-next:after,
             .heroCarousel .swiper-button-prev:after {
-                font-size: 16px;
+                font-size: 22px;
             }
         }
     </style>

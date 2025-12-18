@@ -37,8 +37,8 @@
          */
         :root {
             /* ========== BRAND COLORS ========== */
-            --primary: #0066FF;
-            --primary-light: #3385FF;
+            --primary: #095edecc;
+            --primary-light: #3471cc;
             --primary-dark: #0052CC;
             --primary-rgb: 0, 102, 255;
             
