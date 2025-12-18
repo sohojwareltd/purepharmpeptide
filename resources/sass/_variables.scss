@@ -1,44 +1,52 @@
-// Theme Colors - Updated Blue Palette
-$primary: #0483c6; // Light blue as primary
-$primary-dark: #0483c6; // Silver as primary dark
-$secondary: #6e6f72; // Non-photo blue as secondary
-$accent: #0483c6; // Silver as accent
-$success: #04e155; // Light blue as success
-$danger: #fd2f05; // Silver as danger (muted)
-$warning: #edf579; // Non-photo blue as warning
-$info: #71dcf2; // Light blue as info
-$light: #FFFFFF; // White as light
-$dark: #000000; // Black as dark
+// Theme Colors - Professional Blue & Charcoal Palette
+$primary: #0066FF; // Blue as primary
+$primary-dark: #0052CC; // Darker blue
+$secondary: #0F172A; // Deep charcoal navy
+$accent: #FF6B35; // Vibrant orange as accent
+$success: #10B981; // Green success
+$danger: #EF4444; // Modern red
+$warning: #F59E0B; // Gold warning
+$info: #06B6D4; // Cyan info
+$light: #F8FAFC; // Light background
+$dark: #0F172A; // Dark
 $body-bg: #FFFFFF;
-$body-color: #000000;
-$border-color: #AAB6B9;
+$body-color: #1E293B;
+$border-color: #E2E8F0;
 
 // Body
 $body-bg: #FFFFFF;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
+$font-family-sans-serif: 'Inter', 'Nunito', sans-serif;
+$font-size-base: 0.95rem;
 $line-height-base: 1.6;
 
 // Additional color variables for the new palette
-$black: #000000;
-$non-photo-blue: #79e2f5;
-$silver: #AAB6B9;
+$black: #0F172A;
+$blue: #0066FF;
+$blue-light: #3385FF;
+$orange: #FF6B35;
 $white: #FFFFFF;
-$light-blue: #8aa3a8;
+$slate: #64748B;
 
 // CSS Custom Properties (for use in components)
 :root {
-  --primary: #004FEF;
-  --secondary: #001A4D;
-  --accent: #8F92A2;
-  --light: #f9f9f9;
-  --dark: #111;
-  --border: #dee2e6;
-  --text: #6D6E71;
-  --transition: all 0.3s ease;
-  --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
-  --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.12);
-  --shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --primary: #0066FF;
+  --primary-light: #3385FF;
+  --primary-dark: #0052CC;
+  --secondary: #0F172A;
+  --secondary-light: #1E293B;
+  --accent: #FF6B35;
+  --accent-light: #FF8F66;
+  --light: #F8FAFC;
+  --light-blue: #EBF5FF;
+  --dark: #0F172A;
+  --border: #E2E8F0;
+  --text: #475569;
+  --text-dark: #1E293B;
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  --shadow-emerald: 0 20px 40px rgba(5, 150, 105, 0.15);
 }

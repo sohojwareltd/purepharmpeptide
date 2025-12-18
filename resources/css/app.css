@@ -10,24 +10,26 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-/* Custom styles for Eterna Reads */
+/* Custom styles for Purepharmpeptide - Blue Theme */
 :root {
-    --primary: #0082CA;
-    --primary-dark: #7A6B5A;
-    --secondary-color: #A8B5A0;
-    --accent-color: #D4C4B7;
-    --success-color: #8BA892;
-    --danger-color: #B87A7A;
-    --warning-color: #D4B483;
-    --info-color: #8BA8B5;
-    --light-bg: #FAF9F7;
-    --border-color: #E8E0D8;
-    --text-muted: #8A7F72;
-    --text-dark: #4A3F35;
+    --primary: #0066FF;
+    --primary-light: #3385FF;
+    --primary-dark: #0052CC;
+    --secondary-color: #0F172A;
+    --accent-color: #FF6B35;
+    --success-color: #10B981;
+    --danger-color: #EF4444;
+    --warning-color: #F59E0B;
+    --info-color: #06B6D4;
+    --light-bg: #F8FAFC;
+    --light-blue: #EBF5FF;
+    --border-color: #E2E8F0;
+    --text-muted: #64748B;
+    --text-dark: #1E293B;
     --white: #FFFFFF;
-    --shadow-soft: 0 2px 8px rgba(155, 139, 122, 0.08);
-    --shadow-medium: 0 4px 16px rgba(155, 139, 122, 0.12);
-    --shadow-strong: 0 8px 32px rgba(155, 139, 122, 0.16);
+    --shadow-soft: 0 2px 8px rgba(0, 102, 255, 0.06);
+    --shadow-medium: 0 4px 16px rgba(0, 102, 255, 0.1);
+    --shadow-strong: 0 8px 32px rgba(0, 102, 255, 0.15);
 }
 
 /* Carousel Styling */
@@ -219,7 +221,7 @@
 .btn:focus,
 .form-control:focus,
 .form-select:focus {
-    box-shadow: 0 0 0 0.2rem rgba(155, 139, 122, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(5, 150, 105, 0.2);
 }
 
 /* Accessibility */
@@ -262,7 +264,7 @@
 .product-card-premium {
     background: linear-gradient(135deg, #fff 80%, var(--light-bg) 100%);
     border-radius: 1.5rem;
-    box-shadow: 0 6px 32px 0 rgba(155, 139, 122, 0.10), 0 1.5px 6px 0 rgba(155, 139, 122, 0.06);
+    box-shadow: 0 6px 32px 0 rgba(5, 150, 105, 0.08), 0 1.5px 6px 0 rgba(5, 150, 105, 0.04);
     border: 1.5px solid var(--border-color);
     transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
     overflow: hidden;
@@ -273,7 +275,7 @@
 }
 
 .product-card-premium:hover {
-    box-shadow: 0 16px 48px 0 rgba(155, 139, 122, 0.18), 0 4px 16px 0 rgba(155, 139, 122, 0.10);
+    box-shadow: 0 16px 48px 0 rgba(5, 150, 105, 0.15), 0 4px 16px 0 rgba(5, 150, 105, 0.08);
     border-color: var(--primary);
     transform: translateY(-6px) scale(1.015);
 }
@@ -297,8 +299,8 @@
     max-height: 220px;
     object-fit: cover;
     border-radius: 1rem;
-    box-shadow: 0 2px 12px rgba(155, 139, 122, 0.07);
-    background: #f8f7f5;
+    box-shadow: 0 2px 12px rgba(5, 150, 105, 0.06);
+    background: #f8fafb;
     transition: transform 0.3s;
     display: block;
     margin: 0 auto;
@@ -359,13 +361,13 @@
 }
 
 .badge-premium {
-    background: linear-gradient(90deg, var(--accent-color) 60%, var(--secondary-color) 100%);
-    color: var(--primary-dark);
+    background: linear-gradient(90deg, var(--accent-color) 60%, var(--primary) 100%);
+    color: #FFFFFF;
     font-size: 0.85rem;
     font-weight: 600;
     border-radius: 0.75rem;
     padding: 0.45em 1.1em;
-    box-shadow: 0 2px 8px rgba(155, 139, 122, 0.08);
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.1);
     letter-spacing: 0.01em;
     border: none;
 }
@@ -374,7 +376,7 @@
     font-size: 1.08rem;
     font-weight: 600;
     border-radius: 0.75rem;
-    box-shadow: 0 2px 8px rgba(155, 139, 122, 0.07);
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.08);
     transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 
@@ -415,15 +417,15 @@
 }
 
 .btn-premium {
-    background: linear-gradient(90deg, var(--primary) 60%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: var(--white);
     border: none;
     border-radius: 2rem;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.08rem;
     font-weight: 600;
     padding: 0.85rem 1.5rem;
-    box-shadow: 0 4px 18px 0 rgba(155, 139, 122, 0.10);
+    box-shadow: 0 4px 18px 0 rgba(5, 150, 105, 0.15);
     letter-spacing: 0.01em;
     transition: background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.18s;
     display: flex;
@@ -434,15 +436,15 @@
 
 .btn-premium:hover,
 .btn-premium:focus {
-    background: linear-gradient(90deg, var(--secondary-color) 40%, var(--primary) 100%);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
     color: var(--white);
-    box-shadow: 0 8px 32px 0 rgba(155, 139, 122, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(5, 150, 105, 0.25);
     transform: translateY(-2px) scale(1.03);
     text-decoration: none;
 }
 
 .btn-premium:active {
-    background: linear-gradient(90deg, var(--primary-dark) 60%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
     color: var(--white);
     transform: scale(0.98);
 }
