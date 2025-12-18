@@ -35,7 +35,7 @@
             <h2 class="section-title">Explore Our Products</h2>
             <!-- Sidebar Filters (Desktop) -->
             <div class="col-lg-3 mb-4 d-none d-lg-block">
-                <div class="position-sticky" style="top: 70px;"> <!-- one sticky wrapper -->
+                <div class="position-sticky" style="top: 70px;">
 
                     <!-- Search -->
                     <form method="GET" action="{{ route('products.index') }}"
