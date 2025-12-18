@@ -208,8 +208,9 @@
 
                             <!-- Action Buttons -->
                             <div class="d-grid gap-2">
-                                <a href="{{ route('checkout.index') }}" class="btn btn-premium btn-lg fw-bold">
-                                    <i class="bi bi-credit-card me-2"></i>Proceed to Checkout
+                                <a href="{{ route('checkout.index') }}" class="btn btn-premium fw-bold d-flex align-items-center justify-content-center gap-2 text-center">
+                                    <i class="bi bi-credit-card"></i>
+                                    <span>Proceed to Checkout</span>
                                 </a>
                                 <a href="{{ route('products.index') }}" class="btn btn-outline-secondary btn-lg">
                                     <i class="bi bi-arrow-left me-2"></i>Continue Shopping

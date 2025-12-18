@@ -774,8 +774,7 @@ h6 {
     border-color: var(--primary);
 }
 
-flex-grow: 1;
-}
+
 
 /* Product Name */
 .product-card .product-name {
@@ -822,19 +821,46 @@ flex-grow: 1;
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.promo-card::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -10%;
+    width: 60%;
+    height: 140%;
+    background: radial-gradient(closest-side, rgba(255,255,255,0.25), rgba(255,255,255,0) 70%);
+    transform: rotate(18deg);
+    pointer-events: none;
+}
+
+.promo-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0));
+    pointer-events: none;
 }
 
 .promo-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
 }
 
 .promo-title {
-    font-size: 1.5rem;
+    font-size: 1.65rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: #fff;
     position: relative;
     z-index: 1;
+    letter-spacing: 0.3px;
 }
 
 .promo-description {
@@ -864,7 +890,7 @@ flex-grow: 1;
     }
 
     .promo-title {
-        font-size: 1.35rem;
+        font-size: 1.4rem;
     }
 
     .promo-description {
@@ -900,10 +926,7 @@ flex-grow: 1;
     line-height: 1.7;
 }
 
-background: linear-gradient(90deg, var(--primary), var(--accent));
-margin: 18px auto 0;
-border-radius: 2px;
-}
+
 
 /* How It Works Cards - Clean Premium */
 .how-it-works-card {
@@ -917,11 +940,13 @@ border-radius: 2px;
     position: relative;
     overflow: hidden;
     border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .how-it-works-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    transform: none;
     border-color: transparent;
 }
 
@@ -930,6 +955,7 @@ border-radius: 2px;
     font-weight: 700;
     color: var(--secondary);
     margin-bottom: 12px;
+    text-align: center;
 }
 
 .how-it-works-card p {
@@ -937,6 +963,7 @@ border-radius: 2px;
     font-size: 0.95rem;
     line-height: 1.7;
     margin: 0;
+    text-align: center;
 }
 
 .icon-wrapper {
@@ -1202,13 +1229,12 @@ border-radius: 2px;
 .faq-section {
     max-width: 900px !important;
     margin: 0 auto;
-    padding: 100px 20px;
+    padding: 60px 20px;
 }
 
 .faq-section h2 {
     font-weight: 800;
     color: var(--secondary);
-    margin-bottom: 50px;
     text-align: center;
 }
 
@@ -1226,7 +1252,7 @@ border-radius: 2px;
     color: var(--text-dark);
     background: transparent;
     box-shadow: none;
-    padding: 24px 0;
+    padding: 14px 0;
     font-size: 1rem;
     transition: var(--transition);
     border-radius: 0 !important;
@@ -1252,7 +1278,7 @@ border-radius: 2px;
     font-size: 0.95rem;
     color: var(--text);
     line-height: 1.8;
-    padding: 0 0 24px 0;
+    padding: 0 0 12px 0;
     background: transparent;
 }
 

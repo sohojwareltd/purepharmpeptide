@@ -173,7 +173,7 @@
 
             <!-- Action Buttons -->
             <div class="text-center">
-                <a href="{{ route('checkout.order-details', $order->id) }}" class="btn btn-primary me-2">
+                <a href="{{ route('checkout.order-details', $order->id) }}" class="btn btn-primary me-2 text-white">
                     <i class="bi bi-eye"></i> View Order Details
                 </a>
                 <a href="{{ route('checkout.download-invoice', $order->id) }}" class="btn btn-outline-secondary me-2">

@@ -16,10 +16,10 @@
                     <p class="text-muted mb-0">Welcome back, {{ Auth::user()->name }}!</p>
                 </div>
                 <div class="d-flex gap-2">
-                    <a href="{{ route('user.profile') }}" class="btn btn-outline-primary">
+                    <a href="{{ route('user.profile') }}" class="btn btn-primary text-white">
                         <i class="fas fa-user-edit me-2"></i>Edit Profile
                     </a>
-                    <a href="{{ route('user.orders.index') }}" class="btn btn-primary">
+                    <a href="{{ route('user.orders.index') }}" class="btn btn-primary text-white">
                         <i class="fas fa-box-open me-2"></i>View Orders
                     </a>
                 </div>
