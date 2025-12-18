@@ -200,12 +200,17 @@
             text-decoration: none;
             white-space: nowrap;
             border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
         }
 
         .navbar-nav .nav-link:hover,
         .navbar-nav .nav-link.active {
             color: var(--primary) !important;
             background: var(--light-blue);
+            box-shadow: 0 8px 18px rgba(0, 102, 255, 0.048);
         }
 
         /* Clean Search Box */
