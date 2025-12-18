@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             // SliderSeeder::class,
             FaqSeeder::class,
             MenuSeeder::class,
+            HeroSlideSeeder::class,
          
             // ShippingZoneSeeder::class,
             // CountryShippingZoneSeeder::class,

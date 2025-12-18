@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\HeroSlide;
 use App\Models\NewsletterSubscription;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -14,6 +15,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Get active hero slides ordered by order field
+        $heroSlides = HeroSlide::active()
+            ->ordered()
+            ->get();
 
         $products = Product::where('is_active', true)
             ->where('is_featured', true)
@@ -29,7 +34,7 @@ class HomeController extends Controller
                 ->get();
         }
 
-        return view('home', compact('products'));
+        return view('home', compact('products', 'heroSlides'));
     }
     public function store(Request $request)
     {

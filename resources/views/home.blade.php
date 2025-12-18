@@ -11,31 +11,26 @@
             </div>
         </div>
 
+        @php
+            // Ensure $heroSlides is always defined to avoid undefined variable errors
+            $heroSlides = $heroSlides ?? collect();
+        @endphp
+
         <!-- Hero Carousel Slider -->
         <section class="hero-carousel-section">
             <div class="swiper heroCarousel">
                 <div class="swiper-wrapper">
-                    @foreach($products as $product)
+                    @foreach($heroSlides as $slide)
                     <div class="swiper-slide">
-                        <div class="hero-slide">
+                        <div class="hero-slide" style="background-image: url('{{ $slide->image_url }}')">
+                            <div class="hero-slide-overlay"></div>
                             <div class="container">
-                                <div class="row align-items-center">
-                                    <!-- Left Side: Text Content -->
-                                    <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-7">
                                         <div class="hero-slide-content">
-                                            <h1 class="hero-slide-title" data-swiper-parallax="-300">{{ $product->name }}</h1>
-                                            <p class="hero-slide-subtitle" data-swiper-parallax="-200">{{ Str::limit(strip_tags($product->description), 120) }}</p>
-                                            <div class="hero-slide-price" data-swiper-parallax="-150">
-                                                <span class="price-label">Starting from</span>
-                                                <span class="price-amount">${{ number_format($product->price, 2) }}</span>
-                                            </div>
-                                            <a href="{{ route('products.show', $product->slug) }}" class="btn btn-premium hero-slide-cta" data-swiper-parallax="-100">View Product</a>
-                                        </div>
-                                    </div>
-                                    <!-- Right Side: Product Image -->
-                                    <div class="col-lg-6">
-                                        <div class="hero-slide-image" data-swiper-parallax="-200">
-                                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="img-fluid">
+                                            <h1 class="hero-slide-title" data-swiper-parallax="-300">{{ $slide->title }}</h1>
+                                            <p class="hero-slide-subtitle" data-swiper-parallax="-200">{{ $slide->subtitle }}</p>
+                                            <a href="{{ $slide->button_link }}" class="btn btn-premium hero-slide-cta" data-swiper-parallax="-100">{{ $slide->button_text }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -255,100 +250,92 @@
 .hero-carousel-section {
     position: relative;
     width: 100%;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 60px 0;
+    height: 550px;
+    overflow: hidden;
 }
 
 .heroCarousel {
     width: 100%;
+    height: 100%;
 }
 
 .hero-slide {
     width: 100%;
-    padding: 40px 0;
+    height: 550px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.75) 0%, rgba(10, 22, 40, 0.85) 100%);
+    z-index: 1;
 }
 
 .hero-slide-content {
-    padding: 2rem 2rem 2rem 0;
+    position: relative;
+    z-index: 2;
+    padding: 3rem 2rem;
 }
 
 .hero-slide-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     margin-bottom: 1.5rem;
-    line-height: 1.2;
-    color: var(--secondary);
+    line-height: 1.1;
+    color: white;
+    text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .hero-slide-subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    margin-bottom: 1.5rem;
-    color: #6c757d;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.95);
     line-height: 1.6;
-}
-
-.hero-slide-price {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
-}
-
-.hero-slide-price .price-label {
-    font-size: 1rem;
-    color: #6c757d;
-    font-weight: 400;
-}
-
-.hero-slide-price .price-amount {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--primary);
-}
-
-.hero-slide-image {
-    padding: 2rem;
-    text-align: center;
-}
-
-.hero-slide-image img {
-    max-height: 450px;
-    width: auto;
-    max-width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-}
-
-.hero-slide-image img:hover {
-    transform: scale(1.05);
+    max-width: 600px;
 }
 
 .hero-slide-cta {
     display: inline-block;
-    padding: 1rem 2.5rem;
+    padding: 1.2rem 3rem;
     font-size: 1.1rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.hero-slide-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .heroCarousel .swiper-button-next,
 .heroCarousel .swiper-button-prev {
-    background: var(--primary);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     width: 55px;
     height: 55px;
     border-radius: 50%;
     color: white;
     transition: all 0.3s ease;
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .heroCarousel .swiper-button-next:hover,
 .heroCarousel .swiper-button-prev:hover {
-    background: var(--primary-dark);
+    background: rgba(255, 255, 255, 0.35);
     transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .heroCarousel .swiper-button-next:after,
@@ -358,44 +345,39 @@
 }
 
 .heroCarousel .swiper-pagination {
-    bottom: 10px;
+    bottom: 30px;
 }
 
 .heroCarousel .swiper-pagination-bullet {
     width: 14px;
     height: 14px;
-    background: var(--primary);
-    opacity: 0.3;
+    background: white;
+    opacity: 0.5;
     transition: all 0.3s ease;
 }
 
 .heroCarousel .swiper-pagination-bullet-active {
     opacity: 1;
     transform: scale(1.4);
-    background: var(--primary);
+    background: white;
 }
 
 @media (max-width: 768px) {
-    .hero-carousel-section {
-        padding: 30px 0;
-    }
-    
+    .hero-carousel-section,
     .hero-slide {
-        padding: 20px 0;
+        height: 450px;
     }
     
     .hero-slide-content {
-        padding: 1rem;
-        text-align: center;
+        padding: 2rem 1.5rem;
     }
     
-    .hero-slide-image {
-        padding: 1rem;
-        margin-top: 2rem;
+    .hero-slide-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
     }
     
-    .hero-slide-image img {
-        max-height: 300px;
+    .hero-slide-subtitle {
+        font-size: 1rem;
     }
     
     .heroCarousel .swiper-button-next,
@@ -423,7 +405,7 @@
             spaceBetween: 0,
             loop: true,
             autoplay: {
-                delay: 6000,
+                delay: 4000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
             },
