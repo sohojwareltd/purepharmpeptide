@@ -15,41 +15,29 @@
         <section class="hero-carousel-section">
             <div class="swiper heroCarousel">
                 <div class="swiper-wrapper">
-                    @php
-                        $carouselSlides = [
-                            [
-                                'title' => 'Premium Quality Peptides',
-                                'subtitle' => 'Research-grade peptides for your scientific needs',
-                                'image' => 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1920&q=80',
-                                'cta_text' => 'Explore Products',
-                                'cta_link' => route('products.index'),
-                            ],
-                            [
-                                'title' => 'Fast & Secure Shipping',
-                                'subtitle' => 'Worldwide delivery with temperature control',
-                                'image' => 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1920&q=80',
-                                'cta_text' => 'Learn More',
-                                'cta_link' => route('products.index'),
-                            ],
-                            [
-                                'title' => 'Expert Support 24/7',
-                                'subtitle' => 'Our team is here to assist you anytime',
-                                'image' => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&q=80',
-                                'cta_text' => 'Contact Us',
-                                'cta_link' => route('products.index'),
-                            ],
-                        ];
-                    @endphp
-                    
-                    @foreach($carouselSlides as $slide)
+                    @foreach($products as $product)
                     <div class="swiper-slide">
-                        <div class="hero-slide" style="background-image: url('{{ $slide['image'] }}')">
-                            <div class="hero-slide-overlay"></div>
+                        <div class="hero-slide">
                             <div class="container">
-                                <div class="hero-slide-content">
-                                    <h1 class="hero-slide-title" data-swiper-parallax="-300">{{ $slide['title'] }}</h1>
-                                    <p class="hero-slide-subtitle" data-swiper-parallax="-200">{{ $slide['subtitle'] }}</p>
-                                    <a href="{{ $slide['cta_link'] }}" class="btn btn-premium hero-slide-cta" data-swiper-parallax="-100">{{ $slide['cta_text'] }}</a>
+                                <div class="row align-items-center">
+                                    <!-- Left Side: Text Content -->
+                                    <div class="col-lg-6">
+                                        <div class="hero-slide-content">
+                                            <h1 class="hero-slide-title" data-swiper-parallax="-300">{{ $product->name }}</h1>
+                                            <p class="hero-slide-subtitle" data-swiper-parallax="-200">{{ Str::limit(strip_tags($product->description), 120) }}</p>
+                                            <div class="hero-slide-price" data-swiper-parallax="-150">
+                                                <span class="price-label">Starting from</span>
+                                                <span class="price-amount">${{ number_format($product->price, 2) }}</span>
+                                            </div>
+                                            <a href="{{ route('products.show', $product->slug) }}" class="btn btn-premium hero-slide-cta" data-swiper-parallax="-100">View Product</a>
+                                        </div>
+                                    </div>
+                                    <!-- Right Side: Product Image -->
+                                    <div class="col-lg-6">
+                                        <div class="hero-slide-image" data-swiper-parallax="-200">
+                                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="img-fluid">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -267,42 +255,21 @@
 .hero-carousel-section {
     position: relative;
     width: 100%;
-    height: 600px;
-    overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 60px 0;
 }
 
 .heroCarousel {
     width: 100%;
-    height: 100%;
 }
 
 .hero-slide {
     width: 100%;
-    height: 600px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.hero-slide-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 102, 255, 0.7) 0%, rgba(10, 22, 40, 0.8) 100%);
-    z-index: 1;
+    padding: 40px 0;
 }
 
 .hero-slide-content {
-    position: relative;
-    z-index: 2;
-    color: white;
-    max-width: 700px;
-    padding: 2rem;
+    padding: 2rem 2rem 2rem 0;
 }
 
 .hero-slide-title {
@@ -310,15 +277,51 @@
     font-weight: 800;
     margin-bottom: 1.5rem;
     line-height: 1.2;
-    color: white;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    color: var(--secondary);
 }
 
 .hero-slide-subtitle {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.95);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    margin-bottom: 1.5rem;
+    color: #6c757d;
     line-height: 1.6;
+}
+
+.hero-slide-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.hero-slide-price .price-label {
+    font-size: 1rem;
+    color: #6c757d;
+    font-weight: 400;
+}
+
+.hero-slide-price .price-amount {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.hero-slide-image {
+    padding: 2rem;
+    text-align: center;
+}
+
+.hero-slide-image img {
+    max-height: 450px;
+    width: auto;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.hero-slide-image img:hover {
+    transform: scale(1.05);
 }
 
 .hero-slide-cta {
@@ -333,19 +336,18 @@
 
 .heroCarousel .swiper-button-next,
 .heroCarousel .swiper-button-prev {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    background: var(--primary);
     width: 55px;
     height: 55px;
     border-radius: 50%;
     color: white;
     transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: none;
 }
 
 .heroCarousel .swiper-button-next:hover,
 .heroCarousel .swiper-button-prev:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--primary-dark);
     transform: scale(1.1);
 }
 
@@ -356,14 +358,14 @@
 }
 
 .heroCarousel .swiper-pagination {
-    bottom: 30px;
+    bottom: 10px;
 }
 
 .heroCarousel .swiper-pagination-bullet {
     width: 14px;
     height: 14px;
-    background: white;
-    opacity: 0.5;
+    background: var(--primary);
+    opacity: 0.3;
     transition: all 0.3s ease;
 }
 
@@ -374,13 +376,26 @@
 }
 
 @media (max-width: 768px) {
-    .hero-carousel-section,
+    .hero-carousel-section {
+        padding: 30px 0;
+    }
+    
     .hero-slide {
-        height: 450px;
+        padding: 20px 0;
     }
     
     .hero-slide-content {
-        padding: 1.5rem;
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    .hero-slide-image {
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+    
+    .hero-slide-image img {
+        max-height: 300px;
     }
     
     .heroCarousel .swiper-button-next,
