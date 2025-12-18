@@ -121,7 +121,7 @@
             </div>
         </div>
     </div>
-    @if(env('APP_ENV') == 'local')
+    {{-- @if(env('APP_ENV') == 'local')
     <div class="row">
         <div class="col-lg-6 mx-auto mt-5">
             <div class="glass-card">
@@ -157,7 +157,7 @@
             </div>  
         </div>
     </div>
-    @endif
+    @endif --}}
 
 <!-- Authentic Glass Design Styles -->
 <style>
