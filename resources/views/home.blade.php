@@ -40,15 +40,18 @@
                         </div>
                     @empty
                         <div class="swiper-slide">
-                            <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1920x600?text=Add+Hero+Slides')">
+                            <div class="hero-slide"
+                                style="background-image: url('https://via.placeholder.com/1920x600?text=Add+Hero+Slides')">
                                 <div class="hero-slide-overlay"></div>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-7">
                                             <div class="hero-slide-content">
                                                 <h1 class="hero-slide-title">Welcome to Pure Pharm Peptide</h1>
-                                                <p class="hero-slide-subtitle">Add hero slides from the admin to showcase promotions.</p>
-                                                <a href="{{ route('products.index') }}" class="btn btn-premium hero-slide-cta">
+                                                <p class="hero-slide-subtitle">Add hero slides from the admin to showcase
+                                                    promotions.</p>
+                                                <a href="{{ route('products.index') }}"
+                                                    class="btn btn-premium hero-slide-cta">
                                                     Shop Now
                                                 </a>
                                             </div>
@@ -68,20 +71,6 @@
                 <div class="swiper-pagination"></div>
             </div>
         </section>
-
-        <section class="hero-section">
-            <div class="hero-section__content">
-                <article class="text-center">
-                    <h1>{{ setting('homepage.hero_title') }}</h1>
-                    <p>{{ setting('homepage.hero_subtitle') }}</p>
-                    <a class="" href="{{ route('products.index') }}">{{ setting('homepage.hero_cta_text') }}</a>
-                </article>
-                <figure>
-                    <img src="{{ Storage::url(setting('homepage.hero_image')) }}" alt="Peptides">
-                </figure>
-            </div>
-        </section>
-
         <section class="features-marquee">
             <div class="marquee-container">
                 <div class="marquee-content">
@@ -95,12 +84,32 @@
                 </div>
             </div>
         </section>
+        <section class="hero-section">
+            <div class="hero-section__content">
+                <article class="text-center">
+                    <h1>{{ setting('homepage.hero_title') }}</h1>
+                    <p>{{ setting('homepage.hero_subtitle') }}</p>
+                    <a class="" href="{{ route('products.index') }}">{{ setting('homepage.hero_cta_text') }}</a>
+                </article>
+                <figure>
+                    <img src="{{ Storage::url(setting('homepage.hero_image')) }}" alt="Peptides">
+                </figure>
+            </div>
+        </section>
+
+
         <section class="products-section">
             <h2>Our Peptides</h2>
             <div class="products-marquee">
                 <div class="products-track">
                     @foreach ($products as $product)
                         <div class="product-item">
+                            <x-product-card :product="$product" />
+                        </div>
+                    @endforeach
+                    {{-- Duplicate for seamless loop --}}
+                    @foreach ($products as $product)
+                        <div class="product-item" aria-hidden="true">
                             <x-product-card :product="$product" />
                         </div>
                     @endforeach
@@ -381,6 +390,73 @@
             background: white;
         }
 
+        /* Products marquee */
+        .products-section {
+            padding: 60px 0;
+            overflow: hidden;
+            background: #ffffff;
+            color: inherit;
+        }
+
+        .products-section h2 {
+            text-align: center;
+            font-weight: 800;
+            margin-bottom: 28px;
+        }
+
+        .products-marquee {
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0;
+            box-shadow: none;
+        }
+
+        /* Ensure no side fade/shadow overlays */
+        .products-marquee::before,
+        .products-marquee::after {
+            content: none !important;
+        }
+
+        .products-track {
+            display: flex;
+            gap: 14px;
+            width: max-content;
+            --products-scroll-duration: 26s;
+            animation: products-scroll var(--products-scroll-duration) linear infinite;
+            animation-delay: 0s;
+            animation-play-state: running;
+            will-change: transform;
+        }
+
+        .product-item {
+            flex: 0 0 auto;
+            width: 260px;
+        }
+
+        @keyframes products-scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-section {
+                padding: 40px 0;
+            }
+
+            .products-track {
+                gap: 10px;
+            }
+
+            .product-item {
+                width: 220px;
+            }
+        }
+
         @media (max-width: 768px) {
 
             .hero-carousel-section,
@@ -460,14 +536,16 @@
 
             // Products track animation
             const track = document.querySelector('.products-track');
-            if (track) {
-                // Start from right side (off-screen)
-                track.style.transform = 'translateX(100%)';
+            const marquee = document.querySelector('.products-marquee');
 
-                // Small delay then start animation
-                setTimeout(() => {
-                    track.style.animation = 'products-scroll 20s linear infinite';
-                }, 100);
+            if (track && marquee) {
+                // Derive a duration based on content width; faster scroll
+                const speed = 110; // pixels per second (higher = faster)
+
+                requestAnimationFrame(() => {
+                    const durationSeconds = Math.max(track.scrollWidth / speed, 18);
+                    track.style.setProperty('--products-scroll-duration', `${durationSeconds}s`);
+                });
             }
         });
     </script>
