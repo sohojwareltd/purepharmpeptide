@@ -16,10 +16,9 @@ class HomeController extends Controller
     public function index()
     {
         // Get active hero slides ordered by order field
-        $heroSlides = HeroSlide::active()
-            ->ordered()
+        $heroSlides = HeroSlide::where('is_active', true)
+            ->orderBy('order', 'asc')
             ->get();
-
         $products = Product::where('is_active', true)
             ->where('is_featured', true)
             ->orderBy('created_at', 'desc')

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -46,10 +45,15 @@ class HeroSlide extends Model
      */
     public function getImageUrlAttribute(): string
     {
-        if ($this->image) {
-            return Storage::url($this->image);
+        if (! $this->image) {
+            return 'https://via.placeholder.com/1920x600?text=Hero+Slide';
         }
-        return 'https://via.placeholder.com/1920x600?text=Hero+Slide';
+
+        // Allow absolute URLs (seeded) and fallback to public storage paths for uploads
+        if (filter_var($this->image, FILTER_VALIDATE_URL)) {
+            return $this->image;
+        }
+        return asset('storage/' . $this->image);
     }
 
     /**

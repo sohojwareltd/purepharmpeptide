@@ -14,6 +14,7 @@ use App\Mail\NewOrderNotification;
 use App\Mail\OrderConfirmation;
 use App\Mail\WelcomeEmail;
 use App\Models\FaqItem;
+use App\Models\HeroSlide;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -33,13 +34,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $heroSlides = HeroSlide::where('is_active', true)
+        ->orderBy('created_at', 'asc')
+        ->get();
     $products = Product::where('status', 'active')
         ->orderBy('created_at', 'desc')
         ->get();
     $faqitems = FaqItem::where('is_active', true)
         ->get();
 
-    return view('home', compact('products', 'faqitems'));
+    return view('home', compact('products', 'faqitems', 'heroSlides'));
 })->name('home');
 Route::post('/newsletter/subscribe', [HomeController::class, 'store'])->name('newsletter.subscribe');
 // Static Pages
