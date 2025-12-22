@@ -1326,43 +1326,164 @@
     </main>
 
     <footer class="footer-section">
-
-        <div class="footer-box p-4 p-md-5 bg-white shadow-sm">
-            <div class="row align-items-center">
-                <!-- Left logo & text -->
-                <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
-                    <img src="{{ Storage::url(setting('store.footer_logo')) }}" alt="Logo" class="mb-3">
-                    <h6 class="fw-bold mb-1">Verified compounds.</h6>
-                    <p class="mb-0">Ready to ship.</p>
-                </div>
-                <!-- Right contact -->
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-1 text-muted">Need help? Text us, and a team member will reply in minutes.</p>
-                    <a href="mailto:+{{ setting('store.email') }}"
-                        class="fw-bold text-primary">{{ setting('store.email') }}</a>
+        <div class="container-fluid px-0">
+            <!-- Main Footer Content -->
+            <div class="footer-main py-5" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);">
+                <div class="container">
+                    <div class="row g-4">
+                        <!-- Logo & About -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="footer-brand mb-4">
+                                @if(setting('store.footer_logo'))
+                                    <img src="{{ Storage::url(setting('store.footer_logo')) }}" alt="Logo" class="footer-logo mb-3" style="max-height: 60px; filter: brightness(0) invert(1);">
+                                @endif
+                                <h5 class="text-white fw-bold mb-2">Verified compounds.</h5>
+                                <p class="text-white-50 mb-0">Ready to ship.</p>
+                            </div>
+                            <p class="text-white-50 small" style="line-height: 1.7;">
+                                Your trusted source for high-quality research peptides and compounds. 
+                                3rd Party Verified for purity and authenticity.
+                            </p>
+                        </div>
+                        
+                        <!-- Quick Links -->
+                        <div class="col-lg-2 col-md-6">
+                            <h6 class="text-white fw-bold mb-4 text-uppercase" style="letter-spacing: 1px; font-size: 0.85rem;">Quick Links</h6>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2"><a href="{{ route('home') }}" class="text-white-50 text-decoration-none hover-link">Home</a></li>
+                                <li class="mb-2"><a href="{{ route('products.index') }}" class="text-white-50 text-decoration-none hover-link">Products</a></li>
+                                <li class="mb-2"><a href="{{ route('blog.index') }}" class="text-white-50 text-decoration-none hover-link">Blog</a></li>
+                                <li class="mb-2"><a href="{{ route('cart.index') }}" class="text-white-50 text-decoration-none hover-link">Cart</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Customer Service -->
+                        <div class="col-lg-2 col-md-6">
+                            <h6 class="text-white fw-bold mb-4 text-uppercase" style="letter-spacing: 1px; font-size: 0.85rem;">Support</h6>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-link">FAQs</a></li>
+                                <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-link">Shipping Info</a></li>
+                                <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-link">Returns</a></li>
+                                <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-link">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Contact Info -->
+                        <div class="col-lg-4 col-md-6">
+                            <h6 class="text-white fw-bold mb-4 text-uppercase" style="letter-spacing: 1px; font-size: 0.85rem;">Get In Touch</h6>
+                            <div class="contact-info">
+                                <p class="text-white-50 mb-3">
+                                    <i class="fas fa-envelope me-2" style="color: var(--primary);"></i>
+                                    Need help? Text us, and a team member will reply in minutes.
+                                </p>
+                                <a href="mailto:{{ setting('store.email') }}" class="btn btn-outline-light btn-sm rounded-pill px-4 py-2 mb-3">
+                                    <i class="fas fa-paper-plane me-2"></i>{{ setting('store.email') }}
+                                </a>
+                                
+                                <!-- Social Links -->
+                                <div class="social-links mt-4">
+                                    <a href="#" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-icon me-2"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start text-primary">
-                    © Purepharmpeptides 2025. All rights reserved
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="me-3 text-decoration-none text-primary">Privacy Policy</a>
-                    <a href="#" class="text-decoration-none text-primary">Terms of Service</a>
+            
+            <!-- FDA Disclaimer -->
+            <div class="footer-disclaimer py-3" style="background: rgba(0,0,0,0.2);">
+                <div class="container">
+                    <p class="text-white-50 small mb-0 text-center" style="line-height: 1.6;">
+                        <i class="fas fa-info-circle me-1"></i>
+                        Food and Drug Administration - 3rd Party Verified. The products offered are not intended to diagnose, treat, cure, or prevent any disease.
+                        Pure-pharm-peptides is not a compounding pharmacy or chemical compounding facility as defined under Section 503A of the Federal Food, Drug, and Cosmetic Act.
+                        All products are sold strictly for research purposes only and are not for human or animal consumption.
+                    </p>
                 </div>
             </div>
-            <p class="small mt-3 text-muted">
-                Food and Drug Administration.– 3rd Party Verified.
-                The products offered are not intended to diagnose, treat, cure, or prevent any disease.
-                Pure-pharm-peptides is not a compounding pharmacy or chemical compounding facility as defined under
-                Section 503A of the Federal Food, Drug, and Cosmetic Act,
-                and all products are sold strictly for research purposes only and are not for human or animal
-                consumption.
-            </p>
+            
+            <!-- Bottom Bar -->
+            <div class="footer-bottom py-3" style="background: rgba(0,0,0,0.3);">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 text-center text-md-start">
+                            <p class="text-white-50 mb-0 small"> Purepharmpeptides {{ date('Y') }}. All rights reserved</p>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <a href="#" class="text-white-50 text-decoration-none small me-3 hover-link">Privacy Policy</a>
+                            <a href="#" class="text-white-50 text-decoration-none small hover-link">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </footer>
+    
+    <style>
+        /* Full Width Footer Styles */
+        .footer-section {
+            width: 100vw !important;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw !important;
+            margin-right: -50vw !important;
+            background: var(--secondary);
+            padding: 0;
+        }
+        
+        .footer-links a {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .footer-links a:hover,
+        .hover-link:hover {
+            color: #fff !important;
+            padding-left: 5px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        
+        .footer-logo {
+            max-height: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-main {
+                text-align: center;
+            }
+            
+            .footer-links {
+                margin-bottom: 1rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+                display: flex;
+            }
+        }
+    </style>
 
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollToTop" style="background: var(--primary) !important; color: white !important;"
