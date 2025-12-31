@@ -11,6 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Global middleware to check site status
+        $middleware->append(\App\Http\Middleware\CheckSiteStatus::class);
+        
         $middleware->alias([
             'wholesaler' => \App\Http\Middleware\Wholesaler::class,
         ]);
